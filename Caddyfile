@@ -1,0 +1,33 @@
+# Caddy reverse proxy with automatic HTTPS.
+# {$SITE_DOMAIN} and {$CADDY_TLS_EMAIL} come from the environment (see .env).
+
+{
+	# Use a contact email for Let's Encrypt notices when provided.
+	email {$CADDY_TLS_EMAIL}
+}
+
+{$SITE_DOMAIN} {
+	encode zstd gzip
+
+	# Proxy everything to the Next.js app.
+	reverse_proxy app:3000
+
+	# Security headers (complement those set in next.config.mjs).
+	header {
+		Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		# Caddy sets the real client IP for the app's rate limiter.
+		-Server
+	}
+
+	# Cache Next.js static assets and served uploads aggressively.
+	@static path /_next/static/* /favicon.svg /api/media/file/* /api/documents/file/*
+	header @static Cache-Control "public, max-age=31536000, immutable"
+
+	log {
+		output stdout
+		format console
+	}
+}
