@@ -68,11 +68,11 @@ export default async function HomePage() {
           <Reveal delay={120} className="relative">
             <div className="relative mx-auto max-w-md">
               <MediaImage
-                media={settings.defaultOgImage}
+                media={settings.heroImage ?? settings.defaultOgImage}
                 size="feature"
                 priority
                 className="arch-top aspect-[3/4] w-full rounded-b-2xl shadow-lift"
-                placeholderLabel="Add a hero photo in Site Settings → SEO defaults"
+                placeholderLabel="Add a hero photo in Site Settings → Brand"
               />
               <div className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-forest/10 bg-cream px-5 py-4 shadow-soft sm:block">
                 <p className="font-display text-2xl text-forest">Family-raised</p>

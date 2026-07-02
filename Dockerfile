@@ -34,6 +34,8 @@ RUN groupadd --system --gid 1001 nodejs \
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+# Placeholder artwork used by the first-boot auto-seeder.
+COPY --from=builder --chown=nextjs:nodejs /app/src/seed/assets ./seed-assets
 
 # Persisted local uploads (mounted as a volume in compose).
 ENV UPLOADS_DIR=/app/uploads

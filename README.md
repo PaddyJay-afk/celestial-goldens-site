@@ -78,18 +78,28 @@ these before using in any shared environment.**
 
 ---
 
-## Deployment
+## Deployment — one command
 
-See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for a complete, step-by-step Contabo VPS
-deployment, plus update, logs, and rollback commands. In short:
+On a fresh Ubuntu VPS (Contabo etc.) with your domain's DNS pointed at it:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/main/install.sh | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=you@example.com bash
+```
+
+The installer sets up Docker, clones the repo, generates secrets, starts the
+full stack (app + PostgreSQL + Caddy with automatic HTTPS), runs database
+migrations, seeds the admin account + sample content, and prints the admin
+login. Re-run it any time to update.
+
+Manual route (see **[DEPLOYMENT.md](./DEPLOYMENT.md)** for full detail):
 
 ```bash
 cp .env.example .env          # fill in real production values
 docker compose up -d --build  # builds app, starts Postgres + app + Caddy
 ```
 
-On first boot the app runs its database migrations automatically. Then visit
-`https://YOUR_DOMAIN/admin` to create the first admin account.
+On first boot the app migrates and (with `AUTO_SEED=true`) seeds itself. See
+**[HANDOFF.md](./HANDOFF.md)** for the replace-sample-content checklist.
 
 Other docs:
 

@@ -34,6 +34,12 @@ export const SiteSettings: GlobalConfig = {
               admin: { description: 'Show the breeder’s name publicly.' },
             },
             { name: 'logo', type: 'upload', relationTo: 'media', admin: { description: 'Optional. Falls back to a text wordmark.' } },
+            {
+              name: 'heroImage',
+              type: 'upload',
+              relationTo: 'media',
+              admin: { description: 'Large photo on the home page. Portrait orientation looks best.' },
+            },
           ],
         },
         {

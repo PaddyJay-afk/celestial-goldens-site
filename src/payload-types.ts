@@ -1175,6 +1175,10 @@ export interface SiteSetting {
    */
   logo?: (number | null) | Media;
   /**
+   * Large photo on the home page. Portrait orientation looks best.
+   */
+  heroImage?: (number | null) | Media;
+  /**
    * Public email. Leave blank to use the contact form only.
    */
   email?: string | null;
@@ -1225,6 +1229,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   breederName?: T;
   showBreederName?: T;
   logo?: T;
+  heroImage?: T;
   email?: T;
   phone?: T;
   addressVisibility?: T;

@@ -49,6 +49,11 @@ services:
       S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-}
       S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-false}
       UPLOADS_DIR: /app/uploads
+      # First boot: create admin + sample content automatically (idempotent).
+      AUTO_SEED: ${AUTO_SEED:-true}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-}
+      SEED_ASSETS_DIR: /app/seed-assets
     volumes:
       # Persist locally-stored uploads (images + PDFs) across deploys.
       - uploads:/app/uploads

@@ -24,6 +24,10 @@ export const Reveal = ({
   React.useEffect(() => {
     const node = ref.current
     if (!node) return
+    if (typeof IntersectionObserver === 'undefined') {
+      setVisible(true)
+      return
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
@@ -34,7 +38,12 @@ export const Reveal = ({
       { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
     )
     observer.observe(node)
-    return () => observer.disconnect()
+    // Safety net: content must never stay hidden (slow devices, odd browsers).
+    const fallback = window.setTimeout(() => setVisible(true), 1500)
+    return () => {
+      observer.disconnect()
+      window.clearTimeout(fallback)
+    }
   }, [])
 
   const Component = Tag as React.ElementType
