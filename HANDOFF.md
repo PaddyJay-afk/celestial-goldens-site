@@ -51,6 +51,17 @@ the server's IP.
 > After this branch is merged to `main`, you can switch the URL and add
 > `BRANCH=main` — until then the command above works as-is.
 
+**If the GitHub repo is private**, the command above can't download anything
+anonymously. Either make the repo public (Settings → General → Danger Zone →
+Change visibility — it contains no secrets), or create a fine-grained personal
+access token with read access to this repo and run:
+
+```bash
+curl -fsSL -H "Authorization: token YOUR_TOKEN" \
+  https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/claude/golden-retriever-breeder-site-05257a/install.sh \
+  | sudo GITHUB_TOKEN=YOUR_TOKEN SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=pam@yourdomain.com bash
+```
+
 ## About Wix
 
 Wix cannot host this site: Wix only runs sites built in Wix's own editor —

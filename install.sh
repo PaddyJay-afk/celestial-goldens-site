@@ -36,6 +36,12 @@ die()  { printf '\033[1;31mxx\033[0m %s\n' "$*" >&2; exit 1; }
 [ "$(id -u)" -eq 0 ] || die "Run as root (use sudo)."
 command -v curl >/dev/null || die "curl is required."
 
+# Private repo support: pass GITHUB_TOKEN=<personal access token with repo read>
+# and the clone/pull will authenticate automatically.
+if [ -n "${GITHUB_TOKEN:-}" ] && printf '%s' "$REPO_URL" | grep -q '^https://github.com/'; then
+  REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO_URL#https://github.com/}"
+fi
+
 # --- 1. Docker --------------------------------------------------------------
 if ! command -v docker >/dev/null 2>&1; then
   say "Installing Docker..."
