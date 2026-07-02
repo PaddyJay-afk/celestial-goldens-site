@@ -83,7 +83,7 @@ these before using in any shared environment.**
 On a fresh Ubuntu VPS (Contabo etc.) with your domain's DNS pointed at it:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/main/install.sh | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=you@example.com bash
+curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/claude/golden-retriever-breeder-site-05257a/install.sh | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=you@example.com bash
 ```
 
 The installer sets up Docker, clones the repo, generates secrets, starts the

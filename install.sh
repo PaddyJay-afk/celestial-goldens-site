@@ -23,7 +23,8 @@
 set -euo pipefail
 
 REPO_URL="${REPO_URL:-https://github.com/PaddyJay-afk/dog-breeding-site-.git}"
-BRANCH="${BRANCH:-main}"
+# Default to the branch that carries the site. Override with BRANCH=main after merging.
+BRANCH="${BRANCH:-claude/golden-retriever-breeder-site-05257a}"
 INSTALL_DIR="${INSTALL_DIR:-/opt/cirilli-goldens}"
 SITE_DOMAIN="${SITE_DOMAIN:-}"
 ADMIN_EMAIL="${ADMIN_EMAIL:-}"
@@ -39,13 +40,20 @@ command -v curl >/dev/null || die "curl is required."
 if ! command -v docker >/dev/null 2>&1; then
   say "Installing Docker..."
   export DEBIAN_FRONTEND=noninteractive
+  # Works on Ubuntu and Debian (both offered by Contabo).
+  DISTRO_ID="$(. /etc/os-release && echo "$ID")"
+  DISTRO_CODENAME="$(. /etc/os-release && echo "$VERSION_CODENAME")"
+  case "$DISTRO_ID" in
+    ubuntu|debian) : ;;
+    *) die "Unsupported distro '$DISTRO_ID' — this installer supports Ubuntu and Debian." ;;
+  esac
   apt-get update -qq
   apt-get install -y -qq ca-certificates curl git gnupg >/dev/null
   install -m 0755 -d /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg --yes
+  curl -fsSL "https://download.docker.com/linux/$DISTRO_ID/gpg" | gpg --dearmor -o /etc/apt/keyrings/docker.gpg --yes
   chmod a+r /etc/apt/keyrings/docker.gpg
   echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
-https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" \
+https://download.docker.com/linux/$DISTRO_ID $DISTRO_CODENAME stable" \
     > /etc/apt/sources.list.d/docker.list
   apt-get update -qq
   apt-get install -y -qq docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin >/dev/null

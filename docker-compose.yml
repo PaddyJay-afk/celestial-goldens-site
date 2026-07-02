@@ -71,7 +71,9 @@ services:
       - '443:443/udp'
     environment:
       SITE_DOMAIN: ${SITE_DOMAIN:-localhost}
-      CADDY_TLS_EMAIL: ${CADDY_TLS_EMAIL:-}
+      # Caddy's global `email` directive fails on an empty value — keep a
+      # syntactically valid fallback (only used for Let's Encrypt notices).
+      CADDY_TLS_EMAIL: ${CADDY_TLS_EMAIL:-admin@example.com}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data

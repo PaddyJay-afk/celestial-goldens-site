@@ -40,7 +40,7 @@ Log in at `https://yourdomain.com/admin` and work through this list:
 On a fresh Ubuntu VPS, point your domain's DNS A-record at the server IP, then:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/main/install.sh | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=pam@yourdomain.com bash
+curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/claude/golden-retriever-breeder-site-05257a/install.sh | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=pam@yourdomain.com bash
 ```
 
 That's the whole install. It sets up Docker, HTTPS, the database, the site,
@@ -48,8 +48,8 @@ and prints Pam's admin login when it finishes. Run it again any time to
 update. No domain yet? Omit `SITE_DOMAIN=` and it runs in HTTP test mode on
 the server's IP.
 
-> Until this branch is merged to `main`, add
-> `BRANCH=claude/golden-retriever-breeder-site-05257a` before `bash`.
+> After this branch is merged to `main`, you can switch the URL and add
+> `BRANCH=main` — until then the command above works as-is.
 
 ## About Wix
 
