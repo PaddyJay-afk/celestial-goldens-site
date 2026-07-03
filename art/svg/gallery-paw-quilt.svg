@@ -1,176 +1,176 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1400 1050">
-  <rect width="1400" height="1050" fill="#29382E"/>
-  <g transform="translate(120,120) scale(1.05) rotate(-7)" fill="#BD8B3C" opacity="0.9">
+  <rect width="1400" height="1050" fill="#134E5A"/>
+  <g transform="translate(120,120) scale(1.05) rotate(-7)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(315,120) scale(1.05) rotate(4)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(315,120) scale(1.05) rotate(4)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(510,120) scale(1.05) rotate(1)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(510,120) scale(1.05) rotate(1)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(705,120) scale(1.05) rotate(-2)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(705,120) scale(1.05) rotate(-2)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(900,120) scale(1.05) rotate(-5)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(900,120) scale(1.05) rotate(-5)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1095,120) scale(1.05) rotate(6)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1095,120) scale(1.05) rotate(6)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1290,120) scale(1.05) rotate(3)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1290,120) scale(1.05) rotate(3)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(215,325) scale(1.05) rotate(0)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(215,325) scale(1.05) rotate(0)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(410,325) scale(1.05) rotate(-3)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(410,325) scale(1.05) rotate(-3)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(605,325) scale(1.05) rotate(-6)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(605,325) scale(1.05) rotate(-6)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(800,325) scale(1.05) rotate(5)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(800,325) scale(1.05) rotate(5)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(995,325) scale(1.05) rotate(2)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(995,325) scale(1.05) rotate(2)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1190,325) scale(1.05) rotate(-1)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1190,325) scale(1.05) rotate(-1)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1385,325) scale(1.05) rotate(-4)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1385,325) scale(1.05) rotate(-4)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(120,530) scale(1.05) rotate(-7)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(120,530) scale(1.05) rotate(-7)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(315,530) scale(1.05) rotate(4)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(315,530) scale(1.05) rotate(4)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(510,530) scale(1.05) rotate(1)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(510,530) scale(1.05) rotate(1)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(705,530) scale(1.05) rotate(-2)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(705,530) scale(1.05) rotate(-2)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(900,530) scale(1.05) rotate(-5)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(900,530) scale(1.05) rotate(-5)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1095,530) scale(1.05) rotate(6)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1095,530) scale(1.05) rotate(6)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1290,530) scale(1.05) rotate(3)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1290,530) scale(1.05) rotate(3)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(215,735) scale(1.05) rotate(0)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(215,735) scale(1.05) rotate(0)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(410,735) scale(1.05) rotate(-3)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(410,735) scale(1.05) rotate(-3)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(605,735) scale(1.05) rotate(-6)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(605,735) scale(1.05) rotate(-6)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(800,735) scale(1.05) rotate(5)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(800,735) scale(1.05) rotate(5)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(995,735) scale(1.05) rotate(2)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(995,735) scale(1.05) rotate(2)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1190,735) scale(1.05) rotate(-1)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1190,735) scale(1.05) rotate(-1)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1385,735) scale(1.05) rotate(-4)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1385,735) scale(1.05) rotate(-4)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(120,940) scale(1.05) rotate(-7)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(120,940) scale(1.05) rotate(-7)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(315,940) scale(1.05) rotate(4)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(315,940) scale(1.05) rotate(4)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(510,940) scale(1.05) rotate(1)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(510,940) scale(1.05) rotate(1)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(705,940) scale(1.05) rotate(-2)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(705,940) scale(1.05) rotate(-2)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(900,940) scale(1.05) rotate(-5)" fill="#A9B48E" opacity="0.5">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(900,940) scale(1.05) rotate(-5)" fill="#A3D0CC" opacity="0.5">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1095,940) scale(1.05) rotate(6)" fill="#BD8B3C" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1095,940) scale(1.05) rotate(6)" fill="#C29A3B" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
-  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1290,940) scale(1.05) rotate(3)" fill="#E7D3A8" opacity="0.9">
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g><g transform="translate(1290,940) scale(1.05) rotate(3)" fill="#EAD9AD" opacity="0.9">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
@@ -179,6 +179,6 @@
   
   <filter id="grain53" x="0" y="0" width="100%" height="100%">
     <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="53" stitchTiles="stitch"/>
-    <feColorMatrix type="matrix" values="0 0 0 0 0.16  0 0 0 0 0.14  0 0 0 0 0.10  0 0 0 0.05 0"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.08  0 0 0 0 0.14  0 0 0 0 0.15  0 0 0 0.05 0"/>
   </filter>
   <rect width="1400" height="1050" filter="url(#grain53)"/></svg>

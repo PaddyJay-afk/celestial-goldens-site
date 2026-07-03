@@ -31,8 +31,8 @@ export default async function ApplyPage({
         title="Apply for a puppy"
         intro={
           puppy
-            ? `You’re applying with ${puppy.name} in mind. Tell us about your home — we’ll talk with you about whether it’s the right match.`
-            : 'This helps us understand your home and what you’re looking for. It takes about 10–15 minutes, and we read every word.'
+            ? `You’re applying with ${puppy.name} in mind. Tell me about your home — then we’ll talk about whether it’s the right match.`
+            : 'This is how every one of my puppies finds their family. Answer every question — complete applications are the first thing I look for — and I read every word myself.'
         }
       />
 

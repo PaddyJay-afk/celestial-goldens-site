@@ -19,12 +19,12 @@ export const SiteSettings: GlobalConfig = {
         {
           label: 'Brand',
           fields: [
-            { name: 'businessName', type: 'text', defaultValue: 'Cirilli English Goldens', required: true },
+            { name: 'businessName', type: 'text', defaultValue: 'Celestial English Golden Retrievers', required: true },
             { name: 'tagline', type: 'text', defaultValue: 'Thoughtfully raised English Golden Retrievers in Suffolk, Virginia.' },
             {
               name: 'breederName',
               type: 'text',
-              defaultValue: 'Pamela Cirilli',
+              defaultValue: 'Pamela',
               admin: { description: 'Breeder name shown publicly.' },
             },
             {

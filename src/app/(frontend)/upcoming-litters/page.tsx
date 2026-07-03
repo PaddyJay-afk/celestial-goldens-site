@@ -25,7 +25,7 @@ export default async function UpcomingLittersPage() {
       <PageHeader
         eyebrow="Upcoming Litters"
         title="Planned & expected litters"
-        intro="Here’s what we’re planning and expecting. We’re glad to talk early — being on a waitlist is the best way to be considered when puppies arrive."
+        intro="One litter a year — planned carefully, announced here first. Talk to me early: the waitlist is how families are considered when puppies arrive."
       />
 
       <Section>
@@ -40,7 +40,7 @@ export default async function UpcomingLittersPage() {
         ) : (
           <EmptyState
             title="No litters announced yet"
-            body="We plan litters carefully and announce them here. Apply to be considered for a future litter."
+            body="I plan one litter a year and announce it here. Apply to be considered before it’s spoken for."
             cta={
               <ButtonLink href="/apply" variant="primary">
                 Apply for a Puppy
@@ -53,8 +53,8 @@ export default async function UpcomingLittersPage() {
           <h2 className="font-display text-xl text-forest">A note on expectations</h2>
           <p className="mt-2 text-sm leading-relaxed text-charcoal/80">
             Nature decides much of this. Timing, litter size, coat color, sex, and
-            temperament cannot be guaranteed. We share our best plans and update them as
-            things unfold. This information is general and is not legal or veterinary advice.
+            temperament are in her hands, not mine. I share my best plans here and keep
+            them updated as things unfold.
           </p>
         </div>
       </Section>

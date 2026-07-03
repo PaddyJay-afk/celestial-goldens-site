@@ -42,8 +42,8 @@ sudo usermod -aG docker $USER   # then log out and back in
 ## 3. Get the code and configure secrets
 
 ```bash
-git clone <YOUR_REPO_URL> cirilli-goldens
-cd cirilli-goldens
+git clone <YOUR_REPO_URL> celestial-goldens
+cd celestial-goldens
 cp .env.example .env
 ```
 

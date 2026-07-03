@@ -20,22 +20,22 @@ mkdirSync(OUT_JPG, { recursive: true })
 // ---------------------------------------------------------------------------
 // Palette (mirrors tailwind tokens)
 const P = {
-  cream: '#FBF8F1',
-  ivory: '#FEFCF7',
-  forest: '#29382E',
-  forest700: '#33473A',
-  sage: '#7C8C6F',
-  sageLight: '#A9B48E',
-  gold: '#BD8B3C',
-  goldDark: '#A0742F',
-  goldSoft: '#E7D3A8',
-  parchment: '#F3E4C2',
-  charcoal: '#2C2A25',
-  skyHi: '#F6E3C0',
-  skyLo: '#EDD09E',
-  sun: '#E9BE7B',
-  duskHi: '#D8B394',
-  duskLo: '#B98A6E',
+  cream: '#FAFAF7',
+  ivory: '#FFFFFF',
+  forest: '#134E5A',
+  forest700: '#1B646F',
+  sage: '#63A8A2',
+  sageLight: '#A3D0CC',
+  gold: '#C29A3B',
+  goldDark: '#A17E27',
+  goldSoft: '#EAD9AD',
+  parchment: '#F2E6C4',
+  charcoal: '#243538',
+  skyHi: '#E7F3F1',
+  skyLo: '#C2E2DD',
+  sun: '#E5BE6C',
+  duskHi: '#1D5762',
+  duskLo: '#0E3A44',
 }
 
 const collars = {
@@ -114,7 +114,7 @@ const fence = (n = 5, gap = 92, fill = P.forest) => `
 const grain = (w, h, op = 0.05, seed = 7) => `
   <filter id="grain${seed}" x="0" y="0" width="100%" height="100%">
     <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="${seed}" stitchTiles="stitch"/>
-    <feColorMatrix type="matrix" values="0 0 0 0 0.16  0 0 0 0 0.14  0 0 0 0 0.10  0 0 0 ${op} 0"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.08  0 0 0 0 0.14  0 0 0 0 0.15  0 0 0 ${op} 0"/>
   </filter>
   <rect width="${w}" height="${h}" filter="url(#grain${seed})"/>`
 
@@ -128,12 +128,12 @@ const svgDoc = (w, h, body) =>
 const meadow = (w, h, { dusk = false, sunX = 0.52, sunY = 0.36, withFence = true, seed = 3 } = {}) => {
   const sky0 = dusk ? P.duskHi : P.skyHi
   const sky1 = dusk ? P.duskLo : P.skyLo
-  const far = dusk ? '#A99B84' : P.sageLight
-  const farLo = dusk ? '#98876F' : '#9DA982'
-  const mid = dusk ? '#7E7A62' : '#8A9A74'
-  const midLo = dusk ? '#6E6A54' : P.sage
-  const near0 = dusk ? '#4A4A3C' : '#57694E'
-  const near1 = dusk ? '#37372E' : '#3E5040'
+  const far = dusk ? '#2E6B74' : P.sageLight
+  const farLo = dusk ? '#255C65' : '#8FC4BE'
+  const mid = dusk ? '#1C4E58' : '#4E939B'
+  const midLo = dusk ? '#153F48' : '#3E858D'
+  const near0 = dusk ? '#0C2F37' : '#1C5F69'
+  const near1 = dusk ? '#071F25' : '#12454F'
   const sx = w * sunX
   const sy = h * sunY
   return `
@@ -161,15 +161,18 @@ const meadow = (w, h, { dusk = false, sunX = 0.52, sunY = 0.36, withFence = true
   <path fill="url(#far)" d="M0 ${h * 0.52} C ${w * 0.2} ${h * 0.47}, ${w * 0.42} ${h * 0.48} ${w * 0.62} ${h * 0.515} C ${w * 0.8} ${h * 0.545}, ${w * 0.92} ${h * 0.54} ${w} ${h * 0.52} L ${w} ${h} L 0 ${h} Z"/>
   <path fill="url(#mid)" d="M0 ${h * 0.62} C ${w * 0.18} ${h * 0.57}, ${w * 0.45} ${h * 0.585} ${w * 0.66} ${h * 0.625} C ${w * 0.84} ${h * 0.658}, ${w * 0.94} ${h * 0.652} ${w} ${h * 0.635} L ${w} ${h} L 0 ${h} Z"/>
   <path fill="url(#near)" d="M0 ${h * 0.78} C ${w * 0.22} ${h * 0.73}, ${w * 0.52} ${h * 0.74} ${w * 0.74} ${h * 0.775} C ${w * 0.88} ${h * 0.797}, ${w * 0.96} ${h * 0.795} ${w} ${h * 0.785} L ${w} ${h} L 0 ${h} Z"/>
-  ${withFence ? `<g transform="translate(${w * 0.60},${h * 0.775})">${fence(5, w * 0.062, '#2E3A2C')}</g>` : ''}
-  ${tuft(w * 0.085, h * 0.985, 1.25, '#243024')}
-  ${tuft(w * 0.19, h * 1.01, 0.9, '#2C3A2E', 0.95)}
-  ${tuft(w * 0.87, h * 0.99, 1.35, '#243024')}
-  ${tuft(w * 0.76, h * 1.015, 0.85, '#2C3A2E', 0.92)}
+  ${dusk ? [ [0.14,0.12,1.1],[0.3,0.2,0.7],[0.68,0.1,0.9],[0.82,0.22,1.2],[0.55,0.16,0.6],[0.9,0.12,0.7],[0.22,0.28,0.5],[0.74,0.3,0.55] ]
+    .map(([fx, fy, fs]) => `<g transform="translate(${(w * fx).toFixed(0)},${(h * fy).toFixed(0)}) scale(${fs})" fill="${P.goldSoft}" opacity="0.9">${sparkle}</g>`) 
+    .join('') : ''}
+  ${withFence ? `<g transform="translate(${w * 0.60},${h * 0.775})">${fence(5, w * 0.062, '#123842')}</g>` : ''}
+  ${tuft(w * 0.085, h * 0.985, 1.25, '#0B2A31')}
+  ${tuft(w * 0.19, h * 1.01, 0.9, '#123842', 0.95)}
+  ${tuft(w * 0.87, h * 0.99, 1.35, '#0B2A31')}
+  ${tuft(w * 0.76, h * 1.015, 0.85, '#123842', 0.92)}
   ${wheat(w * 0.115, h * 0.985, 1.05)}
-  ${wheat(w * 0.152, h * 1.0, 0.85, '#D9C08B')}
+  ${wheat(w * 0.152, h * 1.0, 0.85, '#DCC98F')}
   ${wheat(w * 0.895, h * 0.99, 1.1)}
-  ${wheat(w * 0.845, h * 1.005, 0.8, '#D9C08B')}
+  ${wheat(w * 0.845, h * 1.005, 0.8, '#DCC98F')}
   ${grain(w, h, 0.05, seed)}`
 }
 
@@ -259,16 +262,16 @@ assets['og-banner'] = {
   ${meadow(1200, 630, { sunX: 0.8, sunY: 0.3, withFence: true, seed: 5 })}
   <rect x="60" y="120" width="600" height="380" rx="18" fill="${P.cream}" opacity="0.96"/>
   <g transform="translate(360,235) scale(1.05)" fill="${P.forest}">${paw}</g>
-  <text x="360" y="368" text-anchor="middle" font-family="Fraunces" font-size="57" fill="${P.forest}">Cirilli English Goldens</text>
+  <text x="360" y="368" text-anchor="middle" font-family="Fraunces" font-size="40" fill="${P.forest}">Celestial English Golden Retrievers</text>
   <text x="360" y="434" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="30" fill="${P.goldDark}">Suffolk, Virginia</text>`,
   ),
 }
 
 // 3. Dog plates
 assets['dog-daisy'] = { w: 1200, h: 1200, svg: dogPlate('Daisy', 'D', { seed: 11 }) }
-assets['dog-sadie'] = { w: 1200, h: 1200, svg: dogPlate('Sadie', 'S', { bg: '#465A48', seed: 12 }) }
-assets['dog-cooper'] = { w: 1200, h: 1200, svg: dogPlate('Cooper', 'C', { bg: '#2F3A33', ring: '#D9C08B', seed: 13 }) }
-assets['dog-juniper'] = { w: 1200, h: 1200, svg: dogPlate('Juniper', 'J', { bg: '#6E6A54', ring: P.parchment, accent: P.goldSoft, seed: 14 }) }
+assets['dog-sadie'] = { w: 1200, h: 1200, svg: dogPlate('Sadie', 'S', { bg: '#2E7B85', seed: 12 }) }
+assets['dog-cooper'] = { w: 1200, h: 1200, svg: dogPlate('Cooper', 'C', { bg: '#12333B', ring: '#DCC98F', seed: 13 }) }
+assets['dog-juniper'] = { w: 1200, h: 1200, svg: dogPlate('Juniper', 'J', { bg: '#5A7A7E', ring: P.parchment, accent: P.goldSoft, seed: 14 }) }
 
 // 4. Puppy plates
 for (const [name, c] of Object.entries(collars)) {
@@ -304,7 +307,7 @@ assets['litter-spring'] = {
       return `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)}) rotate(${rot.toFixed(1)}) scale(1.06)" fill="${c.base}">${paw}</g>`
     })
     .join('')}
-  <text x="600" y="762" text-anchor="middle" font-family="Fraunces" font-size="56" fill="${P.forest}">The Meadow Litter</text>
+  <text x="600" y="762" text-anchor="middle" font-family="Fraunces" font-size="56" fill="${P.forest}">The Stardust Litter</text>
   <text x="600" y="820" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="30" fill="${P.goldDark}">expected this spring</text>
   ${tuft(105, 875, 1.05, P.sage, 0.55)}
   ${tuft(1100, 880, 1.15, P.sage, 0.55)}
@@ -353,7 +356,7 @@ assets['gallery-goldenrod'] = {
   <circle cx="525" cy="560" r="330" fill="${P.goldSoft}" opacity="0.28"/>
   ${wheat(430, 1180, 3.4, P.gold)}
   ${wheat(560, 1220, 2.6, P.goldDark)}
-  ${wheat(640, 1180, 2.0, '#D9C08B')}
+  ${wheat(640, 1180, 2.0, '#DCC98F')}
   ${tuft(320, 1240, 2.1, P.sage, 0.8)}
   ${tuft(700, 1255, 1.8, P.sage, 0.7)}
   <text x="525" y="1330" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="42" fill="${P.forest}">goldenrod, early autumn</text>
@@ -398,11 +401,11 @@ assets['gallery-crest'] = {
   <g transform="translate(380,430) scale(0.8)" fill="${P.sage}" opacity="0.7">${sparkle}</g>
   <g transform="translate(672,432) scale(0.8)" fill="${P.sage}" opacity="0.7">${sparkle}</g>
   <g transform="translate(525,520) scale(2.3)" fill="${P.forest}">${paw}</g>
-  <text x="525" y="760" text-anchor="middle" font-family="Fraunces" font-size="64" fill="${P.forest}">Cirilli</text>
-  <text x="525" y="836" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="44" fill="${P.goldDark}">English Goldens</text>
+  <text x="525" y="760" text-anchor="middle" font-family="Fraunces" font-size="64" fill="${P.forest}">Celestial</text>
+  <text x="525" y="836" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="44" fill="${P.goldDark}">English Golden Retrievers</text>
   <text x="525" y="1075" text-anchor="middle" font-family="Fraunces" font-size="30" letter-spacing="12" fill="${P.charcoal}">SUFFOLK · VIRGINIA</text>
   <path d="M 315 1120 L 735 1120" stroke="${P.gold}" stroke-width="2"/>
-  <text x="525" y="1180" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="30" fill="${P.charcoal}" opacity="0.75">raised gently, placed thoughtfully</text>
+  <text x="525" y="1180" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="30" fill="${P.charcoal}" opacity="0.75">one litter a year · raised in our home</text>
   ${grain(1050, 1400, 0.035, 59)}`,
   ),
 }

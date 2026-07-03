@@ -17,14 +17,14 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const STEPS = [
-  { title: 'Learn about the program', body: 'Read about our dogs, our practices, and what life with an English Golden is like. Bring your questions.' },
-  { title: 'Submit an application', body: 'Tell us about your home, your experience, and what you’re hoping for. It takes about 10–15 minutes.' },
-  { title: 'Breeder review', body: 'We read every application personally and consider fit — not order of arrival.' },
-  { title: 'Call, visit, or video chat', body: 'We’ll talk so we can answer questions and make sure this is the right match both ways.' },
-  { title: 'Approved deposit', body: 'Once we’ve approved a match, we send a deposit link to hold your place. Deposits are never taken before approval.' },
-  { title: 'Puppy matching', body: 'As the litter develops, we match temperaments to families. We help guide the choice.' },
-  { title: 'Go-home day', body: 'Your puppy comes home vet-checked, with a go-home packet and starter supplies.' },
-  { title: 'Lifelong support', body: 'We stay in touch for the life of your dog, for advice and celebration alike.' },
+  { title: 'Learn about my program', body: 'Read about my dogs, how I raise puppies, and what life with an English Golden is really like. Bring your questions — I love the good ones.' },
+  { title: 'Fill out the application — completely', body: 'Tell me about your home, your experience, and what you’re hoping for. Answer every question; an incomplete application is the one thing I won’t consider.' },
+  { title: 'I read it myself', body: 'Every application is read by me, personally. I’m looking for fit, not order of arrival.' },
+  { title: 'We talk on the phone', body: 'After your application, you and I talk. Once we’ve done both, I’ll tell you whether you’ve been approved. It’s that direct.' },
+  { title: 'Hold your place', body: 'Approved families hold their place with a $500 non-refundable deposit by check or Zelle. I never take a deposit from anyone I haven’t approved.' },
+  { title: 'Watch them grow', body: 'Video calls start when puppies are three weeks old. Come meet them in person, by appointment, from five weeks. As they grow, I match temperaments to families.' },
+  { title: 'Go-home day', body: 'Your puppy leaves my home vet-examined and vaccinated, with your contract, a toy, potty bags, and a little blanket that smells like mom and the litter. The balance is paid in cash at pickup.' },
+  { title: 'For the life of your dog', body: 'You’ll have my number. Use it — for advice, for questions, and for the puppy pictures I genuinely want to see.' },
 ]
 
 export default async function ProcessPage() {
@@ -33,7 +33,7 @@ export default async function ProcessPage() {
       <PageHeader
         eyebrow="How It Works"
         title="From first hello to go-home day"
-        intro="Our process is built around getting the match right. Here’s exactly what to expect."
+        intro="My process is simple and personal, and it’s built around one thing: getting the match right. Here’s exactly what to expect."
       />
 
       <Section>

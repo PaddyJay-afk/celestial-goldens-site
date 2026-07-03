@@ -57,8 +57,8 @@ export const ApplicationForm = ({ puppySlug = '' }: { puppySlug?: string }) => {
       <div className="rounded-2xl border border-sage/40 bg-sage/10 p-8 text-center">
         <h2 className="font-display text-2xl text-forest">Application received</h2>
         <p className="mx-auto mt-3 max-w-md text-charcoal/75">
-          Thank you. We read every application personally and will be in touch. Remember:
-          matches are made after review — there is no instant checkout. Check your inbox for a
+          Thank you. I read every application myself, and the next step is a phone call —
+          that’s how you’ll know if you’ve been approved. Check your inbox for a
           confirmation.
         </p>
       </div>
@@ -208,8 +208,8 @@ export const ApplicationForm = ({ puppySlug = '' }: { puppySlug?: string }) => {
         {status === 'submitting' ? 'Submitting…' : 'Submit application'}
       </Button>
       <p className="text-xs text-charcoal/55">
-        Submitting an application is the first step in a conversation. It is not a purchase
-        and does not reserve a puppy. We review every application and reply to everyone.
+        Submitting an application is the first step in a conversation with me — it is not a
+        purchase and does not reserve a puppy. Complete applications are the ones I consider.
       </p>
     </form>
   )

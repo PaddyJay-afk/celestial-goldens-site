@@ -109,8 +109,7 @@ export const Footer = ({ settings }: { settings: SiteSetting }) => {
             © {year} {settings.businessName}. All rights reserved.
           </p>
           <p className="max-w-xl sm:text-right">
-            Information on this site is general and is not legal or veterinary advice.
-            Puppy availability, timing, and traits are never guaranteed.
+            AKC-registered English Golden Retrievers · one litter a year · Suffolk, Virginia
           </p>
         </div>
       </div>

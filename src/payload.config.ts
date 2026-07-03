@@ -52,7 +52,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     meta: {
-      titleSuffix: '— Cirilli English Goldens',
+      titleSuffix: '— Celestial English Golden Retrievers',
     },
   },
   editor: lexicalEditor(),
@@ -110,7 +110,7 @@ export default buildConfig({
   email: isEmailConfigured
     ? nodemailerAdapter({
         defaultFromAddress: smtp.from.replace(/.*<(.+)>.*/, '$1'),
-        defaultFromName: 'Cirilli English Goldens',
+        defaultFromName: 'Celestial English Golden Retrievers',
         transportOptions: {
           host: smtp.host,
           port: smtp.port,

@@ -24,7 +24,7 @@ export const buildMetadata = ({
   settings?: SiteSetting | null
   ogFallback?: unknown
 }): Metadata => {
-  const business = settings?.businessName ?? 'Cirilli English Goldens'
+  const business = settings?.businessName ?? 'Celestial English Golden Retrievers'
   const metaTitle = seo?.title || title
   const fullTitle = metaTitle.includes(business) ? metaTitle : `${metaTitle} — ${business}`
   const metaDescription =

@@ -40,7 +40,7 @@ export default async function ContactPage({
       <PageHeader
         eyebrow="Contact"
         title="Let’s talk"
-        intro={`We’d love to hear from you. The fastest way to start is the contact form — or, if you’re ready, the puppy application. We serve ${settings.serviceArea ?? 'Suffolk, VA and the surrounding area'}.`}
+        intro={`I’d love to hear from you — and yes, it’s really me who answers. Start with the form below, or if you’re ready, go straight to the puppy application. I’m in ${settings.serviceArea ?? 'Suffolk, VA'}.`}
       />
 
       <Section className="grid gap-10 lg:grid-cols-[1fr_0.8fr]">
@@ -50,7 +50,7 @@ export default async function ContactPage({
 
         <aside className="space-y-6">
           <div className="rounded-2xl border border-forest/10 bg-ivory p-6 shadow-soft">
-            <h2 className="font-display text-xl text-forest">Reach us directly</h2>
+            <h2 className="font-display text-xl text-forest">Reach me directly</h2>
             <ul className="mt-4 space-y-3 text-sm text-charcoal/85">
               {location && (
                 <li className="flex items-start gap-3">
@@ -77,7 +77,7 @@ export default async function ContactPage({
             </ul>
             {!settings.email && !settings.phone && (
               <p className="mt-4 text-sm text-charcoal/60">
-                The contact form is the best way to reach us right now.
+                The contact form is the best way to reach me right now.
               </p>
             )}
           </div>

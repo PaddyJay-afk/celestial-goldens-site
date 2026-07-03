@@ -40,7 +40,7 @@ export const seed = async (payload: Payload): Promise<void> => {
   if ((await payload.find({ collection: 'users', where: { email: { equals: adminEmail } }, limit: 1 })).totalDocs === 0) {
     await payload.create({
       collection: 'users',
-      data: { name: 'Pam Cirilli', email: adminEmail, password: adminPassword, role: 'admin' },
+      data: { name: 'Pamela', email: adminEmail, password: adminPassword, role: 'admin' },
     })
     log(`created admin user ${adminEmail}`)
   }
@@ -71,7 +71,7 @@ export const seed = async (payload: Payload): Promise<void> => {
 
   if ((await countOf('media')) === 0 && assets) {
     await uploadArt('hero-meadow', 'Golden-hour meadow illustration with rolling Virginia hills')
-    await uploadArt('og-banner', 'Cirilli English Goldens — Suffolk, Virginia')
+    await uploadArt('og-banner', 'Celestial English Golden Retrievers — Suffolk, Virginia')
     await uploadArt('dog-daisy', 'Engraved monogram plate for Daisy', 'Daisy — replace with her photo')
     await uploadArt('dog-sadie', 'Engraved monogram plate for Sadie', 'Sadie — replace with her photo')
     await uploadArt('dog-cooper', 'Engraved monogram plate for Cooper', 'Cooper — replace with his photo')
@@ -80,12 +80,12 @@ export const seed = async (payload: Payload): Promise<void> => {
     await uploadArt('puppy-pink', 'Pink collar puppy plate', 'Pink collar')
     await uploadArt('puppy-blue', 'Blue collar puppy plate', 'Blue collar')
     await uploadArt('puppy-yellow', 'Yellow collar puppy plate', 'Yellow collar')
-    await uploadArt('litter-spring', 'The Meadow Litter announcement plate')
+    await uploadArt('litter-spring', 'The Stardust Litter announcement plate')
     await uploadArt('gallery-oak-hill', 'Oak on the hill at first light', 'The back field, first light')
     await uploadArt('gallery-dusk', 'Dusk over the meadow', 'Evening walk weather')
     await uploadArt('gallery-goldenrod', 'Goldenrod study', 'Goldenrod, early autumn')
     await uploadArt('gallery-paw-quilt', 'Paw print quilt pattern', 'Every collar tells a story')
-    await uploadArt('gallery-crest', 'Cirilli English Goldens kennel crest', 'Our crest')
+    await uploadArt('gallery-crest', 'Celestial English Golden Retrievers kennel crest', 'Our crest')
     log(`uploaded ${Object.keys(media).length} placeholder artworks`)
   } else if (assets) {
     // map already-uploaded assets so re-runs can still link relations
@@ -104,24 +104,26 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.updateGlobal({
       slug: 'site-settings',
       data: {
-        businessName: 'Cirilli English Goldens',
+        businessName: 'Celestial English Golden Retrievers',
         tagline:
-          'English Golden Retrievers raised gently in our Suffolk, Virginia home — and placed thoughtfully, one family at a time.',
-        breederName: 'Pam Cirilli',
+          'I’m Pamela. I raise one litter of AKC English Golden Retrievers a year in my Suffolk, Virginia home — health-tested parents, puppies underfoot from day one.',
+        breederName: 'Pamela',
         showBreederName: true,
+        email: 'celestialpups62@gmail.com',
+        phone: '(757) 537-9055',
         addressVisibility: 'generalized',
         city: 'Suffolk',
         state: 'VA',
         serviceArea: 'Suffolk, VA and the greater Hampton Roads / Tidewater area',
         badgeVetChecked: true,
         badgeFamilyRaised: true,
-        badgeAkc: false,
-        badgeOfa: false,
-        badgeEmbark: false,
+        badgeAkc: true,
+        badgeOfa: true,
+        badgeEmbark: true,
         heroImage: media['hero-meadow'],
         defaultOgImage: media['og-banner'],
         defaultMetaDescription:
-          'A small, responsible English Golden Retriever breeding program in Suffolk, Virginia. Health-tested parents, home-raised puppies, and lifelong breeder support.',
+          'Celestial English Golden Retrievers — a boutique, AKC-registered English Golden Retriever program in Suffolk, Virginia. One litter a year, health-tested parents, home-raised puppies.',
       },
     })
     log('site settings updated')
@@ -140,15 +142,15 @@ export const seed = async (payload: Payload): Promise<void> => {
         color: 'Light cream',
         weight: '58 lbs',
         temperament:
-          'Daisy is the heart of our home — a velcro girl who naps under the kitchen table and swims like she was born in the river. Steady with children, soft-mouthed, endlessly patient.',
+          'Daisy is the heart of my home — a velcro girl who naps under my kitchen table and swims like she was born in the river. Steady with children, soft-mouthed, endlessly patient.',
         pedigreeNotes:
-          'European lines selected for longevity and gentle temperament. Full pedigree shared with approved families.',
+          'European lines selected for longevity and gentle temperament. I share the full pedigree with approved families.',
         healthTesting: [
           { test: 'OFA Hips', result: 'Good', link: '' },
           { test: 'OFA Elbows', result: 'Normal' },
           { test: 'OFA Cardiac', result: 'Normal' },
-          { test: 'Eyes (CAER)', result: 'Normal' },
-          { test: 'Embark panel', result: 'Clear' },
+          { test: 'OFA Eyes (repeated annually)', result: 'Normal' },
+          { test: 'DNA panel', result: 'Clear' },
         ],
         featuredImage: media['dog-daisy'],
         published: true,
@@ -162,11 +164,12 @@ export const seed = async (payload: Payload): Promise<void> => {
         color: 'Cream',
         weight: '55 lbs',
         temperament:
-          'Our young rising star — playful, biddable, and the first to greet you at the gate. Sadie loves fetch more than dinner, which is saying something.',
+          'My young rising star — playful, biddable, and the first to greet you at the gate. Sadie loves fetch more than dinner, which is saying something.',
         healthTesting: [
           { test: 'OFA Hips', result: 'Good' },
           { test: 'OFA Elbows', result: 'Normal' },
-          { test: 'Embark panel', result: 'Clear' },
+          { test: 'OFA Eyes (repeated annually)', result: 'Normal' },
+          { test: 'DNA panel', result: 'Clear' },
         ],
         featuredImage: media['dog-sadie'],
         published: true,
@@ -186,7 +189,8 @@ export const seed = async (payload: Payload): Promise<void> => {
           { test: 'OFA Hips', result: 'Excellent' },
           { test: 'OFA Elbows', result: 'Normal' },
           { test: 'OFA Cardiac', result: 'Normal' },
-          { test: 'Embark panel', result: 'Clear' },
+          { test: 'OFA Eyes (repeated annually)', result: 'Normal' },
+          { test: 'DNA panel', result: 'Clear' },
         ],
         featuredImage: media['dog-cooper'],
         published: true,
@@ -199,7 +203,7 @@ export const seed = async (payload: Payload): Promise<void> => {
         dateOfBirth: '2017-06-02',
         color: 'Light cream',
         temperament:
-          'Our foundation girl, now happily retired to full-time couch supervision and part-time puppy mentoring. Every dog in our program traces back to her sweetness.',
+          'My foundation girl, now happily retired to full-time couch supervision and part-time puppy mentoring. Every dog in my program traces back to her sweetness.',
         featuredImage: media['dog-juniper'],
         published: true,
       },
@@ -217,13 +221,13 @@ export const seed = async (payload: Payload): Promise<void> => {
     const meadow = await payload.create({
       collection: 'litters',
       data: {
-        name: 'The Meadow Litter — Daisy × Cooper',
+        name: 'The Stardust Litter — Daisy × Cooper',
         status: 'born',
         waitlistOpen: false,
         expectedDate: '2026-05-12',
         goHomeDate: '2026-07-07',
         description:
-          'Four beautiful puppies arrived on a rainy May morning — two boys, two girls, all thriving. We expect calm, people-first temperaments from this pairing, and early signs agree.',
+          'Four beautiful puppies arrived on a rainy May morning — two boys, two girls, all thriving in my living room. I expected calm, people-first temperaments from this pairing, and the early signs agree.',
         coverImage: media['litter-spring'],
         published: true,
         dam: daisy?.id,
@@ -234,12 +238,12 @@ export const seed = async (payload: Payload): Promise<void> => {
     await payload.create({
       collection: 'litters',
       data: {
-        name: 'The Harvest Litter — Sadie × Cooper',
+        name: 'The Aurora Litter — Sadie × Cooper',
         status: 'planned',
         waitlistOpen: true,
         expectedDate: '2026-10-05',
         description:
-          'Sadie’s first litter, planned for early autumn. We anticipate the same easy biddability both parents are known for. The waitlist is open — apply early to be considered.',
+          'Sadie’s first litter, planned for early autumn — my one litter for the year ahead. I anticipate the same easy biddability both parents are known for. The waitlist is open — apply early to be considered.',
         published: true,
         dam: sadie?.id,
         sire: cooper?.id,
@@ -249,22 +253,22 @@ export const seed = async (payload: Payload): Promise<void> => {
     const puppies = [
       {
         name: 'Green Collar', collarColor: 'Green', sex: 'male' as const, status: 'available' as const,
-        notes: 'The explorer of the bunch — first out of the whelping box, first to find the water bowl. Confident and curious with a soft, easy mouth.',
+        notes: 'My explorer — first out of the whelping box, first to find the water bowl. Confident and curious with a soft, easy mouth.',
         featuredImage: media['puppy-green'],
       },
       {
         name: 'Pink Collar', collarColor: 'Pink', sex: 'female' as const, status: 'reserved' as const,
-        notes: 'A cuddler through and through. Happiest on a lap or trailing whoever looks busiest. Reserved for an approved family.',
+        notes: 'A cuddler through and through — happiest on a lap or trailing whoever looks busiest. Reserved for an approved family.',
         featuredImage: media['puppy-pink'],
       },
       {
         name: 'Blue Collar', collarColor: 'Blue', sex: 'male' as const, status: 'under-evaluation' as const,
-        notes: 'The thinker — watches first, then does it right the first time. We’re evaluating him a little longer before matching.',
+        notes: 'My thinker — watches first, then does it right the first time. I’m evaluating him a little longer before matching.',
         featuredImage: media['puppy-blue'],
       },
       {
         name: 'Yellow Collar', collarColor: 'Yellow', sex: 'female' as const, status: 'waitlist-only' as const,
-        notes: 'Sunshine in dog form. Currently waitlist-only while we finish temperament evaluations and match families.',
+        notes: 'Sunshine in dog form. Waitlist-only for now, while I finish temperament evaluations and match families.',
         featuredImage: media['puppy-yellow'],
       },
     ]
@@ -288,16 +292,21 @@ export const seed = async (payload: Payload): Promise<void> => {
   // --- FAQs -----------------------------------------------------------------
   if ((await countOf('faqs')) === 0) {
     const faqs = [
-      { category: 'pricing', order: 1, question: 'How much does a puppy cost?', answer: 'We share current pricing during the application conversation, along with everything it includes — health testing on both parents, veterinary care, microchip, starter supplies, and lifelong breeder support. We’d rather talk it through with you than post a number without context.' },
-      { category: 'pricing', order: 2, question: 'How do deposits work?', answer: 'We never take a deposit from someone we haven’t spoken with. After your application is approved and we both feel it’s a match, a deposit holds your place for a current or upcoming litter. We’ll explain the amount and refund terms in writing before you pay anything.' },
-      { category: 'waitlist', order: 3, question: 'How does the waitlist work?', answer: 'Approved families join the waitlist for a specific litter (or the next available). Matching is by fit, not strictly first-come: we pair each puppy’s temperament with the right home, which is better for the puppy and for you.' },
-      { category: 'waitlist', order: 4, question: 'Can we visit or video call?', answer: 'Yes — we encourage it. We host visits by appointment once puppies are old enough, and we’re always glad to do video calls, which most families find easiest. You’ll see exactly where and how our dogs live.' },
-      { category: 'registration', order: 5, question: 'Are the puppies registered?', answer: 'Registration details for each litter (and whether placement is on limited or full registration) are confirmed before you commit and spelled out in your contract. Most companion placements are on limited registration.' },
-      { category: 'health', order: 6, question: 'What health testing do you do?', answer: 'Both parents complete health testing appropriate to the breed — hips, elbows, heart, eyes, and a genetic panel — before any pairing. Each dog’s results are listed on their profile, and we share certificates with approved families.' },
-      { category: 'health', order: 7, question: 'Do puppies see a vet before going home?', answer: 'Every puppy is examined by our veterinarian, receives age-appropriate vaccinations and deworming, and goes home with a written health record and our health guarantee.' },
-      { category: 'pickup', order: 8, question: 'When can puppies go home — and do you ship?', answer: 'Puppies go home at 8 weeks or later. We prefer in-person pickup so we can meet you, do the paperwork together, and send you off properly. Ask us about delivery options within the region — we don’t ship puppies as cargo.' },
-      { category: 'care', order: 9, question: 'What comes home with the puppy?', answer: 'A go-home packet: starter food, a scent blanket that smells like mom and littermates, health records, care instructions, your contract and health guarantee, and our phone number — which you can use for the life of your dog.' },
-      { category: 'general', order: 10, question: 'What if I can’t keep my dog someday?', answer: 'Come back to us — always. It’s in our contract: at any point in the dog’s life, for any reason, we will take our dog back. No dog from our program will ever need a shelter.' },
+      { category: 'pricing', order: 1, question: 'How much does a puppy cost?', answer: 'My puppies are $3,500. That includes AKC registration (pre-paid by me), the seven-week veterinary exam and first vaccinations, fully health-tested parents, and a complete go-home packet — plus my support for the life of your dog.' },
+      { category: 'pricing', order: 2, question: 'How do deposits and payments work?', answer: 'Once I’ve approved you, a $500 non-refundable deposit holds your place — check or Zelle. The balance is paid in cash when you pick up your puppy. I never take a deposit from a family I haven’t approved.' },
+      { category: 'general', order: 3, question: 'How does the approval process work?', answer: 'Two steps: fill out my application completely, then you and I talk on the phone. After both have happened, I’ll tell you whether you’ve been approved. Incomplete applications are the one thing I don’t consider.' },
+      { category: 'waitlist', order: 4, question: 'Is there a waitlist?', answer: 'Yes. I raise one litter a year, so approved families join my waitlist and are matched as puppies arrive. Applying early is the best way to be considered.' },
+      { category: 'waitlist', order: 5, question: 'Can we visit or video call?', answer: 'Yes to both. Video calls start once puppies are three weeks old, and you’re welcome to visit by appointment after they turn five weeks. I want you to see exactly how they live.' },
+      { category: 'registration', order: 6, question: 'Are the puppies AKC registered?', answer: 'Yes. My dogs are AKC registered, and puppies go home on limited registration with the AKC paperwork pre-paid by me.' },
+      { category: 'health', order: 7, question: 'What health testing do you do?', answer: 'Both parents are DNA tested and OFA evaluated — hips, elbows, and heart — and I have their eyes re-examined every single year. I show the OFA certificates to approved families.' },
+      { category: 'health', order: 8, question: 'What vet care do puppies receive?', answer: 'At seven weeks every puppy sees my vet for a full exam and their first distemper/parvo vaccination, and goes home with their first heartworm preventative to give after homecoming. You also get a signed letter from the vet confirming the exam — pet insurance companies accept it.' },
+      { category: 'health', order: 9, question: 'Are puppies microchipped?', answer: 'I recommend microchipping closer to one year of age — chips can migrate in young, fast-growing puppies. Your vet can place one at any routine visit.' },
+      { category: 'pickup', order: 10, question: 'Do you ship or deliver puppies?', answer: 'No. Families are welcome from anywhere — I have no location restrictions — but puppies are picked up in person. I do not allow my puppies to be transported in cargo holds. Period.' },
+      { category: 'care', order: 11, question: 'What food do puppies go home eating?', answer: 'Royal Canin Golden Retriever Puppy — and I recommend keeping them on it for their whole first year.' },
+      { category: 'care', order: 12, question: 'What comes home with the puppy?', answer: 'A copy of your application, your contract, a toy, potty pick-up bags — and a small blanket carrying mom’s and the litter’s scent. That blanket is very calming for your puppy on the first nights home.' },
+      { category: 'care', order: 13, question: 'Are puppies started on potty training?', answer: 'Yes — potty training starts here in my home, along with early neurological stimulation and sound desensitization. Most of my families tell me their puppy is completely house trained within 2 to 2½ weeks of coming home.' },
+      { category: 'general', order: 14, question: 'How many litters do you raise?', answer: 'One a year. Keeping it small means every puppy is raised in my home, underfoot, with the time and attention they deserve. I wouldn’t do it any other way.' },
+      { category: 'general', order: 15, question: 'What if I can’t keep my dog someday?', answer: 'They come back to me — always. At any point in the dog’s life, for any reason, I will take my dog back. No dog of mine will ever need a shelter.' },
     ]
     for (const f of faqs) await payload.create({ collection: 'faqs', data: { ...f, published: true } as never })
     log(`seeded ${faqs.length} FAQs`)
@@ -307,7 +316,7 @@ export const seed = async (payload: Payload): Promise<void> => {
   if ((await countOf('testimonials')) === 0) {
     const testimonials = [
       {
-        quote: 'Pam matched us with exactly the right puppy — calmer than the one we thought we wanted, and perfect for our kids. Two years later she still answers our questions within the hour.',
+        quote: 'Pamela matched us with exactly the right puppy — calmer than the one we thought we wanted, and perfect for our kids. Two years later she still answers our questions within the hour.',
         ownerName: 'Rachel', dogName: 'Biscuit', location: 'Virginia Beach, VA', date: '2025-11-02', published: true, featured: true,
       },
       {

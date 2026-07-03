@@ -1,4 +1,4 @@
-# Handoff — Cirilli English Goldens
+# Handoff — Celestial English Golden Retrievers
 
 A quick orientation for Pam (and whoever deploys the site).
 

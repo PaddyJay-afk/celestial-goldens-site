@@ -107,8 +107,8 @@ export async function POST(req: Request) {
     await sendEmail({
       to: d.email,
       subject: 'We received your puppy application',
-      text: `Hi ${d.applicantName},\n\nThank you for your application. We read every application personally and will be in touch. Availability and matches are decided after review — there is no instant checkout.\n\nWarmly,\nCirilli English Goldens`,
-      html: `<p>Hi ${d.applicantName.replace(/</g, '&lt;')},</p><p>Thank you for your application. We read every application personally and will be in touch soon. Matches are decided after review — there is no instant checkout.</p><p>Warmly,<br/>Cirilli English Goldens</p>`,
+      text: `Hi ${d.applicantName},\n\nThank you for your application — I read every one myself. The next step is a phone call between us; after that, I'll tell you whether you've been approved.\n\nWarmly,\nPamela\nCelestial English Golden Retrievers`,
+      html: `<p>Hi ${d.applicantName.replace(/</g, '&lt;')},</p><p>Thank you for your application — I read every one myself. The next step is a phone call between us; after that, I&rsquo;ll tell you whether you&rsquo;ve been approved.</p><p>Warmly,<br/>Pamela<br/>Celestial English Golden Retrievers</p>`,
     })
 
     return NextResponse.json({ ok: true })

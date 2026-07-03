@@ -22,12 +22,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const PILLARS = [
-  { title: 'Health-first pairings', body: 'We test our breeding dogs and pair them to support sound structure, healthy hips and elbows, and stable temperaments.' },
-  { title: 'Raised in our home', body: 'Puppies grow up underfoot — exposed to household sounds, gentle handling, and daily life from day one.' },
-  { title: 'Early socialization', body: 'We use age-appropriate enrichment, novel surfaces and sounds, and careful introductions to build confidence.' },
-  { title: 'Veterinary care', body: 'Every puppy is examined by our veterinarian, started on age-appropriate vaccines and deworming, and vet-checked before go-home.' },
-  { title: 'Buyer education', body: 'We share what we’ve learned about nutrition, training, and grooming so you start out prepared and confident.' },
-  { title: 'Lifelong commitment', body: 'We’re here for the life of your dog, and we ask that a puppy always come back to us if you ever cannot keep them.' },
+  { title: 'Health before everything', body: 'Both parents are DNA tested, with OFA evaluations of hips, elbows, and heart — and I have their eyes re-examined every single year. Certificates are shown to approved families, not just talked about.' },
+  { title: 'One litter a year', body: 'I raise a single, thoughtfully planned litter each year. Small on purpose: every puppy grows up in my living room with real time and real attention, not in a kennel building.' },
+  { title: 'Early foundations', body: 'Early neurological stimulation, sound desensitization, and potty training all start here, under my roof. Most of my families tell me their puppy is completely house trained within 2 to 2½ weeks of coming home.' },
+  { title: 'Veterinary care', body: 'At seven weeks every puppy is examined by my veterinarian, receives their first distemper/parvo vaccination, and goes home with a signed letter from the vet — the kind pet insurance companies accept.' },
+  { title: 'Set up to succeed', body: 'Puppies go home eating Royal Canin Golden Retriever Puppy — the food I trust for their whole first year — with my guidance on feeding, training, and grooming whenever you need it.' },
+  { title: 'For the dog’s whole life', body: 'I’m here for the life of your dog. And if life ever changes and you can’t keep them, they come back to me — always. No dog of mine will ever see a shelter.' },
 ]
 
 export default async function ResponsibleBreedingPage() {
@@ -40,7 +40,7 @@ export default async function ResponsibleBreedingPage() {
         title={page?.title ?? 'How we raise our puppies'}
         intro={
           page?.subtitle ??
-          'We breed in small numbers with a single goal: healthy, well-adjusted English Golden Retrievers who become beloved family companions.'
+          'I raise one litter a year with a single goal: healthy, well-adjusted English Golden Retrievers who become the heart of their families — the way my dogs are the heart of my home.'
         }
       />
 
@@ -69,9 +69,8 @@ export default async function ResponsibleBreedingPage() {
         )}
 
         <p className="mt-10 rounded-xl border border-forest/10 bg-cream px-5 py-4 text-sm text-charcoal/70">
-          This page describes our general practices and is not legal or veterinary advice.
-          Specific health testing and certifications are listed on each dog’s profile only
-          where they have been completed.
+          Each dog’s completed health testing is listed on their profile, and OFA
+          certificates are available to approved families.
         </p>
       </Section>
     </>

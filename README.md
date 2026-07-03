@@ -1,6 +1,6 @@
-# Cirilli English Goldens — website & CMS
+# Celestial English Golden Retrievers — website & CMS
 
-A production website and content-management system for **Pamela Cirilli**, a
+A production website and content-management system for **Pamela**, a
 responsible private English Golden Retriever breeder in **Suffolk, Virginia**.
 
 This is **not** a puppy marketplace. It emphasizes responsible breeding, health
@@ -125,4 +125,4 @@ Other docs:
 
 ## License
 
-Private/UNLICENSED. © Cirilli English Goldens.
+Private/UNLICENSED. © Celestial English Golden Retrievers.

@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 900">
-  <rect width="1200" height="900" fill="#FEFCF7"/>
+  <rect width="1200" height="900" fill="#FFFFFF"/>
   <defs>
     <radialGradient id="nest" cx="0.5" cy="0.5" r="0.62">
-      <stop offset="0" stop-color="#E7D3A8" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#E7D3A8" stop-opacity="0"/>
+      <stop offset="0" stop-color="#EAD9AD" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#EAD9AD" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <circle cx="600" cy="420" r="360" fill="url(#nest)"/>
-  <circle cx="600" cy="420" r="252" fill="none" stroke="#BD8B3C" stroke-width="2.4" opacity="0.7"/>
-  <circle cx="600" cy="420" r="236" fill="none" stroke="#BD8B3C" stroke-width="1.1" opacity="0.4"/>
-  <circle cx="600" cy="420" r="64" fill="none" stroke="#BD8B3C" stroke-width="2" opacity="0.8"/>
-  <text x="600" y="446" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="72" fill="#A0742F">4</text>
+  <circle cx="600" cy="420" r="252" fill="none" stroke="#C29A3B" stroke-width="2.4" opacity="0.7"/>
+  <circle cx="600" cy="420" r="236" fill="none" stroke="#C29A3B" stroke-width="1.1" opacity="0.4"/>
+  <circle cx="600" cy="420" r="64" fill="none" stroke="#C29A3B" stroke-width="2" opacity="0.8"/>
+  <text x="600" y="446" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="72" fill="#A17E27">4</text>
   <g transform="translate(600.0,252.0) rotate(0.0) scale(1.06)" fill="#5F7355">
   <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
   <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
@@ -32,10 +32,10 @@
   <ellipse cx="15" cy="-42" rx="11" ry="15"/>
   <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
   <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g>
-  <text x="600" y="762" text-anchor="middle" font-family="Fraunces" font-size="56" fill="#29382E">The Meadow Litter</text>
-  <text x="600" y="820" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="30" fill="#A0742F">expected this spring</text>
+  <text x="600" y="762" text-anchor="middle" font-family="Fraunces" font-size="56" fill="#134E5A">The Stardust Litter</text>
+  <text x="600" y="820" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="30" fill="#A17E27">expected this spring</text>
   
-  <g transform="translate(105,875) scale(1.05)" fill="#7C8C6F" opacity="0.55">
+  <g transform="translate(105,875) scale(1.05)" fill="#63A8A2" opacity="0.55">
     <path d="M 0 0 C -3.5 -28, -13.9 -52.5, -26 -70
      C -10.8 -49, 3.5 -24.5, 6.3 0 Z"/> <path d="M 0 0 C -3.5 -38.400000000000006, -7.5 -72, -10 -96
      C -2 -67.19999999999999, 3.5 -33.599999999999994, 6.3 0 Z"/> <path d="M 0 0 C -4 -44.800000000000004, -2.4 -84, 4 -112
@@ -44,7 +44,7 @@
      C 21.1 -43.4, 3.5 -21.7, 6.3 0 Z"/>
   </g>
   
-  <g transform="translate(1100,880) scale(1.15)" fill="#7C8C6F" opacity="0.55">
+  <g transform="translate(1100,880) scale(1.15)" fill="#63A8A2" opacity="0.55">
     <path d="M 0 0 C -3.5 -28, -13.9 -52.5, -26 -70
      C -10.8 -49, 3.5 -24.5, 6.3 0 Z"/> <path d="M 0 0 C -3.5 -38.400000000000006, -7.5 -72, -10 -96
      C -2 -67.19999999999999, 3.5 -33.599999999999994, 6.3 0 Z"/> <path d="M 0 0 C -4 -44.800000000000004, -2.4 -84, 4 -112
@@ -55,6 +55,6 @@
   
   <filter id="grain31" x="0" y="0" width="100%" height="100%">
     <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="31" stitchTiles="stitch"/>
-    <feColorMatrix type="matrix" values="0 0 0 0 0.16  0 0 0 0 0.14  0 0 0 0 0.10  0 0 0 0.04 0"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.08  0 0 0 0 0.14  0 0 0 0 0.15  0 0 0 0.04 0"/>
   </filter>
   <rect width="1200" height="900" filter="url(#grain31)"/></svg>

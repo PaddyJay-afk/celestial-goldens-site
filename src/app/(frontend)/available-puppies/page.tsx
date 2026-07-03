@@ -27,7 +27,7 @@ export default async function AvailablePuppiesPage() {
       <PageHeader
         eyebrow="Available Puppies"
         title="Puppies looking for their families"
-        intro="Availability changes often and placements are made by application, not first-come checkout. If you see a puppy you love, apply or ask — we’ll talk with you about the right match."
+        intro="I match puppies to families — there is no checkout button here, and order of arrival doesn’t decide anything. If a puppy catches your heart, apply, and we’ll talk about whether it’s the right match."
       />
 
       <Section>
@@ -42,7 +42,7 @@ export default async function AvailablePuppiesPage() {
         ) : (
           <EmptyState
             title="No puppies are listed right now"
-            body="We breed in small numbers and list puppies only when a litter is on the way or here. Apply to join the conversation for an upcoming litter."
+            body="With one litter a year, my puppies are usually spoken for early. Apply now and we’ll talk about the next litter."
             cta={
               <ButtonLink href="/apply" variant="primary">
                 Apply for a Puppy
@@ -56,7 +56,7 @@ export default async function AvailablePuppiesPage() {
             <h2 className="text-2xl text-forest">Recently placed</h2>
             <p className="mt-2 text-charcoal/70">
               These sweethearts have found their families. They’re here so you can see the
-              kind of puppies we raise.
+              kind of puppies I raise.
             </p>
             <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {placed.map((p) => (

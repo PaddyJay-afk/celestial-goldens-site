@@ -22,11 +22,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const POINTS = [
-  'Puppies are examined by our veterinarian and vet-checked before they go home.',
-  'Puppies go home with age-appropriate vaccinations and deworming, and a health record.',
-  'We provide a written health guarantee and a puppy contract covering health and care expectations.',
-  'We ask buyers to complete an initial vet visit within a set window after go-home.',
-  'If you ever cannot keep your dog, we ask that the dog be returned to us.',
+  'At seven weeks, every puppy has a full veterinary exam and their first distemper/parvovirus vaccination.',
+  'Each puppy goes home with their first heartworm preventative, to be given after homecoming.',
+  'Every puppy comes with a letter from our veterinarian confirming they have been examined — accepted for pet insurance.',
+  'Your contract and a copy of your application come home in the go-home packet.',
+  'If you ever cannot keep your dog, the dog comes back to us — always.',
 ]
 
 export default async function HealthGuaranteePage() {
@@ -41,7 +41,7 @@ export default async function HealthGuaranteePage() {
         title={page?.title ?? 'Our health guarantee & contract'}
         intro={
           page?.subtitle ??
-          'Here’s a plain-language summary of what we stand behind. The full contract and health guarantee spell out the details.'
+          'No fine print here. Before your puppy ever leaves my home, a licensed veterinarian has examined them — and you get that in writing.'
         }
       />
 
@@ -90,8 +90,8 @@ export default async function HealthGuaranteePage() {
         <div className="mt-10 rounded-2xl border border-gold/30 bg-gold-soft/20 p-6">
           <h2 className="font-display text-xl text-forest">Want the full documents?</h2>
           <p className="mt-2 text-sm text-charcoal/80">
-            We’re happy to share the complete contract and health guarantee so you can read
-            every detail before you commit.
+            I’m happy to walk you through the contract line by line before you commit —
+            that conversation is part of my process, not an extra.
           </p>
           <div className="mt-4">
             <ButtonLink href="/contact?subject=Request%20full%20contract" variant="primary">
@@ -101,8 +101,8 @@ export default async function HealthGuaranteePage() {
         </div>
 
         <p className="mt-8 text-sm text-charcoal/60">
-          This summary is general information, not legal or veterinary advice. The signed
-          contract and health guarantee are the governing documents.
+          Your signed contract is the governing document — you and I go through it together
+          before go-home day.
         </p>
       </Section>
     </>

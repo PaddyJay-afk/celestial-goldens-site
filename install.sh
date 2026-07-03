@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ============================================================================
-# Cirilli English Goldens — one-command VPS installer
+# Celestial English Golden Retrievers — one-command VPS installer
 #
 # On a fresh Ubuntu VPS (Contabo or similar), run:
 #
@@ -12,7 +12,7 @@
 #
 # What it does:
 #   1. Installs Docker + Docker Compose (if missing)
-#   2. Clones this repository to /opt/cirilli-goldens
+#   2. Clones this repository to /opt/celestial-goldens
 #   3. Generates strong random secrets into .env (never committed)
 #   4. Builds and starts the full stack (app + PostgreSQL + Caddy HTTPS)
 #   5. Seeds the database with the admin login + sample content on first boot
@@ -25,7 +25,7 @@ set -euo pipefail
 REPO_URL="${REPO_URL:-https://github.com/PaddyJay-afk/dog-breeding-site-.git}"
 # Default to the branch that carries the site. Override with BRANCH=main after merging.
 BRANCH="${BRANCH:-claude/golden-retriever-breeder-site-05257a}"
-INSTALL_DIR="${INSTALL_DIR:-/opt/cirilli-goldens}"
+INSTALL_DIR="${INSTALL_DIR:-/opt/celestial-goldens}"
 SITE_DOMAIN="${SITE_DOMAIN:-}"
 ADMIN_EMAIL="${ADMIN_EMAIL:-}"
 
@@ -86,7 +86,7 @@ if [ ! -f .env ]; then
   say "Creating .env with generated secrets..."
 
   if [ -z "$SITE_DOMAIN" ] && [ -t 0 ]; then
-    read -rp "Domain for the site (e.g. cirilligoldens.com), or blank for IP-only test mode: " SITE_DOMAIN || true
+    read -rp "Domain for the site (e.g. celestialgoldens.com), or blank for IP-only test mode: " SITE_DOMAIN || true
   fi
   if [ -z "$ADMIN_EMAIL" ] && [ -t 0 ]; then
     read -rp "Admin login email for Pam [pam@example.com]: " ADMIN_EMAIL || true

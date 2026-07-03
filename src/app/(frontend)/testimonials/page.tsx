@@ -23,8 +23,8 @@ export default async function TestimonialsPage() {
     <>
       <PageHeader
         eyebrow="Testimonials"
-        title="Words from our families"
-        intro="The greatest reward of this work is seeing our puppies thrive. Here’s what their families have shared."
+        title="Words from my families"
+        intro="The best part of this work is watching my puppies thrive in their new homes. Here’s what their families tell me."
       />
 
       <Section>
@@ -39,7 +39,7 @@ export default async function TestimonialsPage() {
         ) : (
           <EmptyState
             title="Testimonials coming soon"
-            body="We’re gathering notes from our families. If you’ve welcomed one of our puppies, we’d love to hear from you."
+            body="I’m gathering notes from my families. If you’ve welcomed one of my puppies, I’d love to hear from you."
             cta={
               <ButtonLink href="/contact" variant="primary">
                 Share your story

@@ -35,7 +35,10 @@ export default async function HomePage() {
   ])
 
   const available = puppies.filter((p) => p.status !== 'placed').slice(0, 3)
-  const featuredLitter = litters.find((l) => l.status === 'expecting' || l.status === 'planned') ?? litters[0]
+  const featuredLitter =
+    litters.find((l) => (l.status === 'expecting' || l.status === 'planned') && l.coverImage) ??
+    litters.find((l) => l.coverImage) ??
+    litters[0]
 
   return (
     <>
@@ -45,7 +48,7 @@ export default async function HomePage() {
           <Reveal>
             <p className="eyebrow">Suffolk, Virginia · English Golden Retrievers</p>
             <h1 className="mt-5 text-balance text-5xl leading-[1.05] sm:text-6xl">
-              Gentle, healthy goldens, raised in our home for yours.
+              One litter a year, raised in my living room.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-charcoal/80">
               {settings.tagline ??
@@ -75,8 +78,8 @@ export default async function HomePage() {
                 placeholderLabel="Add a hero photo in Site Settings → Brand"
               />
               <div className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-forest/10 bg-cream px-5 py-4 shadow-soft sm:block">
-                <p className="font-display text-2xl text-forest">Family-raised</p>
-                <p className="text-sm text-charcoal/70">with early socialization</p>
+                <p className="font-display text-2xl text-forest">Raised underfoot</p>
+                <p className="text-sm text-charcoal/70">ENS · sound work · potty training</p>
               </div>
             </div>
           </Reveal>
@@ -89,18 +92,18 @@ export default async function HomePage() {
           {[
             {
               icon: Heart,
-              title: 'Bred for temperament & health',
-              body: 'Parents are chosen carefully and health-tested. We raise calm, confident puppies — never volume.',
+              title: 'One litter a year',
+              body: 'I raise a single litter each year. Both parents are DNA tested, with OFA hips, elbows, heart, and yearly eye exams. Small on purpose — that’s what doing it right takes.',
             },
             {
               icon: ClipboardCheck,
-              title: 'Application before deposit',
-              body: 'We review every application and talk with you first. Deposits come only after we have approved a match.',
+              title: 'We talk before anything else',
+              body: 'Fill out my application completely, then we talk on the phone. There is no deposit and no promise until I’ve told you that you’re approved.',
             },
             {
               icon: Users,
-              title: 'Lifelong support',
-              body: 'Your puppy comes home vet-checked with a go-home packet, and we stay in touch for the dog’s whole life.',
+              title: 'Prepared like my own',
+              body: 'Your puppy comes home vet-examined, vaccinated, started on potty training, and carrying a small blanket that smells like mom and the litter. Then I stay in your corner for the dog’s whole life.',
             },
           ].map((item, i) => (
             <Reveal key={item.title} delay={i * 90} className="flex flex-col gap-3">
@@ -135,7 +138,7 @@ export default async function HomePage() {
           ) : (
             <EmptyState
               title="No puppies listed right now"
-              body="We place puppies thoughtfully and in small numbers. Apply to be considered for an upcoming litter."
+              body="I raise one litter a year, and every puppy is spoken for by families who applied early. Apply now to be considered for the next litter."
               cta={
                 <ButtonLink href="/apply" variant="primary">
                   Apply for a Puppy
@@ -179,7 +182,7 @@ export default async function HomePage() {
         <section className="container-content py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="eyebrow">From our families</p>
+              <p className="eyebrow">From my families</p>
               <h2 className="mt-3 text-3xl sm:text-4xl">Loved in their new homes</h2>
             </div>
             <Link href="/testimonials" className="text-sm font-semibold text-gold-dark link-underline">
@@ -201,8 +204,8 @@ export default async function HomePage() {
             Ready to start the conversation?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-charcoal/75">
-            Tell us about your home and what you’re looking for. We read every application
-            personally and reply to everyone.
+            Tell me about your home and what you’re looking for. I read every application
+            myself, and we’ll talk on the phone before anything is decided.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <ButtonLink href="/apply" size="lg" variant="primary">

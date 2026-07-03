@@ -1,11 +1,11 @@
-# Implementation Plan — Cirilli English Golden Retrievers
+# Implementation Plan — Celestial English Golden Retrievers
 
 Status: initial build. Facts unknown at build time ship as **TODO placeholders**,
 editable in the admin dashboard. No breeding facts are fabricated.
 
 ## Confirmed vs. TODO
 
-**Confirmed by brief:** breeder = Pamela Cirilli; location = Suffolk, VA; breed =
+**Confirmed by brief:** breeder = Pamela; location = Suffolk, VA; breed =
 English Golden Retriever; responsible-breeding positioning; deposits gated behind
 approval; "not legal/veterinary advice" disclaimer included.
 

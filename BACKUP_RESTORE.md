@@ -34,7 +34,7 @@ gzip backup-db-*.sql
 ```bash
 # Archive the uploads volume via a throwaway container
 docker run --rm \
-  -v cirilli-goldens_uploads:/data \
+  -v celestial-goldens_uploads:/data \
   -v "$PWD":/backup \
   alpine tar czf /backup/backup-uploads-$(date +%F-%H%M).tar.gz -C /data .
 ```
@@ -48,8 +48,8 @@ Copy backups somewhere off-box (another host, S3, etc.):
 
 ```bash
 # Example: pull to your laptop
-scp user@server:/path/cirilli-goldens/backup-db-*.sql.gz .
-scp user@server:/path/cirilli-goldens/backup-uploads-*.tar.gz .
+scp user@server:/path/celestial-goldens/backup-db-*.sql.gz .
+scp user@server:/path/celestial-goldens/backup-uploads-*.tar.gz .
 ```
 
 ## Automate (daily cron)
@@ -57,7 +57,7 @@ scp user@server:/path/cirilli-goldens/backup-uploads-*.tar.gz .
 ```bash
 crontab -e
 # Run daily at 02:30, keep 14 days of DB dumps
-30 2 * * * cd /path/cirilli-goldens && docker compose exec -T db pg_dump -U breeder breeder | gzip > backups/db-$(date +\%F).sql.gz && find backups -name 'db-*.sql.gz' -mtime +14 -delete
+30 2 * * * cd /path/celestial-goldens && docker compose exec -T db pg_dump -U breeder breeder | gzip > backups/db-$(date +\%F).sql.gz && find backups -name 'db-*.sql.gz' -mtime +14 -delete
 ```
 
 Create the `backups/` directory first and ensure it is off your web root.
@@ -92,7 +92,7 @@ gunzip -c backup-db-YYYY-MM-DD-HHMM.sql.gz | docker compose exec -T db psql -U b
 
 ```bash
 docker run --rm \
-  -v cirilli-goldens_uploads:/data \
+  -v celestial-goldens_uploads:/data \
   -v "$PWD":/backup \
   alpine sh -c "rm -rf /data/* && tar xzf /backup/backup-uploads-YYYY-MM-DD-HHMM.tar.gz -C /data"
 docker compose restart app
