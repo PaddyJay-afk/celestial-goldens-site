@@ -62,6 +62,43 @@ curl -fsSL -H "Authorization: token YOUR_TOKEN" \
   | sudo GITHUB_TOKEN=YOUR_TOKEN SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=pam@yourdomain.com bash
 ```
 
+## Getting found — the free SEO playbook
+
+The site ships with the technical SEO done: per-page titles tuned to what
+families search, LocalBusiness/FAQ/Article/Breadcrumb structured data,
+`sitemap.xml`, `robots.txt` that welcomes Google **and** AI assistants
+(ChatGPT, Claude, Perplexity), a live `/llms.txt` feed AI crawlers read, a
+long-form breed guide at `/english-golden-retrievers` built to earn search
+traffic and AI citations, and fast page loads.
+
+The rest is free but requires Pam's hands (do these once the domain is live):
+
+1. **Google Search Console** (search.google.com/search-console) — verify the
+   domain, paste the token into `GOOGLE_SITE_VERIFICATION` in `.env`, redeploy,
+   then submit `https://yourdomain.com/sitemap.xml`. This is how Google finds
+   every page.
+2. **Google Business Profile** (business.google.com) — free listing; category
+   "Dog breeder", service area Suffolk/Hampton Roads, phone + website. This is
+   what puts you on the map for "golden retriever breeder near me". Collect
+   Google reviews from every family — reviews are the single strongest local
+   ranking signal.
+3. **Bing Webmaster Tools** (free, imports from Search Console in one click) —
+   Bing powers ChatGPT search.
+4. **Free breeder directories** — AKC Marketplace (you're AKC-registered, use
+   it), Good Dog, and the Golden Retriever Club of America breeder referral
+   list. Fill each profile completely and link the website; these links also
+   feed the AI assistants' knowledge.
+5. **Every litter is content** — when a litter is announced or arrives, update
+   the Litters page and post the link anywhere you're listed. Fresh pages on a
+   site is what keeps Google coming back.
+6. **Ask every family for two sentences** — real testimonials with first
+   names + towns (replace the samples!) are conversion gold and unique content
+   no competitor can copy.
+
+What was deliberately *not* done: no fake reviews, no invented ratings
+schema, no keyword stuffing. Google penalizes all three; a small honest site
+with real reviews beats them.
+
 ## About Wix
 
 Wix cannot host this site: Wix only runs sites built in Wix's own editor —

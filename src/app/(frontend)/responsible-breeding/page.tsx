@@ -70,7 +70,8 @@ export default async function ResponsibleBreedingPage() {
 
         <p className="mt-10 rounded-xl border border-forest/10 bg-cream px-5 py-4 text-sm text-charcoal/70">
           Each dog’s completed health testing is listed on their profile, and OFA
-          certificates are available to approved families.
+          certificates are available to approved families. New to the breed? Start with
+          my <a href="/english-golden-retrievers" className="text-gold-dark underline">English Golden Retriever guide</a>.
         </p>
       </Section>
     </>

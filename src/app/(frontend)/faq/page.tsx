@@ -8,7 +8,7 @@ import { buildMetadata } from '@/lib/seo'
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
   return buildMetadata({
-    title: 'Frequently Asked Questions',
+    title: 'English Golden Retriever Breeder FAQ — Price, Process & Health',
     description:
       'Answers about pricing, deposits, waitlists, visits, registration, health testing, pickup, delivery, and puppy care.',
     path: '/faq',

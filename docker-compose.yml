@@ -49,6 +49,7 @@ services:
       S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-}
       S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-false}
       UPLOADS_DIR: /app/uploads
+      GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
       # First boot: create admin + sample content automatically (idempotent).
       AUTO_SEED: ${AUTO_SEED:-true}
       SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-}

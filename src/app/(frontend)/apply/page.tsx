@@ -7,7 +7,7 @@ import { buildMetadata } from '@/lib/seo'
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
   return buildMetadata({
-    title: 'Puppy Application',
+    title: 'Apply for an English Golden Retriever Puppy',
     description:
       'Apply for an English Golden Retriever puppy from a responsible breeder in Suffolk, VA. Applications are reviewed personally; deposits follow approval.',
     path: '/apply',

@@ -10,9 +10,9 @@ import { formatDate } from '@/lib/utils'
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
   return buildMetadata({
-    title: 'Our Dogs',
+    title: 'Our Health-Tested English Golden Retrievers',
     description:
-      'Meet the sires and dams behind our English Golden Retriever program — temperament, pedigree, and health testing.',
+      'Meet the sires and dams behind our Suffolk, VA program — every parent DNA tested with OFA hips, elbows, heart, and annual eye exams.',
     path: '/our-dogs',
     settings,
   })

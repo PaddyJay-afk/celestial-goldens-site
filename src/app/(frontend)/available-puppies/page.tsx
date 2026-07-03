@@ -9,9 +9,9 @@ import { buildMetadata } from '@/lib/seo'
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
   return buildMetadata({
-    title: 'Available English Golden Retriever Puppies',
+    title: 'English Golden Retriever Puppies Available in Virginia',
     description:
-      'Current and upcoming English Golden Retriever puppies in Suffolk, VA. Each placement begins with an application — there is no instant checkout.',
+      'AKC English Cream Golden Retriever puppies from a health-tested, one-litter-a-year home breeder in Suffolk, VA. Application first — no instant checkout.',
     path: '/available-puppies',
     settings,
   })

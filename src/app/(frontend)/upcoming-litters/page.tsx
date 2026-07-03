@@ -9,7 +9,7 @@ import { buildMetadata } from '@/lib/seo'
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
   return buildMetadata({
-    title: 'Upcoming Litters',
+    title: 'Upcoming English Golden Retriever Litters — Suffolk, VA',
     description:
       'Planned and expected English Golden Retriever litters in Suffolk, VA, with sire and dam information and waitlist status.',
     path: '/upcoming-litters',
