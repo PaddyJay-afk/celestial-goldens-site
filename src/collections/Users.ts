@@ -10,7 +10,9 @@ export const Users: CollectionConfig = {
     tokenExpiration: 8 * 60 * 60, // 8 hours
     cookies: {
       sameSite: 'Lax',
-      secure: process.env.NODE_ENV === 'production',
+      // Key off the real scheme, not NODE_ENV: in IP-only HTTP test mode the
+      // admin must still be able to log in before DNS/HTTPS is configured.
+      secure: (process.env.NEXT_PUBLIC_SERVER_URL || '').startsWith('https'),
     },
   },
   admin: {

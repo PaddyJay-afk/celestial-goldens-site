@@ -52,7 +52,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     meta: {
-      titleSuffix: '— Cirilli English Goldens',
+      titleSuffix: '— Celestial English Golden Retrievers',
     },
   },
   editor: lexicalEditor(),
@@ -94,10 +94,23 @@ export default buildConfig({
       fileSize: 15 * 1024 * 1024, // 15 MB hard ceiling
     },
   },
+  // First-boot provisioning: when AUTO_SEED=true (set in docker-compose), an
+  // empty database is filled with the admin user + sample content on startup.
+  // The seeder is idempotent and never overwrites existing data.
+  onInit: async (payload) => {
+    if (process.env.AUTO_SEED === 'true') {
+      try {
+        const { seed } = await import('@/seed/seed')
+        await seed(payload)
+      } catch (err) {
+        payload.logger.error(`Auto-seed failed: ${err instanceof Error ? err.message : err}`)
+      }
+    }
+  },
   email: isEmailConfigured
     ? nodemailerAdapter({
         defaultFromAddress: smtp.from.replace(/.*<(.+)>.*/, '$1'),
-        defaultFromName: 'Cirilli English Goldens',
+        defaultFromName: 'Celestial English Golden Retrievers',
         transportOptions: {
           host: smtp.host,
           port: smtp.port,

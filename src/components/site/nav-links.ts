@@ -19,6 +19,7 @@ export const footerPrimary: { href: string; label: string }[] = [
 
 export const footerSecondary: { href: string; label: string }[] = [
   { href: '/responsible-breeding', label: 'Responsible Breeding' },
+  { href: '/english-golden-retrievers', label: 'Breed Guide' },
   { href: '/process', label: 'How It Works' },
   { href: '/health-guarantee', label: 'Health Guarantee' },
   { href: '/faq', label: 'FAQ' },

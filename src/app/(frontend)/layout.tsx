@@ -38,6 +38,9 @@ export async function generateMetadata(): Promise<Metadata> {
       settings.defaultMetaDescription ??
       'A responsible English Golden Retriever breeding program in Suffolk, Virginia. Health-tested parents, family-raised puppies, and lifelong support.',
     icons: { icon: '/favicon.svg' },
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+      : {}),
   }
 }
 

@@ -10,6 +10,7 @@ const STATIC_PATHS = [
   '/upcoming-litters',
   '/our-dogs',
   '/responsible-breeding',
+  '/english-golden-retrievers',
   '/process',
   '/health-guarantee',
   '/faq',

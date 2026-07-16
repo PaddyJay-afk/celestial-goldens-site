@@ -1,6 +1,6 @@
 # CLAUDE.md — English Golden Retriever Breeder Website
 
-Production website + CMS for **Pamela Cirilli**, a responsible private English
+Production website + CMS for **Pamela**, a responsible private English
 Golden Retriever breeder in Suffolk, VA. This is **not** a puppy marketplace:
 emphasize responsible breeding, health testing, application review, education, and
 matching puppies to suitable families. **Deposits are gated behind breeder

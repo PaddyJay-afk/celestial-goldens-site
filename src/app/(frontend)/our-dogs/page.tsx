@@ -10,9 +10,9 @@ import { formatDate } from '@/lib/utils'
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
   return buildMetadata({
-    title: 'Our Dogs',
+    title: 'Our Health-Tested English Golden Retrievers',
     description:
-      'Meet the sires and dams behind our English Golden Retriever program — temperament, pedigree, and health testing.',
+      'Meet the sires and dams behind our Suffolk, VA program — every parent DNA tested with OFA hips, elbows, heart, and annual eye exams.',
     path: '/our-dogs',
     settings,
   })
@@ -103,18 +103,18 @@ export default async function OurDogsPage() {
     <>
       <PageHeader
         eyebrow="Our Dogs"
-        title="The dogs behind our puppies"
-        intro="Our program rests on a few exceptional dogs chosen for temperament, structure, and health. Health testing is listed only where it has been completed."
+        title="The dogs behind my puppies"
+        intro="Everything I do rests on a few exceptional dogs, chosen for temperament, structure, and health. Every test listed below has actually been done — DNA, OFA hips, elbows, heart, and eyes re-examined every year."
       />
 
       <Section>
         {dogs.length ? (
           <>
-            <Group title="Dams" blurb="Our girls — the heart of every litter." dogs={dams} />
-            <Group title="Sires" blurb="Studs chosen to complement our dams." dogs={sires} />
+            <Group title="Dams" blurb="My girls — the heart of every litter." dogs={dams} />
+            <Group title="Sires" blurb="Chosen to complement my girls — in structure, in health, and in that easy golden temperament." dogs={sires} />
             <Group
               title="Retired"
-              blurb="Beloved dogs enjoying life after the whelping box, many in guardian homes."
+              blurb="The dogs who built this program, now enjoying a well-earned retirement on the couch."
               dogs={retired}
             />
           </>

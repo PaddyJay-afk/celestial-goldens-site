@@ -49,6 +49,12 @@ services:
       S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-}
       S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-false}
       UPLOADS_DIR: /app/uploads
+      GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
+      # First boot: create admin + sample content automatically (idempotent).
+      AUTO_SEED: ${AUTO_SEED:-true}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-}
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-}
+      SEED_ASSETS_DIR: /app/seed-assets
     volumes:
       # Persist locally-stored uploads (images + PDFs) across deploys.
       - uploads:/app/uploads
@@ -66,7 +72,9 @@ services:
       - '443:443/udp'
     environment:
       SITE_DOMAIN: ${SITE_DOMAIN:-localhost}
-      CADDY_TLS_EMAIL: ${CADDY_TLS_EMAIL:-}
+      # Caddy's global `email` directive fails on an empty value — keep a
+      # syntactically valid fallback (only used for Let's Encrypt notices).
+      CADDY_TLS_EMAIL: ${CADDY_TLS_EMAIL:-admin@example.com}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data

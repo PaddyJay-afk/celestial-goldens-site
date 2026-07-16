@@ -1,6 +1,6 @@
-# Cirilli English Goldens — website & CMS
+# Celestial English Golden Retrievers — website & CMS
 
-A production website and content-management system for **Pamela Cirilli**, a
+A production website and content-management system for **Pamela**, a
 responsible private English Golden Retriever breeder in **Suffolk, Virginia**.
 
 This is **not** a puppy marketplace. It emphasizes responsible breeding, health
@@ -78,18 +78,28 @@ these before using in any shared environment.**
 
 ---
 
-## Deployment
+## Deployment — one command
 
-See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for a complete, step-by-step Contabo VPS
-deployment, plus update, logs, and rollback commands. In short:
+On a fresh Ubuntu VPS (Contabo etc.) with your domain's DNS pointed at it:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/claude/golden-retriever-breeder-site-05257a/install.sh | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=you@example.com bash
+```
+
+The installer sets up Docker, clones the repo, generates secrets, starts the
+full stack (app + PostgreSQL + Caddy with automatic HTTPS), runs database
+migrations, seeds the admin account + sample content, and prints the admin
+login. Re-run it any time to update.
+
+Manual route (see **[DEPLOYMENT.md](./DEPLOYMENT.md)** for full detail):
 
 ```bash
 cp .env.example .env          # fill in real production values
 docker compose up -d --build  # builds app, starts Postgres + app + Caddy
 ```
 
-On first boot the app runs its database migrations automatically. Then visit
-`https://YOUR_DOMAIN/admin` to create the first admin account.
+On first boot the app migrates and (with `AUTO_SEED=true`) seeds itself. See
+**[HANDOFF.md](./HANDOFF.md)** for the replace-sample-content checklist.
 
 Other docs:
 
@@ -115,4 +125,4 @@ Other docs:
 
 ## License
 
-Private/UNLICENSED. © Cirilli English Goldens.
+Private/UNLICENSED. © Celestial English Golden Retrievers.

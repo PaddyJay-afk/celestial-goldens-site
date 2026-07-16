@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#FAFAF7"/>
+  <clipPath id="arch"><path d="M120 1120 L120 520 C120 255, 335 90, 600 90 C865 90, 1080 255, 1080 520 L1080 1120 Z"/></clipPath>
+  <g clip-path="url(#arch)">
+    <rect width="1200" height="1200" fill="#1B646F"/>
+    <g stroke="#EAD9AD" stroke-width="2" opacity="0.28"><path d="M600 470 L -120.0 470.0"/><path d="M600 470 L -95.5 283.7"/><path d="M600 470 L -23.5 110.0"/><path d="M600 470 L 90.9 -39.1"/><path d="M600 470 L 240.0 -153.5"/><path d="M600 470 L 413.7 -225.5"/><path d="M600 470 L 600.0 -250.0"/><path d="M600 470 L 786.3 -225.5"/><path d="M600 470 L 960.0 -153.5"/><path d="M600 470 L 1109.1 -39.1"/><path d="M600 470 L 1223.5 110.0"/><path d="M600 470 L 1295.5 283.7"/><path d="M600 470 L 1320.0 470.0"/></g>
+    <circle cx="600" cy="470" r="300" fill="#1B646F"/>
+    <circle cx="600" cy="470" r="300" fill="none" stroke="#EAD9AD" stroke-width="3" opacity="0.85"/>
+    <circle cx="600" cy="470" r="282" fill="none" stroke="#EAD9AD" stroke-width="1.4" opacity="0.5"/>
+    <text x="600" y="588" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="340" fill="#F2E6C4">D</text>
+    <g transform="translate(410,878) scale(1.15)" fill="#EAD9AD" opacity="0.9"><path d="M 0 -14 C 2 -4, 4 -2, 14 0 C 4 2, 2 4, 0 14 C -2 4, -4 2, -14 0 C -4 -2, -2 -4, 0 -14 Z"/></g>
+    <g transform="translate(790,878) scale(1.15)" fill="#EAD9AD" opacity="0.9"><path d="M 0 -14 C 2 -4, 4 -2, 14 0 C 4 2, 2 4, 0 14 C -2 4, -4 2, -14 0 C -4 -2, -2 -4, 0 -14 Z"/></g>
+    <g transform="translate(348,902) scale(0.6)" fill="#EAD9AD" opacity="0.55"><path d="M 0 -14 C 2 -4, 4 -2, 14 0 C 4 2, 2 4, 0 14 C -2 4, -4 2, -14 0 C -4 -2, -2 -4, 0 -14 Z"/></g>
+    <g transform="translate(852,902) scale(0.6)" fill="#EAD9AD" opacity="0.55"><path d="M 0 -14 C 2 -4, 4 -2, 14 0 C 4 2, 2 4, 0 14 C -2 4, -4 2, -14 0 C -4 -2, -2 -4, 0 -14 Z"/></g>
+    <g transform="translate(600,888) scale(1.05)" fill="#C29A3B">
+  <path d="M -30 8 C -34 -10, -22 -22, 0 -22 C 22 -22, 34 -10, 30 8 C 27 22, 20 32, 10 36 C 4 38.5, -4 38.5, -10 36 C -20 32, -27 22, -30 8 Z"/>
+  <ellipse cx="-15" cy="-42" rx="11" ry="15"/>
+  <ellipse cx="15" cy="-42" rx="11" ry="15"/>
+  <ellipse cx="-40" cy="-24" rx="10" ry="14" transform="rotate(-18 -40 -24)"/>
+  <ellipse cx="40" cy="-24" rx="10" ry="14" transform="rotate(18 40 -24)"/></g>
+    <text x="600" y="1042" text-anchor="middle" font-family="Fraunces" font-size="64" letter-spacing="20" fill="#EAD9AD">DAISY</text>
+    
+  <filter id="grain11" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="11" stitchTiles="stitch"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0.08  0 0 0 0 0.14  0 0 0 0 0.15  0 0 0 0.045 0"/>
+  </filter>
+  <rect width="1200" height="1200" filter="url(#grain11)"/>
+  </g>
+  <path d="M120 1120 L120 520 C120 255, 335 90, 600 90 C865 90, 1080 255, 1080 520 L1080 1120 Z" fill="none" stroke="#134E5A" stroke-opacity="0.14" stroke-width="2"/></svg>

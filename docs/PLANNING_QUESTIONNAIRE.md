@@ -1,6 +1,6 @@
 # Planning Questionnaire — English Golden Retriever Breeder Website
 
-> For **Pamela Cirilli**, Suffolk, VA. Answers drive site copy, content models,
+> For **Pamela**, Suffolk, VA. Answers drive site copy, content models,
 > design, SEO, admin fields, and deployment. Anything left blank ships as a
 > clearly marked `TODO` placeholder, editable later in the admin dashboard.
 > **Do not fabricate** registrations, health testing, pricing, guarantees, or
@@ -9,7 +9,7 @@
 Legend: ✅ answered · ⬜ TODO (placeholder shipped)
 
 ## Brand / business
-1. ⬜ Kennel / business name? _(placeholder: "Cirilli English Golden Retrievers")_
+1. ⬜ Kennel / business name? _(placeholder: "Celestial English Golden Retrievers")_
 2. ⬜ Should Pamela's full name appear publicly? _(default: yes, first name + last)_
 3. ⬜ Public phone number? _(placeholder hidden until provided)_
 4. ⬜ Public email? _(placeholder: contact form only)_

@@ -8,7 +8,7 @@ import { buildMetadata } from '@/lib/seo'
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
   return buildMetadata({
-    title: 'Frequently Asked Questions',
+    title: 'English Golden Retriever Breeder FAQ — Price, Process & Health',
     description:
       'Answers about pricing, deposits, waitlists, visits, registration, health testing, pickup, delivery, and puppy care.',
     path: '/faq',
@@ -58,7 +58,7 @@ export default async function FaqPage() {
       <PageHeader
         eyebrow="FAQ"
         title="Questions, answered"
-        intro="If you don’t find what you’re looking for, reach out — we’re glad to help."
+        intro="Straight answers, the same ones I give on the phone. If you don’t find yours here, ask me."
       />
 
       <Section>
@@ -86,7 +86,7 @@ export default async function FaqPage() {
         ) : (
           <EmptyState
             title="FAQ coming soon"
-            body="We’re writing up the most common questions. In the meantime, please reach out."
+            body="I’m writing up the questions I answer most. In the meantime, just ask me directly."
             cta={
               <ButtonLink href="/contact" variant="primary">
                 Contact {settings.businessName}

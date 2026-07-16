@@ -21,8 +21,8 @@ export default async function GalleryPage() {
     <>
       <PageHeader
         eyebrow="Gallery"
-        title="A look at our goldens"
-        intro="Moments from our home and our families — parents, puppies, and the people who love them."
+        title="A look at my goldens"
+        intro="Moments from my home and my families — parents, puppies, and the people who love them."
       />
 
       <Section>
@@ -40,7 +40,7 @@ export default async function GalleryPage() {
         ) : (
           <EmptyState
             title="Photos coming soon"
-            body="We’re curating a gallery of our dogs and puppies. Check back shortly."
+            body="I’m gathering photos of my dogs and puppies. Check back shortly."
           />
         )}
       </Section>

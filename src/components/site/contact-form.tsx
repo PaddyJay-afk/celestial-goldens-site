@@ -46,7 +46,7 @@ export const ContactForm = ({ defaultSubject = '' }: { defaultSubject?: string }
       <div className="rounded-2xl border border-sage/40 bg-sage/10 p-8 text-center">
         <h2 className="font-display text-2xl text-forest">Message sent</h2>
         <p className="mt-2 text-charcoal/75">
-          Thank you for reaching out. We’ll reply as soon as we can.
+          Thank you for reaching out. I’ll reply as soon as I can — it really is me.
         </p>
       </div>
     )

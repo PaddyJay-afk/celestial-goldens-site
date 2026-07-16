@@ -1,7 +1,7 @@
 {
-  "name": "cirilli-english-goldens",
+  "name": "celestial-english-goldens",
   "version": "1.0.0",
-  "description": "Premium responsible English Golden Retriever breeder website (Pamela Cirilli, Suffolk, VA) — Next.js + Payload CMS.",
+  "description": "Premium responsible English Golden Retriever breeder website (Pamela, Suffolk, VA) — Next.js + Payload CMS.",
   "license": "UNLICENSED",
   "private": true,
   "type": "module",
