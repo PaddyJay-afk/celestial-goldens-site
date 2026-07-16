@@ -9,7 +9,8 @@ type SizeKey = 'thumbnail' | 'card' | 'feature' | 'hero' | 'og'
 /**
  * Responsive image for Payload media. Builds a srcset from the generated image
  * sizes, lazy-loads by default, and degrades to a tasteful placeholder when no
- * image is set. Plain <img> keeps it robust across storage adapters.
+ * image is set. If a requested generated size is absent, use the next best
+ * available Payload size before falling back to the original upload URL.
  */
 export const MediaImage = ({
   media,
@@ -47,9 +48,11 @@ export const MediaImage = ({
   }
 
   const sizesObj = m.sizes ?? {}
-  const chosen = sizesObj[size]?.url ?? m.url
-  const width = Number(sizesObj[size]?.width || m.width || 1200)
-  const height = Number(sizesObj[size]?.height || m.height || 900)
+  const fallbackOrder: SizeKey[] = [size, 'feature', 'hero', 'card', 'og', 'thumbnail']
+  const chosenSize = fallbackOrder.map((key) => sizesObj[key]).find((entry) => entry?.url)
+  const chosen = chosenSize?.url ?? m.url
+  const width = Number(chosenSize?.width || m.width || 1200)
+  const height = Number(chosenSize?.height || m.height || 900)
 
   return (
     <div className={cn('overflow-hidden bg-sage/10', className)}>
