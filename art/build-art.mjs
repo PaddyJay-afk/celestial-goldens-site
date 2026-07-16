@@ -83,7 +83,7 @@ const wheat = (x, y, s = 1, tint = P.goldSoft) => `
   </g>`
 
 /** Laurel sprig curving up-right from (0,0); leaves alternate along the stem. */
-const laurel = (s = 1, mirror = 1, tint = P.goldSoft, n = 7) => `
+const _laurel = (s = 1, mirror = 1, tint = P.goldSoft, n = 7) => `
   <g transform="scale(${mirror * s},${s})">
     <path d="M 0 0 C 34 -8, 66 -34, 82 -80" fill="none" stroke="${tint}" stroke-width="2.6" stroke-linecap="round"/>
     ${Array.from({ length: n }, (_, i) => {

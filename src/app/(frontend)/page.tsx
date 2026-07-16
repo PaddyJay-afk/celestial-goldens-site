@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import { ArrowRight, Heart, ClipboardCheck, Users, Moon } from 'lucide-react'
 import { ButtonLink } from '@/components/ui/button'
@@ -79,7 +80,13 @@ export default async function HomePage() {
           <Reveal delay={120} className="relative">
             <div className="relative mx-auto max-w-md">
               <div className="absolute -right-5 -top-6 z-10 hidden h-28 w-28 overflow-hidden rounded-full border border-gold/50 bg-midnight shadow-celestial ring-4 ring-cream sm:block">
-                <img src="/brand/celestial-mark.jpg" alt="Celestial English Golden Retrievers logo mark" className="h-full w-full object-cover" />
+                <Image
+                  src="/brand/celestial-mark.jpg"
+                  alt="Celestial English Golden Retrievers logo mark"
+                  width={112}
+                  height={112}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <MediaImage
                 media={settings.heroImage ?? settings.defaultOgImage}

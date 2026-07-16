@@ -25,8 +25,8 @@ export const Reveal = ({
     const node = ref.current
     if (!node) return
     if (typeof IntersectionObserver === 'undefined') {
-      setVisible(true)
-      return
+      const fallback = window.setTimeout(() => setVisible(true), 0)
+      return () => window.clearTimeout(fallback)
     }
     const observer = new IntersectionObserver(
       ([entry]) => {

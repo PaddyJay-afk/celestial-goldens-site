@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Image from 'next/image'
 import type { Media } from '@/payload-types'
 import { asMedia } from '@/lib/data'
 import { cn } from '@/lib/utils'
@@ -46,27 +47,20 @@ export const MediaImage = ({
   }
 
   const sizesObj = m.sizes ?? {}
-  const candidates: { url: string; width: number }[] = []
-  for (const key of ['thumbnail', 'card', 'feature', 'hero'] as const) {
-    const s = sizesObj[key]
-    if (s?.url && s?.width) candidates.push({ url: s.url, width: s.width })
-  }
-  const srcSet = candidates.length
-    ? candidates.map((c) => `${c.url} ${c.width}w`).join(', ')
-    : undefined
-
   const chosen = sizesObj[size]?.url ?? m.url
+  const width = Number(sizesObj[size]?.width || m.width || 1200)
+  const height = Number(sizesObj[size]?.height || m.height || 900)
 
   return (
     <div className={cn('overflow-hidden bg-sage/10', className)}>
-      <img
+      <Image
         src={chosen}
-        srcSet={srcSet}
-        sizes={srcSet ? sizes : undefined}
+        sizes={sizes}
         alt={m.alt ?? ''}
-        width={m.width ?? undefined}
-        height={m.height ?? undefined}
-        loading={priority ? 'eager' : 'lazy'}
+        width={width}
+        height={height}
+        priority={priority}
+        unoptimized
         decoding="async"
         className={cn('h-full w-full object-cover', imgClassName)}
       />

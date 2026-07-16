@@ -20,7 +20,7 @@ export const sendEmail = async ({
   replyTo?: string
 }): Promise<{ sent: boolean }> => {
   if (!isEmailConfigured) {
-    // eslint-disable-next-line no-console
+     
     console.info(`[email:disabled] to=${to} subject="${subject}"`)
     return { sent: false }
   }
@@ -44,7 +44,7 @@ export const sendEmail = async ({
     return { sent: true }
   } catch (err) {
     // Never let email failure break a form submission.
-    // eslint-disable-next-line no-console
+     
     console.error('[email:error]', err instanceof Error ? err.message : err)
     return { sent: false }
   }

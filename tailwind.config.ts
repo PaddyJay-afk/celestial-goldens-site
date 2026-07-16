@@ -1,4 +1,7 @@
 import type { Config } from 'tailwindcss'
+// Tailwind's CommonJS plugin type is more reliable in config files than TS default imports.
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const typography = require('@tailwindcss/typography')
 
 const config: Config = {
   content: [
@@ -62,7 +65,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [typography],
 }
 
 export default config

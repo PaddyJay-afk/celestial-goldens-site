@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react'
 import type { SiteSetting } from '@/payload-types'
@@ -23,10 +24,12 @@ export const Footer = ({ settings }: { settings: SiteSetting }) => {
       <div className="container-content grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
           <div className="flex items-center gap-3">
-            <img
+            <Image
               src="/brand/celestial-mark.jpg"
               alt=""
               aria-hidden="true"
+              width={56}
+              height={56}
               className="h-14 w-14 rounded-full border border-gold/40 object-cover shadow-celestial"
             />
             <p className="font-display text-2xl leading-tight text-cream">{settings.businessName}</p>
