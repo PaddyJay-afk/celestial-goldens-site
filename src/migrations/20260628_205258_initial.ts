@@ -349,7 +349,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "site_settings" (
   	"id" serial PRIMARY KEY NOT NULL,
-  	"business_name" varchar DEFAULT 'Cirilli English Goldens' NOT NULL,
+  	"business_name" varchar DEFAULT 'Celestial English Golden Retrievers' NOT NULL,
   	"tagline" varchar DEFAULT 'Thoughtfully raised English Golden Retrievers in Suffolk, Virginia.',
   	"breeder_name" varchar DEFAULT 'Pamela Cirilli',
   	"show_breeder_name" boolean DEFAULT true,

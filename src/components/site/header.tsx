@@ -39,9 +39,17 @@ export const Header = ({ businessName }: { businessName: string }) => {
       >
         Skip to content
       </a>
-      <div className="container-content flex h-20 items-center justify-between gap-4">
-        <Link href="/" className="group flex items-baseline gap-2" aria-label={`${businessName} — home`}>
-          <span className="font-display text-xl font-semibold tracking-tight text-forest sm:text-2xl">
+      <div className="container-content flex min-h-20 items-center justify-between gap-4 py-3">
+        <Link href="/" className="group flex items-center gap-3" aria-label={`${businessName} — home`}>
+          <span className="relative flex h-12 w-12 shrink-0 overflow-hidden rounded-full border border-gold/40 bg-midnight shadow-soft ring-2 ring-cream transition-transform duration-300 group-hover:scale-105">
+            <img
+              src="/brand/celestial-mark.jpg"
+              alt=""
+              aria-hidden="true"
+              className="h-full w-full object-cover"
+            />
+          </span>
+          <span className="max-w-[15rem] font-display text-lg font-semibold leading-tight tracking-tight text-forest sm:max-w-[19rem] sm:text-2xl">
             {businessName}
           </span>
         </Link>

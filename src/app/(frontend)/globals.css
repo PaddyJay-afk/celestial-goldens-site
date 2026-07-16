@@ -29,6 +29,18 @@
     text-rendering: optimizeLegibility;
   }
 
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 12% 10%, rgba(215, 181, 109, 0.10), transparent 24rem),
+      radial-gradient(circle at 88% 18%, rgba(221, 234, 242, 0.16), transparent 18rem),
+      linear-gradient(180deg, rgba(255, 249, 234, 0.86), rgba(250, 246, 236, 0.98));
+  }
+
   h1,
   h2,
   h3,
@@ -86,5 +98,43 @@
   }
   .link-underline:hover::after {
     @apply origin-left scale-x-100;
+  }
+
+  .celestial-panel {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 20% 18%, rgba(221, 234, 242, 0.18), transparent 18rem),
+      radial-gradient(circle at 78% 30%, rgba(215, 181, 109, 0.16), transparent 16rem),
+      linear-gradient(135deg, #020814 0%, #081A2D 48%, #102A44 100%);
+  }
+
+  .celestial-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.42;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.95) 0 1px, transparent 1.5px),
+      radial-gradient(circle, rgba(215,181,109,0.70) 0 1px, transparent 1.6px);
+    background-position: 0 0, 28px 34px;
+    background-size: 76px 76px, 118px 118px;
+  }
+
+  .celestial-panel > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .moon-divider::after {
+    content: '✦';
+    @apply ml-3 text-gold;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #FFF1BC 0%, #D7B56D 48%, #9E762E 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }

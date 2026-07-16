@@ -70,7 +70,8 @@ export const seed = async (payload: Payload): Promise<void> => {
   }
 
   if ((await countOf('media')) === 0 && assets) {
-    await uploadArt('hero-meadow', 'Golden-hour meadow illustration with rolling Virginia hills')
+    await uploadArt('hero-meadow', 'Moonlit Virginia meadow illustration for Celestial English Golden Retrievers')
+    await uploadArt('celestial-logo', 'Celestial English Golden Retrievers official moon-and-golden-retriever logo')
     await uploadArt('og-banner', 'Celestial English Golden Retrievers — Suffolk, Virginia')
     await uploadArt('dog-daisy', 'Engraved monogram plate for Daisy', 'Daisy — replace with her photo')
     await uploadArt('dog-sadie', 'Engraved monogram plate for Sadie', 'Sadie — replace with her photo')
@@ -90,7 +91,7 @@ export const seed = async (payload: Payload): Promise<void> => {
   } else if (assets) {
     // map already-uploaded assets so re-runs can still link relations
     for (const f of [
-      'hero-meadow', 'og-banner', 'dog-daisy', 'dog-sadie', 'dog-cooper', 'dog-juniper',
+      'hero-meadow', 'celestial-logo', 'og-banner', 'dog-daisy', 'dog-sadie', 'dog-cooper', 'dog-juniper',
       'puppy-green', 'puppy-pink', 'puppy-blue', 'puppy-yellow', 'litter-spring',
     ]) {
       const existing = await payload.find({ collection: 'media', where: { filename: { contains: f } }, limit: 1 })
@@ -121,7 +122,8 @@ export const seed = async (payload: Payload): Promise<void> => {
         badgeOfa: true,
         badgeEmbark: true,
         heroImage: media['hero-meadow'],
-        defaultOgImage: media['og-banner'],
+        logo: media['celestial-logo'],
+        defaultOgImage: media['celestial-logo'] ?? media['og-banner'],
         defaultMetaDescription:
           'Celestial English Golden Retrievers — a boutique, AKC-registered English Golden Retriever program in Suffolk, Virginia. One litter a year, health-tested parents, home-raised puppies.',
       },

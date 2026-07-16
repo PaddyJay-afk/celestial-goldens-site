@@ -8,24 +8,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: '#FAFAF7',
-        ivory: '#FFFFFF',
+        cream: '#FAF6EC',
+        ivory: '#FFF9EA',
+        midnight: '#020814',
+        celestial: {
+          DEFAULT: '#081A2D',
+          700: '#102A44',
+          500: '#43586A',
+          silver: '#DDEAF2',
+        },
         forest: {
-          DEFAULT: '#134E5A',
-          50: '#EAF3F3',
-          700: '#1B646F',
-          900: '#0C3841',
+          DEFAULT: '#20362A',
+          50: '#EDF3EA',
+          700: '#2F4A39',
+          900: '#112117',
         },
         sage: {
           DEFAULT: '#63A8A2',
           light: '#A3D0CC',
         },
         gold: {
-          DEFAULT: '#C29A3B',
-          dark: '#A17E27',
-          soft: '#EAD9AD',
+          DEFAULT: '#D7B56D',
+          dark: '#9E762E',
+          soft: '#F1D993',
         },
-        charcoal: '#243538',
+        charcoal: '#14231B',
         muted: '#5C6F71',
       },
       fontFamily: {
@@ -37,8 +44,9 @@ const config: Config = {
         '2xl': '20px',
       },
       boxShadow: {
-        soft: '0 2px 8px rgba(19, 78, 90, 0.06), 0 12px 30px rgba(19, 78, 90, 0.06)',
-        lift: '0 8px 18px rgba(19, 78, 90, 0.10), 0 20px 48px rgba(19, 78, 90, 0.10)',
+        soft: '0 2px 8px rgba(2, 8, 20, 0.06), 0 12px 30px rgba(2, 8, 20, 0.07)',
+        lift: '0 8px 18px rgba(2, 8, 20, 0.12), 0 24px 56px rgba(2, 8, 20, 0.16)',
+        celestial: '0 20px 60px rgba(2, 8, 20, 0.35), 0 0 38px rgba(215, 181, 109, 0.16)',
       },
       maxWidth: {
         content: '72rem',

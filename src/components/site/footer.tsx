@@ -19,10 +19,18 @@ export const Footer = ({ settings }: { settings: SiteSetting }) => {
   const location = locationLabel(settings)
 
   return (
-    <footer className="mt-24 border-t border-forest/10 bg-forest text-cream/90">
+    <footer className="celestial-panel mt-24 border-t border-gold/20 text-cream/90">
       <div className="container-content grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
-          <p className="font-display text-2xl text-cream">{settings.businessName}</p>
+          <div className="flex items-center gap-3">
+            <img
+              src="/brand/celestial-mark.jpg"
+              alt=""
+              aria-hidden="true"
+              className="h-14 w-14 rounded-full border border-gold/40 object-cover shadow-celestial"
+            />
+            <p className="font-display text-2xl leading-tight text-cream">{settings.businessName}</p>
+          </div>
           {settings.tagline && (
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-cream/70">{settings.tagline}</p>
           )}
