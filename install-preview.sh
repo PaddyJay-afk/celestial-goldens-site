@@ -6,12 +6,12 @@
 # site, publishes the app on a localhost-only port, and adds a host Caddy route.
 #
 # Example:
-#   curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/feature/celestial-brand-upgrade/install-preview.sh \
+#   curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/celestial-goldens-site/feature/celestial-brand-upgrade/install-preview.sh \
 #     | sudo SITE_DOMAIN=celestial-preview.66.94.102.71.sslip.io APP_PORT=3024 bash
 # ============================================================================
 set -euo pipefail
 
-REPO_URL="${REPO_URL:-https://github.com/PaddyJay-afk/dog-breeding-site-.git}"
+REPO_URL="${REPO_URL:-https://github.com/PaddyJay-afk/celestial-goldens-site.git}"
 BRANCH="${BRANCH:-feature/celestial-brand-upgrade}"
 INSTALL_DIR="${INSTALL_DIR:-/opt/celestial-goldens-preview}"
 PROJECT_NAME="${PROJECT_NAME:-celestial-preview}"

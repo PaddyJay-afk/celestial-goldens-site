@@ -33,16 +33,20 @@ export const buildMetadata = ({
     settings?.defaultMetaDescription ||
     'Thoughtfully raised English Golden Retrievers in Suffolk, Virginia.'
 
-  const ogImage =
+  const configuredOgImage =
     (asMedia(seo?.image) as Media | null)?.sizes?.og?.url ||
     (asMedia(seo?.image) as Media | null)?.url ||
     (asMedia(ogFallback) as Media | null)?.url ||
     (asMedia(settings?.defaultOgImage) as Media | null)?.url
+  const ogImage = configuredOgImage?.includes('celestial-logo')
+    ? '/brand/celestial-english-golden-retrievers-logo.webp'
+    : configuredOgImage || '/brand/celestial-english-golden-retrievers-logo.webp'
 
   const url = `${serverUrl}${path}`
 
   return {
-    title: fullTitle,
+    // Prevent the root layout's title template from appending the brand twice.
+    title: { absolute: fullTitle },
     description: metaDescription,
     alternates: { canonical: url },
     openGraph: {
@@ -64,7 +68,10 @@ export const buildMetadata = ({
 
 export const localBusinessJsonLd = (settings: SiteSetting) => {
   const showFull = settings.addressVisibility === 'full'
-  const ogImage = (asMedia(settings.defaultOgImage) as Media | null)?.url
+  const configuredOgImage = (asMedia(settings.defaultOgImage) as Media | null)?.url
+  const ogImage = configuredOgImage?.includes('celestial-logo')
+    ? '/brand/celestial-english-golden-retrievers-logo.webp'
+    : configuredOgImage || '/brand/celestial-english-golden-retrievers-logo.webp'
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',

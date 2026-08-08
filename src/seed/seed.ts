@@ -3,11 +3,9 @@ import { existsSync } from 'fs'
 import type { Payload } from 'payload'
 
 /**
- * Seeds complete, professional placeholder content so the site demos well on
- * day one. Every dog, litter, puppy, testimonial, and image here is SAMPLE
- * DATA — original placeholder artwork and invented example records that Pam
- * replaces with her real dogs, photos, and details from the admin dashboard.
- * See HANDOFF.md for the replace-before-launch checklist.
+ * Seeds launch-safe settings, branded media and verified program FAQs.
+ * Dogs, litters, puppies and testimonials are intentionally left empty so a
+ * fresh production install never publishes fictional animals or reviews.
  *
  * Idempotent: collections that already contain data are left untouched, so
  * it is safe to run on every boot (AUTO_SEED=true) and it will never
@@ -29,6 +27,7 @@ const assetsDir = (): string => {
 export const seed = async (payload: Payload): Promise<void> => {
   const log = (msg: string) => payload.logger.info(`[seed] ${msg}`)
   const assets = assetsDir()
+  const seedDemoContent = process.env.SEED_DEMO_CONTENT === 'true'
   if (!assets) log('warning: seed assets directory not found — seeding without images')
 
   const countOf = async (collection: 'users' | 'media' | 'dogs' | 'litters' | 'puppies' | 'faqs' | 'testimonials') =>
@@ -45,12 +44,12 @@ export const seed = async (payload: Payload): Promise<void> => {
     log(`created admin user ${adminEmail}`)
   }
 
-  // --- Media (placeholder artwork) ------------------------------------------
+  // --- Brand media -----------------------------------------------------------
   const media: Record<string, number> = {}
-  const uploadArt = async (file: string, alt: string, caption?: string) => {
+  const uploadArt = async (file: string, alt: string, caption?: string, extension = 'jpg') => {
     if (!assets) return undefined
-    const filePath = path.join(assets, `${file}.jpg`)
-    if (!existsSync(filePath)) return undefined
+    const filePath = path.join(/* turbopackIgnore: true */ assets, `${file}.${extension}`)
+    if (!existsSync(/* turbopackIgnore: true */ filePath)) return undefined
     const existing = await payload.find({
       collection: 'media',
       where: { filename: { contains: file } },
@@ -62,7 +61,7 @@ export const seed = async (payload: Payload): Promise<void> => {
     }
     const doc = await payload.create({
       collection: 'media',
-      data: { alt, caption, credit: 'Original placeholder artwork — replace with your photos' },
+      data: { alt, caption, credit: 'Original brand asset created for Celestial English Golden Retrievers' },
       filePath,
     })
     media[file] = doc.id
@@ -71,7 +70,7 @@ export const seed = async (payload: Payload): Promise<void> => {
 
   if ((await countOf('media')) === 0 && assets) {
     await uploadArt('hero-meadow', 'Moonlit Virginia meadow illustration for Celestial English Golden Retrievers')
-    await uploadArt('celestial-logo', 'Celestial English Golden Retrievers official moon-and-golden-retriever logo')
+    await uploadArt('celestial-logo', 'Celestial English Golden Retrievers logo with a cream Golden Retriever beneath a crescent moon', undefined, 'webp')
     await uploadArt('og-banner', 'Celestial English Golden Retrievers — Suffolk, Virginia')
     await uploadArt('dog-daisy', 'Engraved monogram plate for Daisy', 'Daisy — replace with her photo')
     await uploadArt('dog-sadie', 'Engraved monogram plate for Sadie', 'Sadie — replace with her photo')
@@ -87,7 +86,7 @@ export const seed = async (payload: Payload): Promise<void> => {
     await uploadArt('gallery-goldenrod', 'Goldenrod study', 'Goldenrod, early autumn')
     await uploadArt('gallery-paw-quilt', 'Paw print quilt pattern', 'Every collar tells a story')
     await uploadArt('gallery-crest', 'Celestial English Golden Retrievers kennel crest', 'Our crest')
-    log(`uploaded ${Object.keys(media).length} placeholder artworks`)
+    log(`uploaded ${Object.keys(media).length} brand assets`)
   } else if (assets) {
     // map already-uploaded assets so re-runs can still link relations
     for (const f of [
@@ -133,7 +132,7 @@ export const seed = async (payload: Payload): Promise<void> => {
 
   // --- Dogs -------------------------------------------------------------------
   // SAMPLE DOGS — names, dates, and health entries are illustrative placeholders.
-  if ((await countOf('dogs')) === 0) {
+  if (seedDemoContent && (await countOf('dogs')) === 0) {
     const dogs = [
       {
         callName: 'Daisy',
@@ -215,7 +214,7 @@ export const seed = async (payload: Payload): Promise<void> => {
   }
 
   // --- Litters & puppies --------------------------------------------------------
-  if ((await countOf('litters')) === 0) {
+  if (seedDemoContent && (await countOf('litters')) === 0) {
     const daisy = (await payload.find({ collection: 'dogs', where: { callName: { equals: 'Daisy' } }, limit: 1 })).docs[0]
     const sadie = (await payload.find({ collection: 'dogs', where: { callName: { equals: 'Sadie' } }, limit: 1 })).docs[0]
     const cooper = (await payload.find({ collection: 'dogs', where: { callName: { equals: 'Cooper' } }, limit: 1 })).docs[0]
@@ -315,7 +314,7 @@ export const seed = async (payload: Payload): Promise<void> => {
   }
 
   // --- Testimonials (SAMPLE — replace with real ones before launch) ----------
-  if ((await countOf('testimonials')) === 0) {
+  if (seedDemoContent && (await countOf('testimonials')) === 0) {
     const testimonials = [
       {
         quote: 'Pamela matched us with exactly the right puppy — calmer than the one we thought we wanted, and perfect for our kids. Two years later she still answers our questions within the hour.',

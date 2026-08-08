@@ -3,6 +3,8 @@ import { withPayload } from '@payloadcms/next/withPayload'
 const securityHeaders = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
+  { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
   {

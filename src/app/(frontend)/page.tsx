@@ -81,25 +81,55 @@ export default async function HomePage() {
             <div className="relative mx-auto max-w-md">
               <div className="absolute -right-5 -top-6 z-10 hidden h-28 w-28 overflow-hidden rounded-full border border-gold/50 bg-midnight shadow-celestial ring-4 ring-cream sm:block">
                 <Image
-                  src="/brand/celestial-mark.jpg"
+                  src="/brand/celestial-mark.webp"
                   alt="Celestial English Golden Retrievers logo mark"
                   width={112}
                   height={112}
                   className="h-full w-full object-cover"
                 />
               </div>
-              <MediaImage
-                media={settings.heroImage ?? settings.defaultOgImage}
-                size="feature"
-                priority
-                className="arch-top aspect-[3/4] w-full rounded-b-2xl border border-gold/30 shadow-lift"
-                placeholderLabel="Add a hero photo in Site Settings → Brand"
-              />
+              <div className="arch-top relative aspect-[3/4] w-full overflow-hidden rounded-b-2xl border border-gold/30 shadow-lift">
+                <Image
+                  src="/images/hero-english-golden.webp"
+                  alt="Cream English Golden Retriever in a Virginia meadow at golden hour"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover"
+                />
+              </div>
               <div className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-gold/30 bg-cream px-5 py-4 shadow-soft sm:block">
                 <p className="font-display text-2xl text-forest">Ethically raised</p>
                 <p className="text-sm text-charcoal/70">ENS · sound work · thoughtful matching</p>
               </div>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Editorial photography — generic program imagery, never named as a specific dog. */}
+      <section className="container-content py-16">
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          <Reveal>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-gold/25 shadow-soft">
+                <Image src="/images/home-raised-litter.webp" alt="Cream Golden Retriever puppies resting in a clean home nursery" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+              </div>
+              <div className="relative mt-10 aspect-[4/5] overflow-hidden rounded-3xl border border-gold/25 shadow-soft">
+                <Image src="/images/early-socialization.webp" alt="Cream Golden Retriever puppy exploring safe enrichment equipment" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="eyebrow">Raised at home</p>
+            <h2 className="mt-3 text-3xl sm:text-4xl">Confident puppies begin with thoughtful early experiences.</h2>
+            <p className="mt-5 text-lg leading-relaxed text-charcoal/75">
+              From gentle handling and household sounds to age-appropriate surfaces and
+              problem-solving, every day is planned to help puppies meet the world with curiosity.
+            </p>
+            <ButtonLink href="/responsible-breeding" variant="outline" className="mt-7">
+              See how puppies are raised <ArrowRight className="h-4 w-4" />
+            </ButtonLink>
           </Reveal>
         </div>
       </section>

@@ -4,26 +4,22 @@ A quick orientation for Pam (and whoever deploys the site).
 
 ## What you're looking at
 
-The site ships fully dressed with **sample content** so it demos and deploys
-looking finished: four sample dogs (Daisy, Sadie, Cooper, Juniper), two sample
-litters, four sample puppies, sample testimonials, and original placeholder
-artwork in a matching engraved-plate style. **All of it is fictional** and
-designed to be replaced from the admin dashboard — no code needed.
+The production branch ships with polished editorial imagery and verified
+program copy, but it deliberately does not publish fictional dogs, litters,
+puppies, or testimonials. Add those verified records from the admin dashboard;
+no code is needed.
 
 ## Replace-before-launch checklist
 
 Log in at `https://yourdomain.com/admin` and work through this list:
 
-1. **Media** — upload real photos of your dogs (the placeholder art stays
-   usable as brand graphics if you like it).
-2. **Dogs** — replace the four sample dogs with your real dogs: names,
+1. **Media** — upload real photos of your dogs and litters.
+2. **Dogs** — add your real dogs: names,
    registered names, dates of birth, weights, temperaments, and — importantly —
    their **actual** health-testing results and certificate links. The seeded
    health entries are examples of the format, not real results.
-3. **Litters & Puppies** — replace the sample litters/puppies or unpublish
-   them until your next litter.
-4. **Testimonials** — the three seeded testimonials are **fictional samples**.
-   Replace them with real quotes from your families (with their permission).
+3. **Litters & Puppies** — publish only current, verified litter and puppy records.
+4. **Testimonials** — add real quotes from your families with their permission.
 5. **FAQs** — the answers are written generically so most survive as-is, but
    review each one and adjust to your actual policies (deposits, visits,
    delivery, registration).
@@ -40,7 +36,7 @@ Log in at `https://yourdomain.com/admin` and work through this list:
 On a fresh Ubuntu VPS, point your domain's DNS A-record at the server IP, then:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/claude/golden-retriever-breeder-site-05257a/install.sh | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=pam@yourdomain.com bash
+curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/celestial-goldens-site/main/install.sh | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=pam@yourdomain.com bash
 ```
 
 That's the whole install. It sets up Docker, HTTPS, the database, the site,
@@ -48,8 +44,7 @@ and prints Pam's admin login when it finishes. Run it again any time to
 update. No domain yet? Omit `SITE_DOMAIN=` and it runs in HTTP test mode on
 the server's IP.
 
-> After this branch is merged to `main`, you can switch the URL and add
-> `BRANCH=main` — until then the command above works as-is.
+> Merge the production pull request to `main` before using this command.
 
 **If the GitHub repo is private**, the command above can't download anything
 anonymously. Either make the repo public (Settings → General → Danger Zone →
@@ -58,7 +53,7 @@ access token with read access to this repo and run:
 
 ```bash
 curl -fsSL -H "Authorization: token YOUR_TOKEN" \
-  https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/claude/golden-retriever-breeder-site-05257a/install.sh \
+  https://raw.githubusercontent.com/PaddyJay-afk/celestial-goldens-site/main/install.sh \
   | sudo GITHUB_TOKEN=YOUR_TOKEN SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=pam@yourdomain.com bash
 ```
 

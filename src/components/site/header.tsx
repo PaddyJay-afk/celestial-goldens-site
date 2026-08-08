@@ -40,7 +40,7 @@ export const Header = ({ businessName }: { businessName: string }) => {
         <Link href="/" className="group flex items-center gap-3" aria-label={`${businessName} — home`}>
           <span className="relative flex h-12 w-12 shrink-0 overflow-hidden rounded-full border border-gold/40 bg-midnight shadow-soft ring-2 ring-cream transition-transform duration-300 group-hover:scale-105">
             <Image
-              src="/brand/celestial-mark.jpg"
+              src="/brand/celestial-mark.webp"
               alt=""
               aria-hidden="true"
               width={48}

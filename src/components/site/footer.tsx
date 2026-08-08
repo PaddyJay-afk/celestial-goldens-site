@@ -25,7 +25,7 @@ export const Footer = ({ settings }: { settings: SiteSetting }) => {
         <div className="lg:col-span-1">
           <div className="flex items-center gap-3">
             <Image
-              src="/brand/celestial-mark.jpg"
+              src="/brand/celestial-mark.webp"
               alt=""
               aria-hidden="true"
               width={56}

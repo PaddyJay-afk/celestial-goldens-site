@@ -13,6 +13,23 @@ import type {
 
 let cached: Awaited<ReturnType<typeof getPayload>> | null = null
 
+// These records shipped in the original demo database and were explicitly
+// fictional. Keep them out of the public site even when an existing preview
+// volume is reused. Pamela can add verified records in the CMS normally.
+const demoDogNames = new Set(['Daisy', 'Sadie', 'Cooper', 'Juniper'])
+const demoLitterNames = new Set([
+  'The Stardust Litter — Daisy × Cooper',
+  'The Aurora Litter — Sadie × Cooper',
+])
+const demoPuppyNames = new Set(['Green Collar', 'Pink Collar', 'Blue Collar', 'Yellow Collar'])
+const demoTestimonialOwners = new Set(['Rachel', 'Marcus', 'The Hendersons'])
+const demoMediaNames = [
+  'dog-daisy', 'dog-sadie', 'dog-cooper', 'dog-juniper',
+  'puppy-green', 'puppy-pink', 'puppy-blue', 'puppy-yellow',
+  'gallery-oak-hill', 'gallery-dusk', 'gallery-goldenrod',
+  'gallery-paw-quilt', 'gallery-crest', 'hero-meadow', 'litter-spring', 'og-banner',
+]
+
 export const payloadClient = async () => {
   if (!cached) cached = await getPayload({ config })
   return cached
@@ -33,7 +50,7 @@ export const getPublishedPuppies = async (): Promise<Puppy[]> => {
     limit: 100,
     sort: '-createdAt',
   })
-  return res.docs
+  return res.docs.filter((puppy) => !demoPuppyNames.has(puppy.name))
 }
 
 export const getPuppyBySlug = async (slug: string): Promise<Puppy | null> => {
@@ -44,7 +61,8 @@ export const getPuppyBySlug = async (slug: string): Promise<Puppy | null> => {
     depth: 2,
     limit: 1,
   })
-  return res.docs[0] ?? null
+  const puppy = res.docs[0]
+  return puppy && !demoPuppyNames.has(puppy.name) ? puppy : null
 }
 
 export const getLitters = async (statuses?: string[]): Promise<Litter[]> => {
@@ -59,7 +77,7 @@ export const getLitters = async (statuses?: string[]): Promise<Litter[]> => {
     limit: 100,
     sort: '-expectedDate',
   })
-  return res.docs
+  return res.docs.filter((litter) => !demoLitterNames.has(litter.name))
 }
 
 export const getDogs = async (role?: Dog['role']): Promise<Dog[]> => {
@@ -74,7 +92,7 @@ export const getDogs = async (role?: Dog['role']): Promise<Dog[]> => {
     limit: 100,
     sort: 'callName',
   })
-  return res.docs
+  return res.docs.filter((dog) => !demoDogNames.has(dog.callName))
 }
 
 export const getTestimonials = async (onlyFeatured = false): Promise<Testimonial[]> => {
@@ -89,7 +107,7 @@ export const getTestimonials = async (onlyFeatured = false): Promise<Testimonial
     limit: 50,
     sort: '-date',
   })
-  return res.docs
+  return res.docs.filter((testimonial) => !demoTestimonialOwners.has(testimonial.ownerName))
 }
 
 export const getFaqs = async (): Promise<Faq[]> => {
@@ -123,7 +141,9 @@ export const getGalleryImages = async (limit = 60): Promise<Media[]> => {
     limit,
     sort: '-createdAt',
   })
-  return res.docs
+  return res.docs.filter((media) =>
+    !demoMediaNames.some((name) => media.filename?.includes(name)),
+  )
 }
 
 export const getPublicDocuments = async () => {
