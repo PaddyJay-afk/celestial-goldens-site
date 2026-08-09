@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
@@ -20,10 +21,6 @@ export const Header = ({ businessName }: { businessName: string }) => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  React.useEffect(() => {
-    setOpen(false)
-  }, [pathname])
-
   return (
     <header
       className={cn(
@@ -39,9 +36,19 @@ export const Header = ({ businessName }: { businessName: string }) => {
       >
         Skip to content
       </a>
-      <div className="container-content flex h-20 items-center justify-between gap-4">
-        <Link href="/" className="group flex items-baseline gap-2" aria-label={`${businessName} — home`}>
-          <span className="font-display text-xl font-semibold tracking-tight text-forest sm:text-2xl">
+      <div className="container-content flex min-h-20 items-center justify-between gap-4 py-3">
+        <Link href="/" className="group flex items-center gap-3" aria-label={`${businessName} — home`}>
+          <span className="relative flex h-12 w-12 shrink-0 overflow-hidden rounded-full border border-gold/40 bg-midnight shadow-soft ring-2 ring-cream transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="/brand/celestial-mark.webp"
+              alt=""
+              aria-hidden="true"
+              width={48}
+              height={48}
+              className="h-full w-full object-cover"
+            />
+          </span>
+          <span className="max-w-[15rem] font-display text-lg font-semibold leading-tight tracking-tight text-forest sm:max-w-[19rem] sm:text-2xl">
             {businessName}
           </span>
         </Link>
@@ -51,6 +58,7 @@ export const Header = ({ businessName }: { businessName: string }) => {
             <Link
               key={link.href}
               href={link.href}
+              onClick={() => setOpen(false)}
               className={cn(
                 'link-underline text-sm font-medium text-charcoal/80 transition-colors hover:text-forest',
                 pathname === link.href && 'text-forest',
@@ -94,7 +102,7 @@ export const Header = ({ businessName }: { businessName: string }) => {
                 {link.label}
               </Link>
             ))}
-            <ButtonLink href="/apply" variant="primary" className="mt-2 w-full">
+            <ButtonLink href="/apply" variant="primary" className="mt-2 w-full" onClick={() => setOpen(false)}>
               Apply for a Puppy
             </ButtonLink>
           </nav>

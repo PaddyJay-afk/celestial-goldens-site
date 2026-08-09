@@ -4,27 +4,26 @@
 #
 # On a fresh Ubuntu VPS (Contabo or similar), run:
 #
-#   curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/main/install.sh | sudo bash
+#   curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/celestial-goldens-site/main/install.sh | sudo bash
 #
 # Or with your domain pre-set (recommended):
 #
-#   curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/main/install.sh | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=you@example.com bash
+#   curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/celestial-goldens-site/main/install.sh | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=you@example.com bash
 #
 # What it does:
 #   1. Installs Docker + Docker Compose (if missing)
 #   2. Clones this repository to /opt/celestial-goldens
 #   3. Generates strong random secrets into .env (never committed)
 #   4. Builds and starts the full stack (app + PostgreSQL + Caddy HTTPS)
-#   5. Seeds the database with the admin login + sample content on first boot
+#   5. Seeds the database with the admin login + launch-safe settings on first boot
 #
 # Afterwards: https://yourdomain.com  (admin at /admin — credentials printed below)
 # Safe to re-run: it updates the code and restarts the stack without data loss.
 # ============================================================================
 set -euo pipefail
 
-REPO_URL="${REPO_URL:-https://github.com/PaddyJay-afk/dog-breeding-site-.git}"
-# Default to the branch that carries the site. Override with BRANCH=main after merging.
-BRANCH="${BRANCH:-claude/golden-retriever-breeder-site-05257a}"
+REPO_URL="${REPO_URL:-https://github.com/PaddyJay-afk/celestial-goldens-site.git}"
+BRANCH="${BRANCH:-main}"
 INSTALL_DIR="${INSTALL_DIR:-/opt/celestial-goldens}"
 SITE_DOMAIN="${SITE_DOMAIN:-}"
 ADMIN_EMAIL="${ADMIN_EMAIL:-}"

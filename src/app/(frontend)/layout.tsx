@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Fraunces, Mulish } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import { Header } from '@/components/site/header'
 import { Footer } from '@/components/site/footer'
@@ -7,17 +7,18 @@ import { getSiteSettings } from '@/lib/data'
 import { localBusinessJsonLd } from '@/lib/seo'
 import { serverUrl } from '@/lib/env'
 
-const display = Fraunces({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  style: ['normal', 'italic'],
+const display = localFont({
+  src: [
+    { path: '../fonts/fraunces-latin-normal.woff2', weight: '400 600', style: 'normal' },
+    { path: '../fonts/fraunces-latin-italic.woff2', weight: '400 600', style: 'italic' },
+  ],
   variable: '--font-display',
   display: 'swap',
 })
 
-const body = Mulish({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+const body = localFont({
+  src: '../fonts/mulish-latin.woff2',
+  weight: '400 700',
   variable: '--font-body',
   display: 'swap',
 })
@@ -37,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       settings.defaultMetaDescription ??
       'A responsible English Golden Retriever breeding program in Suffolk, Virginia. Health-tested parents, family-raised puppies, and lifelong support.',
-    icons: { icon: '/favicon.svg' },
+    icons: { icon: '/favicon.svg', apple: '/brand/celestial-mark.webp' },
     ...(process.env.GOOGLE_SITE_VERIFICATION
       ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
       : {}),

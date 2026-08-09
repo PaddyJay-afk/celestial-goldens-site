@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { PageHeader, Section } from '@/components/site/section'
 import { RichText } from '@/components/site/rich-text'
 import { MediaImage } from '@/components/site/media-image'
@@ -73,6 +74,25 @@ export default async function ResponsibleBreedingPage() {
           certificates are available to approved families. New to the breed? Start with
           my <a href="/english-golden-retrievers" className="text-gold-dark underline">English Golden Retriever guide</a>.
         </p>
+
+        <div className="mt-14 grid items-center gap-8 rounded-3xl border border-gold/25 bg-ivory p-5 shadow-soft md:grid-cols-2 md:p-8">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+            <Image
+              src="/images/lifelong-support.webp"
+              alt="Cream English Golden Retriever walking calmly on leash along a woodland path"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <p className="eyebrow">A lifelong commitment</p>
+            <h2 className="mt-3 text-3xl">The relationship continues after go-home day.</h2>
+            <p className="mt-4 leading-relaxed text-charcoal/75">
+              Families receive practical guidance as their puppy grows, and every dog always has a safe path back to the breeder if life changes.
+            </p>
+          </div>
+        </div>
       </Section>
     </>
   )

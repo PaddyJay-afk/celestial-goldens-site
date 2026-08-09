@@ -57,7 +57,7 @@ export const PuppyCard = ({ puppy }: { puppy: Puppy }) => {
       : 'Ask about this puppy'
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-forest/10 bg-ivory shadow-soft transition-shadow duration-300 hover:shadow-lift">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-gold/20 bg-ivory shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-lift">
       <MediaImage
         media={puppy.featuredImage ?? puppy.photos?.[0]?.image}
         size="card"
@@ -102,6 +102,10 @@ export const PuppyCard = ({ puppy }: { puppy: Puppy }) => {
           )}
         </dl>
         {puppy.notes && <p className="mt-3 line-clamp-3 text-sm text-charcoal/70">{puppy.notes}</p>}
+        <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-forest/75">
+          <span className="rounded-full bg-gold-soft/45 px-3 py-1">Gentle star</span>
+          <span className="rounded-full bg-forest/8 px-3 py-1">Family fit</span>
+        </div>
         {showInquire && (
           <Link
             href={`/apply?puppy=${encodeURIComponent(puppy.slug ?? '')}`}

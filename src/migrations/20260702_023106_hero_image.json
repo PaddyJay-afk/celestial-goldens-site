@@ -3852,7 +3852,7 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": true,
-          "default": "'Cirilli English Goldens'"
+          "default": "'Celestial English Golden Retrievers'"
         },
         "tagline": {
           "name": "tagline",

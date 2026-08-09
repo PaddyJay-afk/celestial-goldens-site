@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Image from 'next/image'
 import type { Media } from '@/payload-types'
 import { asMedia } from '@/lib/data'
 import { cn } from '@/lib/utils'
@@ -8,7 +9,8 @@ type SizeKey = 'thumbnail' | 'card' | 'feature' | 'hero' | 'og'
 /**
  * Responsive image for Payload media. Builds a srcset from the generated image
  * sizes, lazy-loads by default, and degrades to a tasteful placeholder when no
- * image is set. Plain <img> keeps it robust across storage adapters.
+ * image is set. If a requested generated size is absent, use the next best
+ * available Payload size before falling back to the original upload URL.
  */
 export const MediaImage = ({
   media,
@@ -46,27 +48,22 @@ export const MediaImage = ({
   }
 
   const sizesObj = m.sizes ?? {}
-  const candidates: { url: string; width: number }[] = []
-  for (const key of ['thumbnail', 'card', 'feature', 'hero'] as const) {
-    const s = sizesObj[key]
-    if (s?.url && s?.width) candidates.push({ url: s.url, width: s.width })
-  }
-  const srcSet = candidates.length
-    ? candidates.map((c) => `${c.url} ${c.width}w`).join(', ')
-    : undefined
-
-  const chosen = sizesObj[size]?.url ?? m.url
+  const fallbackOrder: SizeKey[] = [size, 'feature', 'hero', 'card', 'og', 'thumbnail']
+  const chosenSize = fallbackOrder.map((key) => sizesObj[key]).find((entry) => entry?.url)
+  const chosen = chosenSize?.url ?? m.url
+  const width = Number(chosenSize?.width || m.width || 1200)
+  const height = Number(chosenSize?.height || m.height || 900)
 
   return (
     <div className={cn('overflow-hidden bg-sage/10', className)}>
-      <img
+      <Image
         src={chosen}
-        srcSet={srcSet}
-        sizes={srcSet ? sizes : undefined}
+        sizes={sizes}
         alt={m.alt ?? ''}
-        width={m.width ?? undefined}
-        height={m.height ?? undefined}
-        loading={priority ? 'eager' : 'lazy'}
+        width={width}
+        height={height}
+        priority={priority}
+        unoptimized
         decoding="async"
         className={cn('h-full w-full object-cover', imgClassName)}
       />

@@ -50,10 +50,11 @@ services:
       S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-false}
       UPLOADS_DIR: /app/uploads
       GOOGLE_SITE_VERIFICATION: ${GOOGLE_SITE_VERIFICATION:-}
-      # First boot: create admin + sample content automatically (idempotent).
+      # First boot: create admin + launch-safe settings automatically (idempotent).
       AUTO_SEED: ${AUTO_SEED:-true}
       SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-}
       SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:-}
+      SEED_DEMO_CONTENT: ${SEED_DEMO_CONTENT:-false}
       SEED_ASSETS_DIR: /app/seed-assets
     volumes:
       # Persist locally-stored uploads (images + PDFs) across deploys.

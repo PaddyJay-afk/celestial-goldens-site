@@ -95,7 +95,7 @@ export default buildConfig({
     },
   },
   // First-boot provisioning: when AUTO_SEED=true (set in docker-compose), an
-  // empty database is filled with the admin user + sample content on startup.
+    // Empty databases receive the admin user and launch-safe settings on startup.
   // The seeder is idempotent and never overwrites existing data.
   onInit: async (payload) => {
     if (process.env.AUTO_SEED === 'true') {

@@ -113,7 +113,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ ok: true })
   } catch (err) {
-    // eslint-disable-next-line no-console
+     
     console.error('[apply:error]', err instanceof Error ? err.message : err)
     return NextResponse.json(
       { ok: false, message: 'Something went wrong. Please try again.' },
