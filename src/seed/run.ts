@@ -10,7 +10,6 @@ const run = async () => {
 }
 
 run().catch((err) => {
-  // eslint-disable-next-line no-console
   console.error('[seed] failed:', err)
   process.exit(1)
 })

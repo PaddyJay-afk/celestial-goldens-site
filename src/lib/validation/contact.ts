@@ -10,8 +10,10 @@ export const contactSchema = z.object({
     .trim()
     .min(1, 'Message is required.')
     .max(5000, 'Message is too long.'),
-  // Honeypot — must be empty.
-  website: z.string().max(0).optional().or(z.literal('')),
+  // Honeypot — see `isHoneypotFilled` in @/lib/validation/honeypot. Accepted by
+  // the schema on purpose: rejecting it here would return a field error naming
+  // the trap, telling a bot exactly which field to leave blank next time.
+  website: z.unknown().optional(),
 })
 
 export type ContactInput = z.infer<typeof contactSchema>

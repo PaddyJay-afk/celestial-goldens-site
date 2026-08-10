@@ -50,11 +50,14 @@ describe('applicationSchema', () => {
     expect(result.success).toBe(false)
   })
 
-  it('allows an empty honeypot but the route treats a filled one as spam', () => {
+  // The honeypot must never surface as a validation error: an error naming the
+  // `website` field would tell a bot author exactly which input is the trap.
+  // Detection is the route's job, via isHoneypotFilled, before validation runs.
+  it('accepts both an empty and a filled honeypot without flagging the field', () => {
     const ok = applicationSchema.safeParse({ ...validApplication, website: '' })
     expect(ok.success).toBe(true)
     const filled = applicationSchema.safeParse({ ...validApplication, website: 'http://spam' })
-    expect(filled.success).toBe(false)
+    expect(filled.success).toBe(true)
   })
 })
 

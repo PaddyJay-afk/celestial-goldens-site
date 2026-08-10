@@ -51,3 +51,20 @@ export const publishedOrStaff: Access = ({ req: { user } }) => {
     },
   }
 }
+
+/**
+ * Public read for documents explicitly marked public; staff read everything.
+ *
+ * Documents left un-public (the default) are "shared on request only" —
+ * contracts and health guarantees Pamela sends to approved families. Without
+ * this gate the `public` checkbox would be decorative: the REST API would list
+ * every document, and the stored file would be downloadable by URL.
+ */
+export const publicOrStaff: Access = ({ req: { user } }) => {
+  if (user) return true
+  return {
+    public: {
+      equals: true,
+    },
+  }
+}

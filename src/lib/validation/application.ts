@@ -33,8 +33,10 @@ export const applicationSchema = z.object({
   contactConsent: z.literal(true, {
     errorMap: () => ({ message: 'Please consent to be contacted.' }),
   }),
-  // Honeypot — must be empty. Bots tend to fill every field.
-  website: z.string().max(0).optional().or(z.literal('')),
+  // Honeypot — see `isHoneypotFilled` in @/lib/validation/honeypot. Accepted by
+  // the schema on purpose: rejecting it here would return a field error naming
+  // the trap, telling a bot exactly which field to leave blank next time.
+  website: z.unknown().optional(),
 })
 
 export type ApplicationInput = z.infer<typeof applicationSchema>

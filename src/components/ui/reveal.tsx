@@ -25,8 +25,10 @@ export const Reveal = ({
     const node = ref.current
     if (!node) return
     if (typeof IntersectionObserver === 'undefined') {
-      setVisible(true)
-      return
+      // Reveal on the next tick rather than synchronously: setting state during
+      // the effect itself forces an immediate second render pass.
+      const immediate = window.setTimeout(() => setVisible(true), 0)
+      return () => window.clearTimeout(immediate)
     }
     const observer = new IntersectionObserver(
       ([entry]) => {

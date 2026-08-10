@@ -2,18 +2,33 @@ import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { applicationSchema } from '@/lib/validation/application'
-import { getClientIp, rateLimit } from '@/lib/rate-limit'
+import { isHoneypotFilled } from '@/lib/validation/honeypot'
+import { getClientIp, peekRateLimit, rateLimit } from '@/lib/rate-limit'
 import { sendEmail, renderRows } from '@/lib/email'
 import { smtp } from '@/lib/env'
 import { serverUrl } from '@/lib/env'
 
+const WINDOW_MS = 30 * 60_000
+const MAX_APPLICATIONS = 4
+// Generous ceiling on raw requests, so a bot cannot hammer the endpoint even
+// though failed attempts don't count against the submission quota below.
+const MAX_ATTEMPTS = 40
+
 export async function POST(req: Request) {
   const ip = getClientIp(req.headers)
-  const limit = rateLimit(`apply:${ip}`, { limit: 4, windowMs: 30 * 60_000 })
-  if (!limit.allowed) {
+
+  const attempts = rateLimit(`apply:attempt:${ip}`, {
+    limit: MAX_ATTEMPTS,
+    windowMs: WINDOW_MS,
+  })
+  // The application form is long; a family may need several tries to get every
+  // field right. Only *stored* applications count toward the quota.
+  const quota = peekRateLimit(`apply:${ip}`, { limit: MAX_APPLICATIONS })
+  if (!attempts.allowed || !quota.allowed) {
+    const retryAfter = Math.max(attempts.retryAfterSeconds, quota.retryAfterSeconds)
     return NextResponse.json(
       { ok: false, message: 'Too many submissions. Please try again later.' },
-      { status: 429, headers: { 'Retry-After': String(limit.retryAfterSeconds) } },
+      { status: 429, headers: { 'Retry-After': String(retryAfter) } },
     )
   }
 
@@ -22,6 +37,13 @@ export async function POST(req: Request) {
     body = await req.json()
   } catch {
     return NextResponse.json({ ok: false, message: 'Invalid request.' }, { status: 400 })
+  }
+
+  // Honeypot tripped — answer exactly like a success and store nothing, so the
+  // bot cannot tell the trap from a real submission. Checked before validation
+  // so the response never names the honeypot field.
+  if (isHoneypotFilled(body)) {
+    return NextResponse.json({ ok: true })
   }
 
   const parsed = applicationSchema.safeParse(body)
@@ -33,11 +55,6 @@ export async function POST(req: Request) {
   }
 
   const d = parsed.data
-
-  // Honeypot tripped — pretend success, store nothing.
-  if (d.website) {
-    return NextResponse.json({ ok: true })
-  }
 
   try {
     const payload = await getPayload({ config })
@@ -85,6 +102,9 @@ export async function POST(req: Request) {
       overrideAccess: true,
     })
 
+    // Charge the submission quota only now that an application was stored.
+    rateLimit(`apply:${ip}`, { limit: MAX_APPLICATIONS, windowMs: WINDOW_MS })
+
     // Notify the breeder.
     if (smtp.toBreeder) {
       await sendEmail({
@@ -113,7 +133,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ ok: true })
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error('[apply:error]', err instanceof Error ? err.message : err)
     return NextResponse.json(
       { ok: false, message: 'Something went wrong. Please try again.' },

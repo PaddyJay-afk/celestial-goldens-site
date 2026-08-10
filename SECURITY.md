@@ -35,15 +35,30 @@ public issue with exploit details.
 **Forms (application & contact)**
 - Server-side **Zod** validation is the source of truth (client validation is
   convenience only).
-- **Honeypot** field rejects bots.
-- **Rate limiting** per IP (`src/lib/rate-limit.ts`) throttles abuse.
+- **Honeypot** field rejects bots. A filled honeypot gets the same `{ok:true}`
+  response as a real submission and is silently discarded, so a bot cannot tell
+  the trap from a success. It is checked before validation, so no error response
+  ever names the honeypot field.
+- **Rate limiting** per IP (`src/lib/rate-limit.ts`). Two tiers: a generous
+  ceiling on raw requests, plus a stricter quota charged only when a submission
+  is actually stored — so a family who mistypes the form is never locked out of
+  contacting the breeder.
+- Client IP is read from the right-hand (proxy-written) end of
+  `X-Forwarded-For`, never the client-supplied left-hand entry. Caddy is
+  configured without `trusted_proxies`, so it replaces a forged header outright.
+  If you add a proxy in front (e.g. Cloudflare), set `TRUSTED_PROXY_HOPS` to
+  match — see `.env.example`.
 - Submissions are written with scoped server-side access, not via public write
   permissions.
 
 **Uploads**
 - Images are restricted by MIME type (`jpeg/png/webp/avif`) and size (≤ 8 MB).
-- PDF documents are restricted to `application/pdf` and ≤ 15 MB.
+- PDF documents are restricted to `application/pdf` and ≤ 15 MB. File contents
+  are checked, not just the declared type — a non-PDF renamed `.pdf` is refused.
 - A global hard ceiling of 15 MB applies to all uploads.
+- Documents are private by default: only those ticked **public** are readable
+  anonymously. A document left un-public is hidden from the API *and* its file
+  URL returns 403, so contracts shared "on request only" stay private.
 
 **Payments**
 - There is **no public checkout**. Stripe deposit links are generated only from
@@ -51,8 +66,13 @@ public issue with exploit details.
 
 **HTTP headers**
 - Security headers are set in `next.config.mjs` and reinforced by Caddy:
-  `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`,
-  `Referrer-Policy`, `Permissions-Policy`.
+  `Content-Security-Policy`, `Strict-Transport-Security`,
+  `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`,
+  `Permissions-Policy`. `X-Powered-By` is suppressed.
+- The CSP confines scripts, frames and form posts to this origin. It permits
+  `'unsafe-inline'`/`'unsafe-eval'` because the Payload admin bundle requires
+  them, so it limits the blast radius of an injection rather than preventing one
+  outright.
 
 **Network & process**
 - The app runs as a non-root user in Docker.

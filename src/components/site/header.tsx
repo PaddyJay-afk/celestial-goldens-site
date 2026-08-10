@@ -20,9 +20,14 @@ export const Header = ({ businessName }: { businessName: string }) => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  React.useEffect(() => {
+  // Close the mobile menu when navigating. Adjusting state during render (the
+  // pattern React documents for "reset state when a value changes") rather than
+  // in an effect avoids rendering the open menu for a frame on the new page.
+  const [lastPathname, setLastPathname] = React.useState(pathname)
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname)
     setOpen(false)
-  }, [pathname])
+  }
 
   return (
     <header

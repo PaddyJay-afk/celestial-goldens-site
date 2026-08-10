@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import type {
@@ -11,6 +12,16 @@ import type {
   Testimonial,
 } from '@/payload-types'
 
+/**
+ * Every reader below is wrapped in React's `cache()`, which de-duplicates calls
+ * within a single request render. The site settings global, for example, is
+ * read by the layout's metadata, the page's metadata, the header and the footer
+ * — four identical round trips to Postgres per page view without this.
+ *
+ * The cache lives for one render only, so the admin dashboard's edits still
+ * appear on the very next request.
+ */
+
 let cached: Awaited<ReturnType<typeof getPayload>> | null = null
 
 export const payloadClient = async () => {
@@ -19,12 +30,12 @@ export const payloadClient = async () => {
 }
 
 /** Site settings global — always available (returns defaults if unset). */
-export const getSiteSettings = async (): Promise<SiteSetting> => {
+export const getSiteSettings = cache(async (): Promise<SiteSetting> => {
   const payload = await payloadClient()
   return payload.findGlobal({ slug: 'site-settings', depth: 1 })
-}
+})
 
-export const getPublishedPuppies = async (): Promise<Puppy[]> => {
+export const getPublishedPuppies = cache(async (): Promise<Puppy[]> => {
   const payload = await payloadClient()
   const res = await payload.find({
     collection: 'puppies',
@@ -34,9 +45,9 @@ export const getPublishedPuppies = async (): Promise<Puppy[]> => {
     sort: '-createdAt',
   })
   return res.docs
-}
+})
 
-export const getPuppyBySlug = async (slug: string): Promise<Puppy | null> => {
+export const getPuppyBySlug = cache(async (slug: string): Promise<Puppy | null> => {
   const payload = await payloadClient()
   const res = await payload.find({
     collection: 'puppies',
@@ -45,9 +56,9 @@ export const getPuppyBySlug = async (slug: string): Promise<Puppy | null> => {
     limit: 1,
   })
   return res.docs[0] ?? null
-}
+})
 
-export const getLitters = async (statuses?: string[]): Promise<Litter[]> => {
+export const getLitters = cache(async (statuses?: string[]): Promise<Litter[]> => {
   const payload = await payloadClient()
   const res = await payload.find({
     collection: 'litters',
@@ -60,9 +71,9 @@ export const getLitters = async (statuses?: string[]): Promise<Litter[]> => {
     sort: '-expectedDate',
   })
   return res.docs
-}
+})
 
-export const getDogs = async (role?: Dog['role']): Promise<Dog[]> => {
+export const getDogs = cache(async (role?: Dog['role']): Promise<Dog[]> => {
   const payload = await payloadClient()
   const res = await payload.find({
     collection: 'dogs',
@@ -75,9 +86,9 @@ export const getDogs = async (role?: Dog['role']): Promise<Dog[]> => {
     sort: 'callName',
   })
   return res.docs
-}
+})
 
-export const getTestimonials = async (onlyFeatured = false): Promise<Testimonial[]> => {
+export const getTestimonials = cache(async (onlyFeatured = false): Promise<Testimonial[]> => {
   const payload = await payloadClient()
   const res = await payload.find({
     collection: 'testimonials',
@@ -90,9 +101,9 @@ export const getTestimonials = async (onlyFeatured = false): Promise<Testimonial
     sort: '-date',
   })
   return res.docs
-}
+})
 
-export const getFaqs = async (): Promise<Faq[]> => {
+export const getFaqs = cache(async (): Promise<Faq[]> => {
   const payload = await payloadClient()
   const res = await payload.find({
     collection: 'faqs',
@@ -102,9 +113,9 @@ export const getFaqs = async (): Promise<Faq[]> => {
     sort: 'order',
   })
   return res.docs
-}
+})
 
-export const getPageBySlug = async (slug: string): Promise<Page | null> => {
+export const getPageBySlug = cache(async (slug: string): Promise<Page | null> => {
   const payload = await payloadClient()
   const res = await payload.find({
     collection: 'pages',
@@ -113,9 +124,9 @@ export const getPageBySlug = async (slug: string): Promise<Page | null> => {
     limit: 1,
   })
   return res.docs[0] ?? null
-}
+})
 
-export const getGalleryImages = async (limit = 60): Promise<Media[]> => {
+export const getGalleryImages = cache(async (limit = 60): Promise<Media[]> => {
   const payload = await payloadClient()
   const res = await payload.find({
     collection: 'media',
@@ -124,9 +135,9 @@ export const getGalleryImages = async (limit = 60): Promise<Media[]> => {
     sort: '-createdAt',
   })
   return res.docs
-}
+})
 
-export const getPublicDocuments = async () => {
+export const getPublicDocuments = cache(async () => {
   const payload = await payloadClient()
   const res = await payload.find({
     collection: 'documents',
@@ -135,7 +146,7 @@ export const getPublicDocuments = async () => {
     limit: 50,
   })
   return res.docs
-}
+})
 
 /** Narrow a possibly-populated relationship/upload to its Media object. */
 export const asMedia = (value: unknown): Media | null => {

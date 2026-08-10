@@ -1,6 +1,5 @@
 # Caddy reverse proxy with automatic HTTPS.
 # {$SITE_DOMAIN} and {$CADDY_TLS_EMAIL} come from the environment (see .env).
-
 {
 	# Use a contact email for Let's Encrypt notices when provided.
 	email {$CADDY_TLS_EMAIL}
@@ -10,7 +9,17 @@
 	encode zstd gzip
 
 	# Proxy everything to the Next.js app.
-	reverse_proxy app:3000
+	#
+	# Caddy replaces any client-supplied X-Forwarded-For with the real peer
+	# address, because no `trusted_proxies` is configured here — so a bot cannot
+	# forge an IP to get itself a fresh rate-limit bucket. Do not add
+	# `trusted_proxies` without also setting TRUSTED_PROXY_HOPS on the app (see
+	# src/lib/rate-limit.ts): trusting a proxy makes Caddy *append* rather than
+	# replace, and the left-most entry becomes attacker-controlled again.
+	reverse_proxy app:3000 {
+		# Caddy does not set X-Real-IP on its own; the app uses it as a fallback.
+		header_up X-Real-IP {remote_host}
+	}
 
 	# Security headers (complement those set in next.config.mjs).
 	header {
@@ -18,7 +27,7 @@
 		X-Content-Type-Options "nosniff"
 		X-Frame-Options "SAMEORIGIN"
 		Referrer-Policy "strict-origin-when-cross-origin"
-		# Caddy sets the real client IP for the app's rate limiter.
+		# Don't advertise the proxy in responses.
 		-Server
 	}
 

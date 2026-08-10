@@ -1,6 +1,32 @@
 import { withPayload } from '@payloadcms/next/withPayload'
 
+/**
+ * Content Security Policy.
+ *
+ * `'unsafe-inline'`/`'unsafe-eval'` are required by the Payload admin bundle and
+ * Next.js's inline hydration scripts, so this is not an XSS-proof policy — it is
+ * a meaningful reduction in blast radius: scripts, frames and form posts are
+ * confined to this origin, so injected content cannot exfiltrate to a third
+ * party or embed the site in someone else's page.
+ */
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com data:",
+  // Uploads may be served from S3 when configured; blob: covers admin previews.
+  "img-src 'self' data: blob: https:",
+  "media-src 'self' data: blob: https:",
+  "connect-src 'self' https:",
+  "frame-ancestors 'self'",
+  "form-action 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  'upgrade-insecure-requests',
+].join('; ')
+
 const securityHeaders = [
+  { key: 'Content-Security-Policy', value: contentSecurityPolicy },
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
