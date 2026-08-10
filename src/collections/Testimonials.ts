@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { isAdminOrEditor, publishedOrStaff } from '@/access/roles'
+import { revalidateAfterChange, revalidateAfterDelete } from '@/hooks/revalidate'
 
 export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
@@ -53,4 +54,8 @@ export const Testimonials: CollectionConfig = {
       admin: { position: 'sidebar', description: 'Highlight on the home page.' },
     },
   ],
+  hooks: {
+    afterChange: [revalidateAfterChange],
+    afterDelete: [revalidateAfterDelete],
+  },
 }

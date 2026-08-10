@@ -29,12 +29,33 @@ const DogProfile = ({ dog }: { dog: Dog }) => (
       />
       <div>
         <h3 className="font-display text-2xl text-forest">{dog.callName}</h3>
-        {dog.registeredName && <p className="text-sm italic text-charcoal/60">{dog.registeredName}</p>}
+        {dog.registeredName && <p className="text-sm italic text-charcoal/70">{dog.registeredName}</p>}
+        {/*
+          A <dl> must pair each value with a <dt>. These read as bare facts
+          visually, so the terms are screen-reader only — matching how the puppy
+          card labels the same fields.
+        */}
         <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm text-charcoal/80">
-          <div className="capitalize">{dog.sex}</div>
-          {dog.color && <div>{dog.color}</div>}
-          {dog.weight && <div>{dog.weight}</div>}
-          {dog.dateOfBirth && <div>Born {formatDate(dog.dateOfBirth)}</div>}
+          <dt className="sr-only">Sex</dt>
+          <dd className="capitalize">{dog.sex}</dd>
+          {dog.color && (
+            <>
+              <dt className="sr-only">Colour</dt>
+              <dd>{dog.color}</dd>
+            </>
+          )}
+          {dog.weight && (
+            <>
+              <dt className="sr-only">Weight</dt>
+              <dd>{dog.weight}</dd>
+            </>
+          )}
+          {dog.dateOfBirth && (
+            <>
+              <dt className="sr-only">Date of birth</dt>
+              <dd>Born {formatDate(dog.dateOfBirth)}</dd>
+            </>
+          )}
         </dl>
         {dog.temperament && <p className="mt-3 text-sm leading-relaxed text-charcoal/80">{dog.temperament}</p>}
         {dog.titles && (

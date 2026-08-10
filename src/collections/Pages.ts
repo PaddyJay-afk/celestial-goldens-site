@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { isAdminOrEditor, publishedOrStaff } from '@/access/roles'
 import { slugField } from '@/fields/slug'
 import { seoField } from '@/fields/seo'
+import { revalidateAfterChange, revalidateAfterDelete } from '@/hooks/revalidate'
 
 /**
  * Editable long-form content pages (Responsible Breeding, Process, Health
@@ -52,4 +53,8 @@ export const Pages: CollectionConfig = {
     },
     seoField,
   ],
+  hooks: {
+    afterChange: [revalidateAfterChange],
+    afterDelete: [revalidateAfterDelete],
+  },
 }

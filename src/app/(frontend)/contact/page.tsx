@@ -76,7 +76,7 @@ export default async function ContactPage({
               )}
             </ul>
             {!settings.email && !settings.phone && (
-              <p className="mt-4 text-sm text-charcoal/60">
+              <p className="mt-4 text-sm text-charcoal/70">
                 The contact form is the best way to reach me right now.
               </p>
             )}

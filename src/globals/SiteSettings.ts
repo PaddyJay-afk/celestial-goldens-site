@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 import { anyone, isAdminOrEditor } from '@/access/roles'
+import { revalidateGlobalAfterChange } from '@/hooks/revalidate'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
@@ -101,4 +102,7 @@ export const SiteSettings: GlobalConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [revalidateGlobalAfterChange],
+  },
 }

@@ -2,6 +2,7 @@ import path from 'path'
 import type { CollectionConfig } from 'payload'
 import { anyone, isAdminOrEditor } from '@/access/roles'
 import { uploadsDir } from '@/lib/env'
+import { revalidateAfterChange, revalidateAfterDelete } from '@/hooks/revalidate'
 
 const MAX_UPLOAD_BYTES = 8 * 1024 * 1024 // 8 MB
 
@@ -57,6 +58,8 @@ export const Media: CollectionConfig = {
     },
   ],
   hooks: {
+    afterChange: [revalidateAfterChange],
+    afterDelete: [revalidateAfterDelete],
     beforeOperation: [
       ({ req, operation }) => {
         if ((operation === 'create' || operation === 'update') && req.file) {

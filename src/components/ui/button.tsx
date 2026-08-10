@@ -10,7 +10,9 @@ const buttonVariants = cva(
       variant: {
         primary:
           'bg-forest text-cream hover:bg-forest-700 shadow-soft hover:shadow-lift',
-        gold: 'bg-gold text-white hover:bg-gold-dark shadow-soft hover:shadow-lift',
+        // White on the lighter gold is 2.63:1 — unreadable for many people and
+        // well under AA. The darker gold carries white text at 5.75:1.
+        gold: 'bg-gold-dark text-white hover:bg-gold-900 shadow-soft hover:shadow-lift',
         outline:
           'border border-forest/30 text-forest hover:border-forest hover:bg-forest/5',
         ghost: 'text-forest hover:bg-forest/5',

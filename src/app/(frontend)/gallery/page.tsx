@@ -32,7 +32,7 @@ export default async function GalleryPage() {
               <figure key={img.id} className="break-inside-avoid overflow-hidden rounded-xl border border-forest/10 bg-ivory">
                 <MediaImage media={img} size="card" className="w-full" imgClassName="object-cover" />
                 {img.caption && (
-                  <figcaption className="px-3 py-2 text-xs text-charcoal/60">{img.caption}</figcaption>
+                  <figcaption className="px-3 py-2 text-xs text-charcoal/70">{img.caption}</figcaption>
                 )}
               </figure>
             ))}

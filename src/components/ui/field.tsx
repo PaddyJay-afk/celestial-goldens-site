@@ -2,7 +2,7 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 
 const baseControl =
-  'w-full rounded-xl border border-forest/20 bg-white px-4 py-2.5 text-charcoal shadow-sm outline-none transition-colors placeholder:text-charcoal/40 focus:border-gold focus:ring-2 focus:ring-gold/30 disabled:opacity-60'
+  'w-full rounded-xl border border-forest/20 bg-white px-4 py-2.5 text-charcoal shadow-sm outline-none transition-colors placeholder:text-charcoal/70 focus:border-gold focus:ring-2 focus:ring-gold/30 disabled:opacity-60'
 
 export const Field = ({
   label,
@@ -27,7 +27,7 @@ export const Field = ({
       {required && <span className="ml-0.5 text-gold-dark">*</span>}
     </label>
     {children}
-    {hint && !error && <p className="text-xs text-charcoal/55">{hint}</p>}
+    {hint && !error && <p className="text-xs text-charcoal/70">{hint}</p>}
     {error && (
       <p className="text-xs font-medium text-red-700" role="alert">
         {error}

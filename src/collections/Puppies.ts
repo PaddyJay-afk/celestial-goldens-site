@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { isAdminOrEditor, isAdminOrEditorField, publishedOrStaff } from '@/access/roles'
 import { slugField } from '@/fields/slug'
+import { revalidateAfterChange, revalidateAfterDelete } from '@/hooks/revalidate'
 
 export const PUPPY_STATUSES = [
   { label: 'Available', value: 'available' },
@@ -141,4 +142,8 @@ export const Puppies: CollectionConfig = {
       },
     },
   ],
+  hooks: {
+    afterChange: [revalidateAfterChange],
+    afterDelete: [revalidateAfterDelete],
+  },
 }

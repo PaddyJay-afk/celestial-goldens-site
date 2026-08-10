@@ -27,7 +27,7 @@ export const Footer = ({ settings }: { settings: SiteSetting }) => {
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-cream/70">{settings.tagline}</p>
           )}
           {settings.showBreederName && settings.breederName && (
-            <p className="mt-4 text-sm text-cream/60">Bred with care by {settings.breederName}</p>
+            <p className="mt-4 text-sm text-cream/70">Bred with care by {settings.breederName}</p>
           )}
         </div>
 
@@ -104,7 +104,7 @@ export const Footer = ({ settings }: { settings: SiteSetting }) => {
       </div>
 
       <div className="border-t border-cream/10">
-        <div className="container-content flex flex-col gap-2 py-6 text-xs text-cream/55 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-content flex flex-col gap-2 py-6 text-xs text-cream/70 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {settings.businessName}. All rights reserved.
           </p>

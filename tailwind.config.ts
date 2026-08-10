@@ -22,8 +22,16 @@ const config: Config = {
           light: '#A3D0CC',
         },
         gold: {
+          // Decorative only (rules, borders, focus rings) — never text or a
+          // text background: 2.52:1 on cream is below every WCAG threshold.
           DEFAULT: '#C29A3B',
-          dark: '#A17E27',
+          // Text-safe gold. Darkened from #A17E27, which read as gold but only
+          // reached 3.63:1 on cream and 3.80:1 under white — both short of the
+          // 4.5:1 AA floor, and the eyebrow/link text using it is small.
+          // This is 5.50:1 on cream and 5.75:1 under white.
+          dark: '#7E621C',
+          // Hover state for gold-dark surfaces.
+          900: '#6B5316',
           soft: '#EAD9AD',
         },
         charcoal: '#243538',

@@ -129,7 +129,7 @@ export const DogCard = ({ dog }: { dog: Dog }) => (
     />
     <div className="p-5">
       <h3 className="font-display text-xl text-forest">{dog.callName}</h3>
-      {dog.registeredName && <p className="text-sm italic text-charcoal/60">{dog.registeredName}</p>}
+      {dog.registeredName && <p className="text-sm italic text-charcoal/70">{dog.registeredName}</p>}
       <p className="mt-2 text-sm capitalize text-charcoal/75">
         {dog.sex}
         {dog.color ? ` · ${dog.color}` : ''}
@@ -195,7 +195,7 @@ export const TestimonialCard = ({ t }: { t: Testimonial }) => (
           {t.ownerName}
           {t.dogName ? ` & ${t.dogName}` : ''}
         </p>
-        {t.location && <p className="text-charcoal/60">{t.location}</p>}
+        {t.location && <p className="text-charcoal/70">{t.location}</p>}
       </div>
     </figcaption>
   </figure>

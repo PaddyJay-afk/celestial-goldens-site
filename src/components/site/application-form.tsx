@@ -207,7 +207,7 @@ export const ApplicationForm = ({ puppySlug = '' }: { puppySlug?: string }) => {
       <Button type="submit" size="lg" disabled={status === 'submitting'}>
         {status === 'submitting' ? 'Submitting…' : 'Submit application'}
       </Button>
-      <p className="text-xs text-charcoal/55">
+      <p className="text-xs text-charcoal/70">
         Submitting an application is the first step in a conversation with me — it is not a
         purchase and does not reserve a puppy. Complete applications are the ones I consider.
       </p>

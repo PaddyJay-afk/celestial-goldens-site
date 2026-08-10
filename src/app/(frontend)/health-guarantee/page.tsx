@@ -80,7 +80,7 @@ export default async function HealthGuaranteePage() {
                     <Download className="h-4 w-4" /> Download PDF
                   </a>
                 ) : (
-                  <p className="mt-1 text-sm text-charcoal/60">Available on request.</p>
+                  <p className="mt-1 text-sm text-charcoal/70">Available on request.</p>
                 )}
               </div>
             </div>
@@ -100,7 +100,7 @@ export default async function HealthGuaranteePage() {
           </div>
         </div>
 
-        <p className="mt-8 text-sm text-charcoal/60">
+        <p className="mt-8 text-sm text-charcoal/70">
           Your signed contract is the governing document — you and I go through it together
           before go-home day.
         </p>

@@ -101,8 +101,18 @@ if [ ! -f .env ]; then
     PUBLIC_URL="https://$SITE_DOMAIN"
   else
     # IP-only test mode: Caddy serves plain HTTP on port 80.
-    SITE_DOMAIN=":80"
-    PUBLIC_URL="http://$(curl -fsS -4 ifconfig.me 2>/dev/null || hostname -I | awk '{print $1}')"
+    #
+    # The site address is pinned to the detected IP rather than a catch-all
+    # ":80" on purpose. A catch-all serves every Host header, and in this mode
+    # Payload derives its own base URL from the request (see the serverURL note
+    # in src/payload.config.ts) — so a request carrying `Host: evil.example`
+    # would make password-reset emails link to the attacker's site. Pinning the
+    # host means only the real address is ever served, and any other Host gets
+    # rejected by Caddy before it reaches the app.
+    SERVER_IP="$(curl -fsS -4 ifconfig.me 2>/dev/null || hostname -I | awk '{print $1}')"
+    [ -n "$SERVER_IP" ] || die "Could not determine this server's public IP. Re-run with SITE_DOMAIN=yourdomain.com."
+    SITE_DOMAIN="http://$SERVER_IP"
+    PUBLIC_URL="http://$SERVER_IP"
     warn "No domain given — running in HTTP test mode at $PUBLIC_URL"
     warn "Re-run with SITE_DOMAIN=yourdomain.com once DNS is pointed here for automatic HTTPS."
   fi

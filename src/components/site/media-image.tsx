@@ -38,7 +38,7 @@ export const MediaImage = ({
         )}
         aria-hidden="true"
       >
-        <span className="px-4 text-center font-display text-sm italic text-forest/40">
+        <span className="px-4 text-center font-display text-sm italic text-forest/70">
           {placeholderLabel}
         </span>
       </div>
@@ -67,6 +67,9 @@ export const MediaImage = ({
         width={m.width ?? undefined}
         height={m.height ?? undefined}
         loading={priority ? 'eager' : 'lazy'}
+        // Tells the browser to fetch the hero ahead of other subresources
+        // rather than at default priority; it is usually the LCP element.
+        fetchPriority={priority ? 'high' : undefined}
         decoding="async"
         className={cn('h-full w-full object-cover', imgClassName)}
       />

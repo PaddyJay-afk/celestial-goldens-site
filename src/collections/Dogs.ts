@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { isAdminOrEditor, publishedOrStaff } from '@/access/roles'
 import { slugField } from '@/fields/slug'
 import { seoField } from '@/fields/seo'
+import { revalidateAfterChange, revalidateAfterDelete } from '@/hooks/revalidate'
 
 export const Dogs: CollectionConfig = {
   slug: 'dogs',
@@ -161,4 +162,8 @@ export const Dogs: CollectionConfig = {
     },
     seoField,
   ],
+  hooks: {
+    afterChange: [revalidateAfterChange],
+    afterDelete: [revalidateAfterDelete],
+  },
 }
