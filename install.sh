@@ -146,7 +146,44 @@ ENV
 else
   say "Keeping existing .env (delete it to regenerate secrets)."
   FIRST_INSTALL=0
+
+  # Switching from IP-only test mode to a real domain (or changing domains).
+  # Without this, re-running with SITE_DOMAIN= silently kept the old value and
+  # the site stayed on plain HTTP with no explanation.
+  if [ -n "$SITE_DOMAIN" ]; then
+    CURRENT_DOMAIN="$(grep '^SITE_DOMAIN=' .env | cut -d= -f2- || true)"
+    if [ "$CURRENT_DOMAIN" = "$SITE_DOMAIN" ]; then
+      say "Already configured for $SITE_DOMAIN."
+    else
+      say "Switching the site to $SITE_DOMAIN..."
+
+      # Pre-flight: Let's Encrypt validates over the public internet, so the
+      # domain must already resolve here. Checking first turns a confusing
+      # certificate failure into a clear message.
+      SERVER_IP="$(curl -fsS -4 ifconfig.me 2>/dev/null || true)"
+      DOMAIN_IPS="$(getent ahostsv4 "$SITE_DOMAIN" 2>/dev/null | awk '{print $1}' | sort -u | tr '\n' ' ')"
+      if [ -z "$DOMAIN_IPS" ]; then
+        die "$SITE_DOMAIN does not resolve yet. Add an A record pointing to ${SERVER_IP:-this server}, wait for DNS to propagate, then re-run."
+      fi
+      if [ -n "$SERVER_IP" ] && ! printf '%s' "$DOMAIN_IPS" | grep -qw "$SERVER_IP"; then
+        warn "$SITE_DOMAIN currently resolves to: $DOMAIN_IPS"
+        warn "This server is $SERVER_IP. HTTPS will fail until the A record points here."
+        warn "Continuing anyway — re-run once DNS updates if the certificate does not appear."
+      else
+        say "DNS check passed: $SITE_DOMAIN -> $SERVER_IP"
+      fi
+
+      # Rewrite only the three URL-related keys; secrets and data stay put.
+      sed -i "s|^SITE_DOMAIN=.*|SITE_DOMAIN=$SITE_DOMAIN|" .env
+      sed -i "s|^NEXT_PUBLIC_SERVER_URL=.*|NEXT_PUBLIC_SERVER_URL=https://$SITE_DOMAIN|" .env
+      if [ -n "$ADMIN_EMAIL" ]; then
+        sed -i "s|^CADDY_TLS_EMAIL=.*|CADDY_TLS_EMAIL=$ADMIN_EMAIL|" .env
+      fi
+      DOMAIN_SWITCH=1
+    fi
+  fi
 fi
+DOMAIN_SWITCH="${DOMAIN_SWITCH:-0}"
 
 # --- 4. Launch ----------------------------------------------------------------
 say "Building and starting the stack (first build takes a few minutes)..."
@@ -161,6 +198,24 @@ done
 
 # --- 5. Done -------------------------------------------------------------------
 PUBLIC_URL="$(grep '^NEXT_PUBLIC_SERVER_URL=' .env | cut -d= -f2-)"
+
+# When a domain was just switched on, wait for Caddy to obtain the certificate
+# and confirm HTTPS actually serves the site, rather than reporting success and
+# leaving the owner to discover a broken padlock.
+if [ "$DOMAIN_SWITCH" = "1" ]; then
+  say "Waiting for the HTTPS certificate (usually under a minute)..."
+  CERT_OK=0
+  for i in $(seq 1 40); do
+    if curl -fsS -o /dev/null --max-time 8 "$PUBLIC_URL" 2>/dev/null; then CERT_OK=1; break; fi
+    sleep 5
+  done
+  if [ "$CERT_OK" = "1" ]; then
+    say "HTTPS is live and the certificate is valid."
+  else
+    warn "HTTPS is not answering yet at $PUBLIC_URL."
+    warn "Check: DNS points here, ports 80 and 443 are open, then: docker compose logs caddy"
+  fi
+fi
 echo
 say "──────────────────────────────────────────────────────────"
 say " Install complete."

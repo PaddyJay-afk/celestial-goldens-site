@@ -1,0 +1,77 @@
+/*
+ * Phone ergonomics for the Payload dashboard.
+ *
+ * Pamela manages the site from an iPhone, and several of the admin's controls
+ * ship under the 24x24px minimum that WCAG 2.2 SC 2.5.8 asks for — the nav
+ * hamburger (22x22), log-out (18x20), the breadcrumb home link (16x16), the
+ * "create new" button (80x22) and the collapsible nav headers (20px tall).
+ * They are fiddly to hit accurately with a thumb.
+ *
+ * Scoped to touch-capable narrow screens so the desktop dashboard is untouched.
+ */
+
+@media (max-width: 1024px) and (pointer: coarse) {
+  /* Nav open/close and the mobile drawer's close button. */
+  .app-header__mobile-nav-toggler,
+  .nav__mobile-close,
+  .nav-toggler {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Collapsible group headings in the sidebar ("Content", "Administration"). */
+  .nav-group__toggle {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Log out, and the breadcrumb "home" chevron. */
+  .nav__log-out,
+  .nav__log-out a,
+  .step-nav__home {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Column sort arrows in list views (18px wide by default). */
+  .sort-column__button,
+  .sort-column__asc,
+  .sort-column__desc {
+    min-width: 28px;
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Row checkboxes in list views — easy to miss when bulk-selecting. */
+  .checkbox-input__input,
+  input[type='checkbox'] {
+    min-width: 24px;
+    min-height: 24px;
+  }
+
+  /* Primary actions: "Create new", "Save", pagination controls. */
+  .btn,
+  .list-create-new-doc__create-new-button,
+  .paginator button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* iOS zooms the page in when a focused input's text is under 16px. */
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='number'],
+  input[type='date'],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}

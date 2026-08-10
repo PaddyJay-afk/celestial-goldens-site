@@ -62,6 +62,45 @@ curl -fsSL -H "Authorization: token YOUR_TOKEN" \
   | sudo GITHUB_TOKEN=YOUR_TOKEN SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=pam@yourdomain.com bash
 ```
 
+## Buying the domain, and switching to it
+
+**Which domain to buy.** Get a `.com` — families trust it, and some mail
+providers treat bargain endings like `.xyz` as suspicious, which matters when
+the application form emails people. Prices are all within about a dollar of
+each other for one year:
+
+| Registrar | ~1st year `.com` | WHOIS privacy | Notes |
+|---|---|---|---|
+| **Porkbun** (recommended) | ~$11 | free | Simple DNS screen, no nameserver change needed |
+| Cloudflare Registrar | ~$9.77 | free | Cheapest, but forces its own nameservers |
+| Namecheap | ~$10 | free | Renewal jumps to ~$15 — irrelevant here |
+
+Recommendation: **Porkbun**. Cloudflare is about a dollar cheaper over the whole
+period, but it requires moving the domain to Cloudflare's nameservers, and new
+records default to "Proxied" (the orange cloud) — which sits in front of this
+server's own HTTPS and commonly causes a redirect loop. Not worth the dollar. If
+you do use Cloudflare, set the A record to **DNS only** (grey cloud).
+
+Since the site is only needed for six to eight months, **turn off auto-renew**
+right after buying so the second year is never charged. Renewal pricing does not
+matter for this project — only the first year.
+
+**Then point it at the server:** one A record, `@` → your VPS IP. Add `www` as a
+second A record to the same IP if you want `www.` to work.
+
+**Then one command on the VPS** switches the site over — same command as the
+install, with the domain added:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/PaddyJay-afk/dog-breeding-site-/claude/golden-retriever-breeder-site-05257a/install.sh \
+  | sudo SITE_DOMAIN=yourdomain.com ADMIN_EMAIL=you@yourdomain.com bash
+```
+
+It checks DNS actually points at this server before switching (so you get a
+clear message instead of a mysterious certificate failure), keeps your database,
+uploads, admin password and secrets exactly as they are, gets the HTTPS
+certificate, and waits to confirm the padlock is live before it reports success.
+
 ## Getting found — the free SEO playbook
 
 The site ships with the technical SEO done: per-page titles tuned to what

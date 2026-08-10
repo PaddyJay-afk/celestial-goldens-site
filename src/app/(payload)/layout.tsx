@@ -2,6 +2,9 @@
 import type { ServerFunctionClient } from 'payload'
 import config from '@payload-config'
 import '@payloadcms/next/css'
+// Loaded after Payload's own stylesheet so it can override. Enlarges the
+// dashboard's smaller touch targets on phones — see the file for details.
+import './admin-mobile.css'
 import { RootLayout, handleServerFunctions } from '@payloadcms/next/layouts'
 import React from 'react'
 
