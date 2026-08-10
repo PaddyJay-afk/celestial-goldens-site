@@ -74,6 +74,24 @@ public issue with exploit details.
   them, so it limits the blast radius of an injection rather than preventing one
   outright.
 
+**IP-only HTTP test mode**
+
+The installer can run the site on the server's raw IP over plain HTTP, before a
+domain is pointed at the box. This mode is for checking the deployment, not for
+real traffic, and it is deliberately looser in two ways:
+
+- No HTTPS, so traffic (including the admin login) is unencrypted.
+- Payload's CSRF origin allowlist is off. It has to be: browsers omit the
+  `Sec-Fetch-*` headers on non-HTTPS origins, and Payload falls back to those
+  headers when a request has no `Origin` — with the allowlist on, every admin
+  page bounces back to the login screen. The auth cookie stays `SameSite=Lax`,
+  which is what actually stops a cross-site page from carrying it into a
+  mutation.
+
+Both tighten automatically the moment `NEXT_PUBLIC_SERVER_URL` is an `https://`
+address. Point a domain at the server and re-run the installer with
+`SITE_DOMAIN=` as soon as you can, and change the generated admin password.
+
 **Network & process**
 - The app runs as a non-root user in Docker.
 - PostgreSQL is not exposed to the host/internet — only the app reaches it on the

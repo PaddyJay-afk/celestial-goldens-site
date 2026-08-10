@@ -22,7 +22,13 @@ const contentSecurityPolicy = [
   "form-action 'self'",
   "base-uri 'self'",
   "object-src 'none'",
-  'upgrade-insecure-requests',
+  // Deliberately no `upgrade-insecure-requests`. It would rewrite every asset
+  // request to https://, which breaks the IP-only HTTP mode the installer uses
+  // before a domain is pointed at the server — the whole site loads unstyled
+  // and the admin cannot start. It buys nothing once a domain is live either:
+  // all asset URLs are same-origin and relative (next/font self-hosts the
+  // fonts at build time), and HSTS plus Caddy's automatic HTTP->HTTPS redirect
+  // already keep real traffic on TLS.
 ].join('; ')
 
 const securityHeaders = [

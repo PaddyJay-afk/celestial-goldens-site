@@ -47,8 +47,32 @@ if (isS3Configured) {
   )
 }
 
+/**
+ * Whether the site is actually served over TLS. The installer runs in plain
+ * HTTP against the server's raw IP until a domain is pointed at the box, and a
+ * few of Payload's defaults have to be relaxed for that mode (see `serverURL`
+ * and `csrf` below). Everything tightens up automatically once
+ * NEXT_PUBLIC_SERVER_URL is an https:// address.
+ */
+const isHttps = serverUrl.startsWith('https')
+
 export default buildConfig({
-  serverURL: serverUrl,
+  /**
+   * Left empty in plain-HTTP mode on purpose.
+   *
+   * Payload unconditionally appends `serverURL` to the CSRF allowlist whenever
+   * it is set. A non-empty allowlist makes cookie auth fall back to the
+   * `Sec-Fetch-Site` header when a request carries no `Origin` — which is every
+   * same-origin GET the admin makes. Browsers omit `Sec-Fetch-*` on
+   * non-trustworthy origins (plain HTTP to anything but localhost), so the
+   * cookie is rejected and the dashboard bounces back to /admin/login forever.
+   *
+   * With this empty, Payload derives the origin from the request headers
+   * instead, and the dashboard works over HTTP. The auth cookie stays
+   * `SameSite=Lax`, which is what actually blocks a cross-site request from
+   * carrying it into a mutation.
+   */
+  serverURL: isHttps ? serverUrl : '',
   admin: {
     user: Users.slug,
     meta: {
@@ -88,7 +112,8 @@ export default buildConfig({
   sharp,
   // Restrict cross-origin + CSRF to the configured site URL.
   cors: [serverUrl],
-  csrf: [serverUrl],
+  // Payload also appends `serverURL` to this list when one is configured.
+  csrf: isHttps ? [serverUrl] : [],
   upload: {
     limits: {
       fileSize: 15 * 1024 * 1024, // 15 MB hard ceiling
