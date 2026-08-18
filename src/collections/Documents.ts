@@ -1,6 +1,6 @@
 import path from 'path'
 import type { CollectionConfig } from 'payload'
-import { anyone, isAdminOrEditor } from '@/access/roles'
+import { isAdminOrEditor } from '@/access/roles'
 import { uploadsDir } from '@/lib/env'
 
 const MAX_PDF_BYTES = 15 * 1024 * 1024 // 15 MB
@@ -18,7 +18,10 @@ export const Documents: CollectionConfig = {
     description: 'PDF documents such as the contract and health guarantee.',
   },
   access: {
-    read: anyone,
+    read: ({ req: { user } }) => {
+      if (user) return true
+      return { public: { equals: true } }
+    },
     create: isAdminOrEditor,
     update: isAdminOrEditor,
     delete: isAdminOrEditor,

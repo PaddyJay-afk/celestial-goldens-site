@@ -10,8 +10,9 @@ export const contactSchema = z.object({
     .trim()
     .min(1, 'Message is required.')
     .max(5000, 'Message is too long.'),
-  // Honeypot — must be empty.
-  website: z.string().max(0).optional().or(z.literal('')),
+  // Honeypot — bots tend to fill every field. A filled value is treated as spam
+  // by the route (silent success, nothing stored).
+  website: z.string().optional(),
 })
 
 export type ContactInput = z.infer<typeof contactSchema>
