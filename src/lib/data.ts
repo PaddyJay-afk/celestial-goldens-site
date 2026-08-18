@@ -13,22 +13,11 @@ import type {
 
 let cached: Awaited<ReturnType<typeof getPayload>> | null = null
 
-// These records shipped in the original demo database and were explicitly
-// fictional. Keep them out of the public site even when an existing preview
-// volume is reused. Pamela can add verified records in the CMS normally.
-const demoDogNames = new Set(['Daisy', 'Sadie', 'Cooper', 'Juniper'])
-const demoLitterNames = new Set([
-  'The Stardust Litter — Daisy × Cooper',
-  'The Aurora Litter — Sadie × Cooper',
-])
-const demoPuppyNames = new Set(['Green Collar', 'Pink Collar', 'Blue Collar', 'Yellow Collar'])
-const demoTestimonialOwners = new Set(['Rachel', 'Marcus', 'The Hendersons'])
-const demoMediaNames = [
-  'dog-daisy', 'dog-sadie', 'dog-cooper', 'dog-juniper',
-  'puppy-green', 'puppy-pink', 'puppy-blue', 'puppy-yellow',
-  'gallery-oak-hill', 'gallery-dusk', 'gallery-goldenrod',
-  'gallery-paw-quilt', 'gallery-crest', 'hero-meadow', 'litter-spring', 'og-banner',
-]
+const brandOrLogoFilename = (filename?: string | null): boolean => {
+  if (!filename) return false
+  const lower = filename.toLowerCase()
+  return ['celestial-logo', 'favicon', 'og-banner', 'og-'].some((token) => lower.includes(token))
+}
 
 export const payloadClient = async () => {
   if (!cached) cached = await getPayload({ config })
@@ -50,7 +39,7 @@ export const getPublishedPuppies = async (): Promise<Puppy[]> => {
     limit: 100,
     sort: '-createdAt',
   })
-  return res.docs.filter((puppy) => !demoPuppyNames.has(puppy.name))
+  return res.docs
 }
 
 export const getPuppyBySlug = async (slug: string): Promise<Puppy | null> => {
@@ -61,8 +50,7 @@ export const getPuppyBySlug = async (slug: string): Promise<Puppy | null> => {
     depth: 2,
     limit: 1,
   })
-  const puppy = res.docs[0]
-  return puppy && !demoPuppyNames.has(puppy.name) ? puppy : null
+  return res.docs[0] ?? null
 }
 
 export const getLitters = async (statuses?: string[]): Promise<Litter[]> => {
@@ -77,7 +65,7 @@ export const getLitters = async (statuses?: string[]): Promise<Litter[]> => {
     limit: 100,
     sort: '-expectedDate',
   })
-  return res.docs.filter((litter) => !demoLitterNames.has(litter.name))
+  return res.docs
 }
 
 export const getDogs = async (role?: Dog['role']): Promise<Dog[]> => {
@@ -92,7 +80,7 @@ export const getDogs = async (role?: Dog['role']): Promise<Dog[]> => {
     limit: 100,
     sort: 'callName',
   })
-  return res.docs.filter((dog) => !demoDogNames.has(dog.callName))
+  return res.docs
 }
 
 export const getTestimonials = async (onlyFeatured = false): Promise<Testimonial[]> => {
@@ -107,7 +95,7 @@ export const getTestimonials = async (onlyFeatured = false): Promise<Testimonial
     limit: 50,
     sort: '-date',
   })
-  return res.docs.filter((testimonial) => !demoTestimonialOwners.has(testimonial.ownerName))
+  return res.docs
 }
 
 export const getFaqs = async (): Promise<Faq[]> => {
@@ -133,17 +121,40 @@ export const getPageBySlug = async (slug: string): Promise<Page | null> => {
   return res.docs[0] ?? null
 }
 
+/**
+ * Gallery photos come from images attached to published dogs, puppies, litters,
+ * and testimonials — never a dump of the latest media, and never the logo/OG art.
+ */
 export const getGalleryImages = async (limit = 60): Promise<Media[]> => {
-  const payload = await payloadClient()
-  const res = await payload.find({
-    collection: 'media',
-    depth: 0,
-    limit,
-    sort: '-createdAt',
-  })
-  return res.docs.filter((media) =>
-    !demoMediaNames.some((name) => media.filename?.includes(name)),
-  )
+  const [dogs, puppies, litters, testimonials] = await Promise.all([
+    getDogs(),
+    getPublishedPuppies(),
+    getLitters(),
+    getTestimonials(),
+  ])
+
+  const seen = new Set<number>()
+  const images: Media[] = []
+
+  const collect = (value: unknown) => {
+    const media = asMedia(value)
+    if (!media || seen.has(media.id) || brandOrLogoFilename(media.filename)) return
+    seen.add(media.id)
+    images.push(media)
+  }
+
+  for (const dog of dogs) {
+    collect(dog.featuredImage)
+    for (const item of dog.gallery ?? []) collect(item.image)
+  }
+  for (const puppy of puppies) {
+    collect(puppy.featuredImage)
+    for (const item of puppy.photos ?? []) collect(item.image)
+  }
+  for (const litter of litters) collect(litter.coverImage)
+  for (const t of testimonials) collect(t.photo)
+
+  return images.slice(0, limit)
 }
 
 export const getPublicDocuments = async () => {
