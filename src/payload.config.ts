@@ -6,6 +6,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { buildConfig } from 'payload'
+import type { Plugin } from 'payload'
 import sharp from 'sharp'
 
 import { Users } from '@/collections/Users'
@@ -27,7 +28,7 @@ import { isEmailConfigured, isS3Configured, s3 as s3env, serverUrl, smtp } from 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-const plugins = []
+const plugins: Plugin[] = []
 
 if (isS3Configured) {
   plugins.push(
@@ -94,8 +95,8 @@ export default buildConfig({
       fileSize: 15 * 1024 * 1024, // 15 MB hard ceiling
     },
   },
-  // First-boot provisioning: when AUTO_SEED=true (set in docker-compose), an
-    // Empty databases receive the admin user and launch-safe settings on startup.
+  // First-boot provisioning: when AUTO_SEED=true (set in docker-compose),
+  // empty databases receive the admin user and launch-safe settings on startup.
   // The seeder is idempotent and never overwrites existing data.
   onInit: async (payload) => {
     if (process.env.AUTO_SEED === 'true') {

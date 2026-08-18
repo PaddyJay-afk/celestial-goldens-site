@@ -1,5 +1,10 @@
-import type { GlobalConfig } from 'payload'
+import type { FieldAccess, GlobalConfig } from 'payload'
 import { anyone, isAdminOrEditor } from '@/access/roles'
+
+const publicFullAddress: FieldAccess = ({ req: { user }, doc }) => {
+  if (user) return true
+  return doc?.addressVisibility === 'full'
+}
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
@@ -60,8 +65,17 @@ export const SiteSettings: GlobalConfig = {
             },
             { name: 'city', type: 'text', defaultValue: 'Suffolk' },
             { name: 'state', type: 'text', defaultValue: 'VA' },
-            { name: 'streetAddress', type: 'text', admin: { description: 'Only shown publicly if visibility is “Show full address”.' } },
-            { name: 'postalCode', type: 'text' },
+            {
+              name: 'streetAddress',
+              type: 'text',
+              access: { read: publicFullAddress },
+              admin: { description: 'Only shown publicly if visibility is “Show full address”.' },
+            },
+            {
+              name: 'postalCode',
+              type: 'text',
+              access: { read: publicFullAddress },
+            },
             {
               name: 'serviceArea',
               type: 'text',
