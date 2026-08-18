@@ -165,16 +165,17 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Match quiz teaser */}
+      {/* Apply */}
       <section className="container-content pb-4 pt-12">
         <Reveal>
           <div className="celestial-panel rounded-3xl border border-gold/25 px-6 py-8 text-cream shadow-celestial sm:px-8">
             <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto]">
               <div>
-                <p className="eyebrow text-gold-soft">Find your celestial match</p>
-                <h2 className="mt-3 text-3xl text-cream sm:text-4xl">A guided puppy-matching experience</h2>
+                <p className="eyebrow text-gold-soft">Start here</p>
+                <h2 className="mt-3 text-3xl text-cream sm:text-4xl">Apply for a puppy</h2>
                 <p className="mt-3 max-w-3xl text-cream/75">
-                  Families can answer a few lifestyle questions and share the temperament profile that best fits their home — calm companion, bright explorer, gentle star, or cuddly moon.
+                  Tell me about your home and what you’re looking for. I read every application
+                  myself, and we’ll talk on the phone before anything is decided.
                 </p>
               </div>
               <ButtonLink href="/apply" variant="gold" size="lg">

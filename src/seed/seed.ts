@@ -68,10 +68,13 @@ export const seed = async (payload: Payload): Promise<void> => {
     return doc.id
   }
 
-  if ((await countOf('media')) === 0 && assets) {
-    await uploadArt('hero-meadow', 'Moonlit Virginia meadow illustration for Celestial English Golden Retrievers')
-    await uploadArt('celestial-logo', 'Celestial English Golden Retrievers logo with a cream Golden Retriever beneath a crescent moon', undefined, 'webp')
-    await uploadArt('og-banner', 'Celestial English Golden Retrievers — Suffolk, Virginia')
+  // Always seed brand-critical assets (logo, optional hero/OG). Demo dog/puppy/
+  // gallery plates only when SEED_DEMO_CONTENT=true.
+  await uploadArt('hero-meadow', 'Moonlit Virginia meadow illustration for Celestial English Golden Retrievers')
+  await uploadArt('celestial-logo', 'Celestial English Golden Retrievers logo with a cream Golden Retriever beneath a crescent moon', undefined, 'webp')
+  await uploadArt('og-banner', 'Celestial English Golden Retrievers — Suffolk, Virginia')
+
+  if (seedDemoContent) {
     await uploadArt('dog-daisy', 'Engraved monogram plate for Daisy', 'Daisy — replace with her photo')
     await uploadArt('dog-sadie', 'Engraved monogram plate for Sadie', 'Sadie — replace with her photo')
     await uploadArt('dog-cooper', 'Engraved monogram plate for Cooper', 'Cooper — replace with his photo')
@@ -86,17 +89,9 @@ export const seed = async (payload: Payload): Promise<void> => {
     await uploadArt('gallery-goldenrod', 'Goldenrod study', 'Goldenrod, early autumn')
     await uploadArt('gallery-paw-quilt', 'Paw print quilt pattern', 'Every collar tells a story')
     await uploadArt('gallery-crest', 'Celestial English Golden Retrievers kennel crest', 'Our crest')
-    log(`uploaded ${Object.keys(media).length} brand assets`)
-  } else if (assets) {
-    // map already-uploaded assets so re-runs can still link relations
-    for (const f of [
-      'hero-meadow', 'celestial-logo', 'og-banner', 'dog-daisy', 'dog-sadie', 'dog-cooper', 'dog-juniper',
-      'puppy-green', 'puppy-pink', 'puppy-blue', 'puppy-yellow', 'litter-spring',
-    ]) {
-      const existing = await payload.find({ collection: 'media', where: { filename: { contains: f } }, limit: 1 })
-      if (existing.docs[0]) media[f] = existing.docs[0].id
-    }
   }
+
+  if (assets) log(`mapped/uploaded ${Object.keys(media).length} brand assets`)
 
   // --- Site settings ---------------------------------------------------------
   const settings = await payload.findGlobal({ slug: 'site-settings' })
@@ -117,9 +112,9 @@ export const seed = async (payload: Payload): Promise<void> => {
         serviceArea: 'Suffolk, VA and the greater Hampton Roads / Tidewater area',
         badgeVetChecked: true,
         badgeFamilyRaised: true,
-        badgeAkc: true,
-        badgeOfa: true,
-        badgeEmbark: true,
+        badgeAkc: false,
+        badgeOfa: false,
+        badgeEmbark: false,
         heroImage: media['hero-meadow'],
         logo: media['celestial-logo'],
         defaultOgImage: media['celestial-logo'] ?? media['og-banner'],

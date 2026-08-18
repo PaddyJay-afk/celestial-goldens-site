@@ -4,10 +4,11 @@ A quick orientation for Pam (and whoever deploys the site).
 
 ## What you're looking at
 
-The production branch ships with polished editorial imagery and verified
+The site on `main` ships with polished editorial imagery and verified
 program copy, but it deliberately does not publish fictional dogs, litters,
 puppies, or testimonials. Add those verified records from the admin dashboard;
-no code is needed.
+no code is needed. Testimonials start empty (samples are created only if
+`SEED_DEMO_CONTENT=true`).
 
 ## Replace-before-launch checklist
 
@@ -20,13 +21,14 @@ Log in at `https://yourdomain.com/admin` and work through this list:
    health entries are examples of the format, not real results.
 3. **Litters & Puppies** — publish only current, verified litter and puppy records.
 4. **Testimonials** — add real quotes from your families with their permission.
+   Production seed leaves this collection empty.
 5. **FAQs** — the answers are written generically so most survive as-is, but
    review each one and adjust to your actual policies (deposits, visits,
    delivery, registration).
 6. **Site Settings** — confirm your public email/phone, whether your name
    shows, address visibility (default: generalized to "Suffolk, VA"), social
    links, and the trust badges. **Only switch on AKC/OFA/Embark badges if they
-   are true for your program.**
+   are true for your program.** They default to off on AUTO_SEED.
 7. **Documents** — upload your real contract and health-guarantee PDFs.
 8. **Users** — change the generated admin password (Admin → Users → your
    account).
@@ -43,8 +45,6 @@ That's the whole install. It sets up Docker, HTTPS, the database, the site,
 and prints Pam's admin login when it finishes. Run it again any time to
 update. No domain yet? Omit `SITE_DOMAIN=` and it runs in HTTP test mode on
 the server's IP.
-
-> Merge the production pull request to `main` before using this command.
 
 **If the GitHub repo is private**, the command above can't download anything
 anonymously. Either make the repo public (Settings → General → Danger Zone →
@@ -87,8 +87,7 @@ The rest is free but requires Pam's hands (do these once the domain is live):
    the Litters page and post the link anywhere you're listed. Fresh pages on a
    site is what keeps Google coming back.
 6. **Ask every family for two sentences** — real testimonials with first
-   names + towns (replace the samples!) are conversion gold and unique content
-   no competitor can copy.
+   names + towns are conversion gold and unique content no competitor can copy.
 
 What was deliberately *not* done: no fake reviews, no invented ratings
 schema, no keyword stuffing. Google penalizes all three; a small honest site

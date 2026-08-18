@@ -6,6 +6,9 @@ import { createDepositLink } from '@/lib/stripe'
  * Deposit records. A deposit link is generated through Stripe only for an
  * applicant the breeder has approved. There is no public checkout: records are
  * created and managed in the admin dashboard only.
+ *
+ * Stripe webhooks are not implemented yet. Mark a deposit as paid in admin after
+ * confirming payment. STRIPE_WEBHOOK_SECRET is reserved for a future hook.
  */
 export const Deposits: CollectionConfig = {
   slug: 'deposits',
@@ -91,8 +94,29 @@ export const Deposits: CollectionConfig = {
     beforeChange: [
       async ({ data, operation, req }) => {
         // Generate a Stripe Payment Link on create if Stripe is configured and
-        // we don't already have one.
+        // we don't already have one. Only approved / deposit-sent applications.
         if (operation === 'create' && !data.paymentUrl && data.amount) {
+          const applicationId =
+            typeof data.application === 'object' && data.application
+              ? data.application.id
+              : data.application
+
+          if (!applicationId) {
+            throw new Error('A deposit must be tied to an application.')
+          }
+
+          const application = await req.payload.findByID({
+            collection: 'applications',
+            id: applicationId,
+            depth: 0,
+          })
+
+          if (application.status !== 'approved' && application.status !== 'deposit-sent') {
+            throw new Error(
+              'Payment links can only be created for applications with status approved or deposit-sent.',
+            )
+          }
+
           const result = await createDepositLink({
             amount: data.amount,
             label: data.label ?? 'Puppy deposit',

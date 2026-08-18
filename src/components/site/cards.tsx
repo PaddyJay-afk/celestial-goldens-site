@@ -102,10 +102,6 @@ export const PuppyCard = ({ puppy }: { puppy: Puppy }) => {
           )}
         </dl>
         {puppy.notes && <p className="mt-3 line-clamp-3 text-sm text-charcoal/70">{puppy.notes}</p>}
-        <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-forest/75">
-          <span className="rounded-full bg-gold-soft/45 px-3 py-1">Gentle star</span>
-          <span className="rounded-full bg-forest/8 px-3 py-1">Family fit</span>
-        </div>
         {showInquire && (
           <Link
             href={`/apply?puppy=${encodeURIComponent(puppy.slug ?? '')}`}

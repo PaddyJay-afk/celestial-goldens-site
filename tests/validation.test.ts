@@ -50,11 +50,12 @@ describe('applicationSchema', () => {
     expect(result.success).toBe(false)
   })
 
-  it('allows an empty honeypot but the route treats a filled one as spam', () => {
+  it('parses a filled honeypot so the route can silently succeed', () => {
     const ok = applicationSchema.safeParse({ ...validApplication, website: '' })
     expect(ok.success).toBe(true)
     const filled = applicationSchema.safeParse({ ...validApplication, website: 'http://spam' })
-    expect(filled.success).toBe(false)
+    expect(filled.success).toBe(true)
+    if (filled.success) expect(filled.data.website).toBe('http://spam')
   })
 })
 
@@ -76,5 +77,16 @@ describe('contactSchema', () => {
   it('rejects a bad email', () => {
     const result = contactSchema.safeParse({ name: 'Sam', email: 'nope', message: 'Hi there' })
     expect(result.success).toBe(false)
+  })
+
+  it('parses a filled honeypot so the route can silently succeed', () => {
+    const result = contactSchema.safeParse({
+      name: 'Sam',
+      email: 'sam@example.com',
+      message: 'Hello, I have a question.',
+      website: 'http://spam',
+    })
+    expect(result.success).toBe(true)
+    if (result.success) expect(result.data.website).toBe('http://spam')
   })
 })
