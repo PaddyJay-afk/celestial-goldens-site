@@ -8,7 +8,7 @@ testing, application review, education, and matching puppies to suitable
 families. **Deposits are gated behind breeder approval — there is no public
 instant-purchase checkout.**
 
-Built with **Next.js 15 (App Router)** + **Payload CMS 3** + **PostgreSQL**, and
+Built with **Next.js 16 (App Router)** + **Payload CMS 3** + **PostgreSQL**, and
 deployed with **Docker Compose** behind **Caddy** (automatic HTTPS) on an Ubuntu
 VPS (e.g. Contabo).
 
@@ -117,7 +117,8 @@ Other docs:
   are logged, forms still work.
 - **Stripe** — set `STRIPE_SECRET_KEY` to let the admin generate deposit links
   for **approved** applicants. Unconfigured = deposits are recorded without a
-  link. There is never a public checkout.
+  link. There is never a public checkout. Paid status is marked in admin until
+  a Stripe webhook exists.
 - **S3 storage** — set `S3_ENABLED=true` and `S3_*` to store uploads in an
   S3-compatible bucket instead of the local volume.
 
