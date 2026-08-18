@@ -8,7 +8,7 @@ approval — never expose a public instant-purchase checkout.**
 
 ## Tech stack
 
-- **Framework:** Next.js 15 (App Router) + TypeScript
+- **Framework:** Next.js 16 (App Router) + TypeScript
 - **CMS / backend:** Payload CMS 3 (runs inside the Next.js app)
 - **Database:** PostgreSQL (`@payloadcms/db-postgres`)
 - **Styling:** Tailwind CSS 3 + hand-built accessible UI components (`src/components/ui`)
@@ -30,7 +30,6 @@ src/
   globals/SiteSettings.ts  # global site config (brand, contact, badges, SEO)
   access/                  # role-based access helpers
   fields/                  # reusable field groups (seo, slug)
-  hooks/                   # collection hooks (email on submit, etc.)
   lib/                     # email, rate-limit, stripe, validation (zod), utils
   app/(frontend)/          # public website (App Router)
   app/(payload)/           # Payload admin + REST/GraphQL routes
@@ -55,7 +54,7 @@ render publicly.
 - **Dogs** — parent dogs (sire/dam/retired), pedigree, health testing, gallery.
 - **Litters** — pairing (sire/dam), dates, status, waitlist, expectations.
 - **Puppies** — belong to a litter; status (Available/Reserved/Under Evaluation/Waitlist Only/Placed); `allowDeposit` gate.
-- **Applications** — puppy applications; status pipeline; internal notes; CSV export.
+- **Applications** — puppy applications; status pipeline; internal notes.
 - **ContactMessages** — contact form submissions.
 - **Testimonials** — admin-managed, published flag.
 - **FAQs** — question/answer, category, order.
