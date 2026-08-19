@@ -1,6 +1,5 @@
 # Caddy reverse proxy with automatic HTTPS.
 # {$SITE_DOMAIN} and {$CADDY_TLS_EMAIL} come from the environment (see .env).
-
 {
 	# Use a contact email for Let's Encrypt notices when provided.
 	email {$CADDY_TLS_EMAIL}
