@@ -21,9 +21,6 @@ export const Header = ({ businessName }: { businessName: string }) => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  React.useEffect(() => {
-    setOpen(false)
-  }, [pathname])
 
   return (
     <header

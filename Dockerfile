@@ -5,14 +5,11 @@ FROM node:22-bookworm-slim AS base
 ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 
-# Use the same package manager and lockfile as local development.
-RUN corepack enable && corepack prepare pnpm@11.20.0 --activate
-
 # ---------- Dependencies ----------
 FROM base AS deps
-# Install all dependencies (including dev) for the build.
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-RUN pnpm install --frozen-lockfile
+# Install all dependencies, including dev dependencies needed for the build.
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # ---------- Builder ----------
 FROM base AS builder
@@ -21,7 +18,7 @@ COPY . .
 # A dummy secret lets the config import during build; real secrets come at runtime.
 ENV PAYLOAD_SECRET=build-time-placeholder
 ENV NODE_ENV=production
-RUN pnpm build
+RUN npm run build
 
 # ---------- Runner ----------
 FROM base AS runner
@@ -37,7 +34,7 @@ RUN groupadd --system --gid 1001 nodejs \
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-# Placeholder artwork used by the first-boot auto-seeder.
+# Seed assets are needed by the first-boot auto-seeder.
 COPY --from=builder --chown=nextjs:nodejs /app/src/seed/assets ./seed-assets
 
 # Persisted local uploads (mounted as a volume in compose).
@@ -48,5 +45,5 @@ RUN mkdir -p /app/uploads/media /app/uploads/documents \
 USER nextjs
 EXPOSE 3000
 
-# Database migrations run automatically on first boot (prodMigrations).
+# Database migrations run automatically on boot.
 CMD ["node", "server.js"]
