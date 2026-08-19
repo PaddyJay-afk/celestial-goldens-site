@@ -12,19 +12,28 @@
 	# Proxy everything to the Next.js app.
 	reverse_proxy app:3000
 
-	# Security headers (complement those set in next.config.mjs).
+	# Security headers. They duplicate application-level settings so error pages
+	# and responses produced upstream receive the same production protections.
 	header {
 		Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
 		X-Content-Type-Options "nosniff"
 		X-Frame-Options "SAMEORIGIN"
+		X-Permitted-Cross-Domain-Policies "none"
+		Cross-Origin-Opener-Policy "same-origin"
 		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=(self), browsing-topics=()"
 		# Caddy sets the real client IP for the app's rate limiter.
 		-Server
 	}
 
-	# Cache Next.js static assets and served uploads aggressively.
-	@static path /_next/static/* /favicon.svg /api/media/file/* /api/documents/file/*
-	header @static Cache-Control "public, max-age=31536000, immutable"
+	# Next-generated static assets are fingerprinted and safe to cache for a year.
+	@next_static path /_next/static/* /favicon.svg
+	header @next_static Cache-Control "public, max-age=31536000, immutable"
+
+	# Uploaded media and PDFs can be replaced from the CMS using the same URL.
+	# Cache briefly to reduce load without leaving families on stale listings.
+	@uploads path /api/media/file/* /api/documents/file/*
+	header @uploads Cache-Control "public, max-age=86400"
 
 	log {
 		output stdout

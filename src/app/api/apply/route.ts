@@ -4,8 +4,8 @@ import config from '@payload-config'
 import { applicationSchema } from '@/lib/validation/application'
 import { getClientIp, rateLimit } from '@/lib/rate-limit'
 import { sendEmail, renderRows } from '@/lib/email'
-import { smtp } from '@/lib/env'
-import { serverUrl } from '@/lib/env'
+import { smtp, serverUrl } from '@/lib/env'
+import { parsePublicJson, RequestBodyError } from '@/lib/request'
 
 export async function POST(req: Request) {
   const ip = getClientIp(req.headers)
@@ -19,9 +19,10 @@ export async function POST(req: Request) {
 
   let body: unknown
   try {
-    body = await req.json()
-  } catch {
-    return NextResponse.json({ ok: false, message: 'Invalid request.' }, { status: 400 })
+    body = await parsePublicJson(req)
+  } catch (err) {
+    const error = err instanceof RequestBodyError ? err : new RequestBodyError('Invalid request.', 400)
+    return NextResponse.json({ ok: false, message: error.message }, { status: error.status })
   }
 
   const parsed = applicationSchema.safeParse(body)
