@@ -7,10 +7,9 @@ import { cn } from '@/lib/utils'
 type SizeKey = 'thumbnail' | 'card' | 'feature' | 'hero' | 'og'
 
 /**
- * Responsive image for Payload media. Builds a srcset from the generated image
- * sizes, lazy-loads by default, and degrades to a tasteful placeholder when no
- * image is set. If a requested generated size is absent, use the next best
- * available Payload size before falling back to the original upload URL.
+ * Responsive image for Payload media. Selects the requested generated Payload
+ * size, falls back to another available size when needed, and uses Next Image
+ * for predictable layout and lazy-loading across local and S3 storage.
  */
 export const MediaImage = ({
   media,
@@ -51,22 +50,19 @@ export const MediaImage = ({
   const fallbackOrder: SizeKey[] = [size, 'feature', 'hero', 'card', 'og', 'thumbnail']
   const chosenSize = fallbackOrder.map((key) => sizesObj[key]).find((entry) => entry?.url)
   const chosen = chosenSize?.url ?? m.url
-  const width = Number(chosenSize?.width || m.width || 1200)
-  const height = Number(chosenSize?.height || m.height || 900)
 
   return (
-    <div className={cn('overflow-hidden bg-sage/10', className)}>
+    <div className={cn('relative overflow-hidden bg-sage/10', className)}>
       <Image
         src={chosen}
-        sizes={sizes}
         alt={m.alt ?? ''}
-        width={width}
-        height={height}
+        fill
+        sizes={sizes}
         priority={priority}
         unoptimized
-        decoding="async"
         className={cn('h-full w-full object-cover', imgClassName)}
       />
     </div>
   )
 }
+

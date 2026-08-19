@@ -21,6 +21,10 @@ export const Header = ({ businessName }: { businessName: string }) => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  React.useEffect(() => {
+    setOpen(false)
+  }, [pathname])
+
   return (
     <header
       className={cn(
@@ -37,7 +41,11 @@ export const Header = ({ businessName }: { businessName: string }) => {
         Skip to content
       </a>
       <div className="container-content flex min-h-20 items-center justify-between gap-4 py-3">
-        <Link href="/" className="group flex items-center gap-3" aria-label={`${businessName} — home`}>
+        <Link
+          href="/"
+          className="group min-w-0 max-w-[calc(100%-3.5rem)] flex-1 items-center gap-3"
+          aria-label={`${businessName} — home`}
+        >
           <span className="relative flex h-12 w-12 shrink-0 overflow-hidden rounded-full border border-gold/40 bg-midnight shadow-soft ring-2 ring-cream transition-transform duration-300 group-hover:scale-105">
             <Image
               src="/brand/celestial-mark.webp"
@@ -48,7 +56,7 @@ export const Header = ({ businessName }: { businessName: string }) => {
               className="h-full w-full object-cover"
             />
           </span>
-          <span className="max-w-[15rem] font-display text-lg font-semibold leading-tight tracking-tight text-forest sm:max-w-[19rem] sm:text-2xl">
+          <span className="block min-w-0 max-w-[15rem] line-clamp-2 font-display text-lg font-semibold leading-tight tracking-tight text-forest sm:max-w-[19rem] sm:text-2xl">
             {businessName}
           </span>
         </Link>
@@ -63,6 +71,7 @@ export const Header = ({ businessName }: { businessName: string }) => {
                 'link-underline text-sm font-medium text-charcoal/80 transition-colors hover:text-forest',
                 pathname === link.href && 'text-forest',
               )}
+              aria-current={pathname === link.href ? 'page' : undefined}
             >
               {link.label}
             </Link>
@@ -77,7 +86,7 @@ export const Header = ({ businessName }: { businessName: string }) => {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-forest hover:bg-forest/5 lg:hidden"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-forest hover:bg-forest/5 lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -94,10 +103,12 @@ export const Header = ({ businessName }: { businessName: string }) => {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={() => setOpen(false)}
                 className={cn(
                   'rounded-xl px-3 py-3 text-base font-medium text-charcoal/85 hover:bg-forest/5',
                   pathname === link.href && 'bg-forest/5 text-forest',
                 )}
+                aria-current={pathname === link.href ? 'page' : undefined}
               >
                 {link.label}
               </Link>
@@ -111,3 +122,4 @@ export const Header = ({ businessName }: { businessName: string }) => {
     </header>
   )
 }
+

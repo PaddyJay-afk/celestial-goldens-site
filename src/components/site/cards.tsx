@@ -66,8 +66,8 @@ export const PuppyCard = ({ puppy }: { puppy: Puppy }) => {
         placeholderLabel="Puppy photo coming soon"
       />
       <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-center justify-between gap-3">
-          <h3 className="flex items-center gap-2 font-display text-xl text-forest">
+        <div className="flex min-w-0 items-start justify-between gap-3">
+          <h3 className="flex min-w-0 items-center gap-2 break-words font-display text-xl text-forest">
             {puppy.collarColor && (
               <span
                 className="inline-block h-3 w-3 shrink-0 rounded-full ring-2 ring-white"
@@ -77,7 +77,7 @@ export const PuppyCard = ({ puppy }: { puppy: Puppy }) => {
             )}
             {puppy.name}
           </h3>
-          <StatusBadge status={puppy.status} />
+          <span className="shrink-0"><StatusBadge status={puppy.status} /></span>
         </div>
         <dl className="mt-3 grid grid-cols-2 gap-y-1.5 text-sm text-charcoal/75">
           <dt className="sr-only">Sex</dt>
@@ -144,9 +144,9 @@ export const DogCard = ({ dog }: { dog: Dog }) => (
 
 export const LitterCard = ({ litter }: { litter: Litter }) => (
   <article className="rounded-2xl border border-forest/10 bg-ivory p-6 shadow-soft">
-    <div className="flex items-start justify-between gap-3">
-      <h3 className="font-display text-2xl text-forest">{litter.name}</h3>
-      <StatusBadge status={litter.status} kind="litter" />
+    <div className="flex min-w-0 items-start justify-between gap-3">
+      <h3 className="min-w-0 break-words font-display text-2xl text-forest">{litter.name}</h3>
+      <span className="shrink-0"><StatusBadge status={litter.status} kind="litter" /></span>
     </div>
     <dl className="mt-4 grid gap-2 text-sm text-charcoal/80 sm:grid-cols-2">
       {dogName(litter.dam) && (

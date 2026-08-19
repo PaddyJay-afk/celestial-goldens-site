@@ -7,7 +7,9 @@ A quick orientation for Pam (and whoever deploys the site).
 The production branch ships with polished editorial imagery and verified
 program copy, but it deliberately does not publish fictional dogs, litters,
 puppies, or testimonials. Add those verified records from the admin dashboard;
-no code is needed.
+no code is needed. The included dog and puppy photos are AI-generated
+representative images and must be replaced with the breeder's own photos before
+using them as real animal listings or advertising.
 
 ## Replace-before-launch checklist
 
@@ -44,7 +46,8 @@ and prints Pam's admin login when it finishes. Run it again any time to
 update. No domain yet? Omit `SITE_DOMAIN=` and it runs in HTTP test mode on
 the server's IP.
 
-> Merge the production pull request to `main` before using this command.
+> The installer tracks the repository's `main` branch and is safe to re-run
+> after future updates.
 
 **If the GitHub repo is private**, the command above can't download anything
 anonymously. Either make the repo public (Settings → General → Danger Zone →

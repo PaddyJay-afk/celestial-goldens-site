@@ -61,7 +61,11 @@ export const seed = async (payload: Payload): Promise<void> => {
     }
     const doc = await payload.create({
       collection: 'media',
-      data: { alt, caption, credit: 'Original brand asset created for Celestial English Golden Retrievers' },
+      data: {
+        alt: `Representative image — ${alt}`,
+        caption,
+        credit: 'AI-generated representative image — replace with the breeder’s own photo before advertising',
+      },
       filePath,
     })
     media[file] = doc.id
@@ -69,18 +73,18 @@ export const seed = async (payload: Payload): Promise<void> => {
   }
 
   if ((await countOf('media')) === 0 && assets) {
-    await uploadArt('hero-meadow', 'Moonlit Virginia meadow illustration for Celestial English Golden Retrievers')
+    await uploadArt('hero-meadow', 'Golden-hour English Golden Retriever in a Suffolk-style meadow')
     await uploadArt('celestial-logo', 'Celestial English Golden Retrievers logo with a cream Golden Retriever beneath a crescent moon', undefined, 'webp')
     await uploadArt('og-banner', 'Celestial English Golden Retrievers — Suffolk, Virginia')
-    await uploadArt('dog-daisy', 'Engraved monogram plate for Daisy', 'Daisy — replace with her photo')
-    await uploadArt('dog-sadie', 'Engraved monogram plate for Sadie', 'Sadie — replace with her photo')
-    await uploadArt('dog-cooper', 'Engraved monogram plate for Cooper', 'Cooper — replace with his photo')
-    await uploadArt('dog-juniper', 'Engraved monogram plate for Juniper', 'Juniper — replace with her photo')
-    await uploadArt('puppy-green', 'Green collar puppy plate', 'Green collar')
-    await uploadArt('puppy-pink', 'Pink collar puppy plate', 'Pink collar')
-    await uploadArt('puppy-blue', 'Blue collar puppy plate', 'Blue collar')
-    await uploadArt('puppy-yellow', 'Yellow collar puppy plate', 'Yellow collar')
-    await uploadArt('litter-spring', 'The Stardust Litter announcement plate')
+    await uploadArt('dog-daisy', 'Adult female English Golden Retriever portrait — representative image', 'Daisy — representative image; replace with her photo')
+    await uploadArt('dog-sadie', 'Young adult female English Golden Retriever portrait — representative image', 'Sadie — representative image; replace with her photo')
+    await uploadArt('dog-cooper', 'Adult male English Golden Retriever portrait — representative image', 'Cooper — representative image; replace with his photo')
+    await uploadArt('dog-juniper', 'Senior female English Golden Retriever portrait — representative image', 'Juniper — representative image; replace with her photo')
+    await uploadArt('puppy-green', 'Young male English Golden Retriever puppy with green collar — representative image', 'Green collar — representative image')
+    await uploadArt('puppy-pink', 'Young female English Golden Retriever puppy with pink collar — representative image', 'Pink collar — representative image')
+    await uploadArt('puppy-blue', 'Young male English Golden Retriever puppy with blue collar — representative image', 'Blue collar — representative image')
+    await uploadArt('puppy-yellow', 'Young female English Golden Retriever puppy with yellow collar — representative image', 'Yellow collar — representative image')
+    await uploadArt('litter-spring', 'Four English Golden Retriever puppies with colored collars — representative image')
     await uploadArt('gallery-oak-hill', 'Oak on the hill at first light', 'The back field, first light')
     await uploadArt('gallery-dusk', 'Dusk over the meadow', 'Evening walk weather')
     await uploadArt('gallery-goldenrod', 'Goldenrod study', 'Goldenrod, early autumn')

@@ -5,11 +5,14 @@ FROM node:22-bookworm-slim AS base
 ENV NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 
+# Use the same package manager and lockfile as local development.
+RUN corepack enable && corepack prepare pnpm@11.20.0 --activate
+
 # ---------- Dependencies ----------
 FROM base AS deps
 # Install all dependencies (including dev) for the build.
-COPY package.json package-lock.json* ./
-RUN npm ci
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
 
 # ---------- Builder ----------
 FROM base AS builder
@@ -18,7 +21,7 @@ COPY . .
 # A dummy secret lets the config import during build; real secrets come at runtime.
 ENV PAYLOAD_SECRET=build-time-placeholder
 ENV NODE_ENV=production
-RUN npm run build
+RUN pnpm build
 
 # ---------- Runner ----------
 FROM base AS runner
