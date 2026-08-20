@@ -119,4 +119,3 @@ export const Header = ({ businessName }: { businessName: string }) => {
     </header>
   )
 }
-

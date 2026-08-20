@@ -1,7 +1,9 @@
 # Production Readiness Audit
 
-**Project:** Celestial English Golden Retrievers  
-**Audit status:** Code and configuration audit complete; live-release verification pending GitHub and VPS access.  
+**Project:** Celestial English Golden Retrievers
+
+**Audit status:** Code and configuration audit complete; live-release verification pending GitHub and VPS access.
+
 **Scope:** Security controls, dependency risk, form abuse resistance, edge cases, release build, reverse-proxy configuration, internal links, and deployment readiness.
 
 ## Executive summary
